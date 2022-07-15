@@ -1,13 +1,16 @@
 import { getTrending, IMG_BASE_URL, IMG_W400 } from './api';
-const refs = {
-  list: document.querySelector('.poster-list'),
-};
+import { list } from './refs'
+
+// Закинув твій реф в файл refs.js
+// const refs = {
+//   list: document.querySelector('.poster-list'),
+// };
 
 getTrending(2).then(r => renderMarkup(r));
 
 function renderMarkup(data) {
   const markupList = createListMarkup(data);
-  refs.list.innerHTML = markupList;
+  list.innerHTML = markupList;
 }
 
 function createListMarkup(data) {

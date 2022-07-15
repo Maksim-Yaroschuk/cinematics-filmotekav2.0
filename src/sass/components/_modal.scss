@@ -51,6 +51,7 @@ p {
   margin-bottom: 50px;
   position: relative;
   margin: auto;
+
   @include mq(tablet-only) {
     width: 704px;
     padding: 40px 72px 40px 36px;
@@ -58,6 +59,7 @@ p {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 68px;
   }
+
   @include mq(desktop) {
     width: 806px;
     padding: 40px 12px;
