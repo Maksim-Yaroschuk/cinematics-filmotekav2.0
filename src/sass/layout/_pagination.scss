@@ -1,0 +1,29 @@
+.pagination-btns {
+	display: flex;
+	align-items: center;
+}
+
+.page {
+	font-weight: 500;
+	margin-left: 16px;
+}
+
+.page.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:rgba(255, 107, 8, 1);
+	color: #fff;
+	width: 40px;
+	height: 40px;
+	border-radius: 5px;
+}
+
+.page-btn{
+	width: 40px;
+	height: 40px;
+}
+
+.page-btn:not(:first-child) {
+	margin-left: 10px;
+}
