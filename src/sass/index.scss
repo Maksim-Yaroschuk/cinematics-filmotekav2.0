@@ -1,12 +1,17 @@
+@import './utils/variables';
+@import './utils/mixins';
 @import './base/common';
-@import './base/container';
-@import './base/section';
-@import './layout/pagination';
-@import './layout/header';
-@import './layout/catalog';
-@import './layout/footer';
 @import './utils/mixins';
 @import './utils/variables';
 
+@import './layout/header';
+@import './base/container';
+@import './base/section';
+@import './components/pagination';
+@import './components/modal';
+@import './layout/catalog';
+@import './layout/footer';
+
+// @import './partials/catalog';
 
 // @import './example';
