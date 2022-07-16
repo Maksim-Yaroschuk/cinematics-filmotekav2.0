@@ -1,4 +1,6 @@
-
+// import { getTrending } from './js/api';
+// import modal from './js/modal';
+//import './js/trendings';
 //save(),load(),remove(),
 import { renderMarkup } from './renderMarkup';//createListMarkup
 import { createListMarkup } from './renderMarkup';//createListMarkup
@@ -39,21 +41,26 @@ export default {
 
 //console.log(getSearchMovie);
 
-const btnWatched = document.querySelector('.btn--watched');
-const btnQueue = document.querySelector('.btn--queue');
-const btnAddWatched = document.querySelector('.modal__watched');
-const btnAddQueue = document.querySelector('.modal__queue');
+const btnWatched = document.querySelector(".btn--watched");
+const btnQueue = document.querySelector(".btn--queue");
+const btnAddWatched = document.querySelector(".modal__watched");
+const btnAddQueue = document.querySelector(".modal__queue");
 console.log('btnWatched', btnAddWatched);
 console.log('btnQueue', btnAddWatched);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddWatched);
-btnWatched.addEventListener("click", filterWatched);
+
+btnWatched.addEventListener("click", filterWatched);//("click", handler);//
 btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click", toggle(addWatched,remWatched));
 btnAddQueue.addEventListener("click", toggle(addQueue, remQueue));
 
-const filterWatched = (watched) => {
-	const watchedList = localStorage.getItem(watched)//.id;load
+
+const handler = () => { console.log('id', 'id') };
+
+const filterWatched = () => {
+	const watchedList = localStorage.getItem()//.id;load
+
 	watchedList.map(() => {
 
 		//// getMovieDetails();
