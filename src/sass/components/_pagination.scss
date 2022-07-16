@@ -1,6 +1,7 @@
 .pagination-btns {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .page {
@@ -20,10 +21,27 @@
 }
 
 .page-btn{
-	width: 40px;
-	height: 40px;
+	padding: 12px;
+	border: none;
+	border-radius: 5px;
+	background-color: rgba(247, 247, 247, 1);
+	margin-left: 10px;
 }
 
-.page-btn:not(:first-child) {
-	margin-left: 10px;
+.page-btn:hover {
+	background-color: rgb(230, 230, 230);
+}
+
+.is-hidden {
+	display: none;
+}
+
+
+
+.arrow {
+	width: 16px;
+}
+
+.arrow.next {
+	transform: rotate(180deg);
 }
