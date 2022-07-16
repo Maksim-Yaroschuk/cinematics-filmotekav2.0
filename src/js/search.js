@@ -1,27 +1,40 @@
 import { getSearchMovie, IMG_BASE_URL, IMG_W500 } from './api';
 import { renderMarkup } from './renderMarkup';
-import { list, form } from './refs';
+import { list, form, warning } from './refs';
 form.addEventListener('submit', search);
 
 let name = '';
 let page = 1;
 
-function search(evn) {
+async function search(evn) {
   evn.preventDefault();
   const { searchMovie } = evn.currentTarget;
-
   name = searchMovie.value.toLowerCase().trim();
   clearInput();
   if (name === '') {
-    alert('Please enter request.');
+    warningShown();
     return;
+  };
+  const result = await getSearchMovie(name);
+  if (result.results.length < 1) {
+    warningShown();
+    form.reset();
+  } else {
+    warningUnShown();
+    renderMarkup(result);
+    form.reset();
   }
-  getSearchMovie(name).then(r => renderMarkup(r));
-
-  evn.currentTarget.reset();
 }
 
 function clearInput() {
   list.innerHTML = '';
   page = 1;
+}
+
+function warningShown() {
+  warning.classList.remove("visually-hidden");
+}
+
+function warningUnShown() {
+  warning.classList.add("visually-hidden");
 }
