@@ -15,7 +15,6 @@ function search(evn) {
   const { searchMovie } = evn.currentTarget;
 
   name = searchMovie.value.toLowerCase().trim();
-  console.log(name);
   clearInput();
   if (name === '') {
     alert('Please enter request.');

@@ -1,19 +1,34 @@
-import {
-  getSearchMovie,
-  getMovieGenres,
-  getTrending,
-  IMG_BASE_URL,
-  IMG_W500,
-} from './api';
+import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
+
+async function getGenres() {
+  const genres = await getMovieGenres().then(({ genres }) => genres);
+  return { genres };
+}
+
 export function renderMarkup(data) {
-  const markupList = createListMarkup(data);
-  refs.list.innerHTML = markupList;
+  getGenres().then(({ genres }) => {
+    data.results.forEach(film => {
+      const { genre_ids, release_date } = film;
+      genres.forEach(({ name, id }) => {
+        if (genre_ids.includes(id)) {
+          if (genre_ids.length > 2) {
+            genre_ids.splice(2, genre_ids.length - 1, 'Other');
+          }
+          genre_ids.splice(genre_ids.indexOf(id), 1, name);
+        }
+        film.genre_names = genre_ids.join(', ');
+        if (film.release_date) {
+          film.release_date = release_date.slice(0, 4);
+        }
+      });
+    });
+    const markupList = createListMarkup(data.results);
+    refs.list.innerHTML = markupList;
+  });
 }
 
 export function createListMarkup(data) {
-  console.log(data);
-
-  return data.results
+  return data
     .map(
       ({
         original_title,
@@ -21,9 +36,9 @@ export function createListMarkup(data) {
         overview,
         vote_average,
         id,
-        genre_ids,
-      }) =>
-        `<li class='poster-list__item' key='${id}'>
+        genre_names,
+        release_date,
+      }) => `<li class='poster-list__item' key='${id}'>
     <img
       class='poster-list__img'
       src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
@@ -34,8 +49,8 @@ export function createListMarkup(data) {
     <div class='poster-list__wrap'>
       <h3 class='poster-list__title'>${original_title}</h3>
       <div class='poster-list__info'>
-        <p class='poster-list__text'>${genre_ids}</p>
-        <p class='poster-list__age'></p>
+        <p class='poster-list__text'>${genre_names}</p>
+        <p class='poster-list__age'>${release_date}</p>
       </div>
     </div>
   </li>`
