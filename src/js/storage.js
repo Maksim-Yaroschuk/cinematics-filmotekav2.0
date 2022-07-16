@@ -40,10 +40,10 @@ import { getMovieDetails } from './api';
 
 //console.log(getSearchMovie);
 
-const btnWatched = document.querySelector('btn--watched');
-const btnQueue = document.querySelector('btn--queue');
-const btnAddWatched = document.querySelector('btn--addwatched');
-const btnAddQueue = document.querySelector('btn--addqueue');
+const btnWatched = document.querySelector('.btn--watched');
+const btnQueue = document.querySelector('.btn--queue');
+const btnAddWatched = document.querySelector('.btn--addwatched');
+const btnAddQueue = document.querySelector('.btn--addqueue');
 
 btnWatched.addEventListener("click", filterWafched);
 btnQueue.addEventListener("click", filterQueue);
@@ -51,17 +51,22 @@ btnAddWatched.addEventListener("click", toggle(addWafched,remWatched));
 btnAddQueue.addEventListener("click", toggle(addQueue, remQueue));
 
 const filterWafched = (wafched) => {
-	const wafchedList = localStorage.wafched.filter(wafched)//.id;
+	const wafchedList = localStorage.getItem(wafched)//.id;load
 	return wafchedList.map(() => {
-		getMovieDetails();
+
+		//// getMovieDetails();
+		// createListMarkup(data)
 	})
+	// renderMarkup(data);
 };
 
 const filterQueue = (queue) => {
-	const queueList = localStorage.queue.filter(queue)//.id;
+	const queueList = localStorage.getItem(queue)//.id;
 	return queueList.map(() => {
-		getMovieDetails().createListMarkup(data).renderMarkup(data);
+		//// getMovieDetails();
+		// createListMarkup(data)
 	})
+	// renderMarkup(data);
 };
 
 const toggle = (yes, no, e, save) => {
@@ -75,22 +80,23 @@ const toggle = (yes, no, e, save) => {
 	}
 }
 
-const addWafched = (e,save) => {
+const addWafched = (save) => {
+	const id = document.querySelector('.poster-list__item').key;
 	// const id = e.getMovieDetails().then(r => r.id);
 	save(watched,id);
 };
 
-const addQueue = (e, save) => {
-	// const id = e.getMovieDetails().then(r => r.id);
+const addQueue = (save) => {
+	const id = document.querySelector('.poster-list__item').key;
 	save(queue,id);
 };
 
-const remWatched = (e, remove) => {
-	// const id = e.getMovieDetails().then(r => r.id);
+const remWatched = (remove) => {
+	const id = document.querySelector('.poster-list__item').key;
 	remove(watched,id);
 };
 
-const remQueue = (e, remove) => {
-	// const id = e.getMovieDetails().then(r => r.id);
+const remQueue = (remove) => {
+	const id = document.querySelector('.poster-list__item').key;
 	remove(queue,id);
 };
