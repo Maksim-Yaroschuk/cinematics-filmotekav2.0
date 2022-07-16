@@ -1,11 +1,7 @@
 import { getSearchMovie, IMG_BASE_URL, IMG_W500 } from './api';
 import { renderMarkup } from './renderMarkup';
-refs = {
-  form: document.querySelector('.header__search-form'),
-  list: document.querySelector('.poster-list'),
-};
-
-refs.form.addEventListener('submit', search);
+import { list, form } from './refs';
+form.addEventListener('submit', search);
 
 let name = '';
 let page = 1;
@@ -26,6 +22,6 @@ function search(evn) {
 }
 
 function clearInput() {
-  refs.list.innerHTML = '';
+  list.innerHTML = '';
   page = 1;
 }

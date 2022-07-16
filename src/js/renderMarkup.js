@@ -1,4 +1,5 @@
 import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
+import { list } from './refs';
 
 async function getGenres() {
   const genres = await getMovieGenres().then(({ genres }) => genres);
@@ -23,7 +24,7 @@ export function renderMarkup(data) {
       });
     });
     const markupList = createListMarkup(data.results);
-    refs.list.innerHTML = markupList;
+    list.innerHTML = markupList;
   });
 }
 
