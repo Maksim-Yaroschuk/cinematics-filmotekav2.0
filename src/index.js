@@ -1,6 +1,6 @@
-
 import { getTrending } from './js/api';
 import modal from './js/modal';
-import './js/trendingsMarkup';
+import './js/trendings';
+import './js/search';
 import './js/spiner';
-// getTrending(3).then(r => console.log(r));
+

@@ -1,45 +1,41 @@
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  width: 100%;
+  border-radius: inherit;
+  height: 574px;
 }
 
+.poster-list {
+  display: grid;
+  max-width: calc(1280px - 64px);
+  grid-template-columns: repeat(3, minmax(395px, 1fr));
+  grid-column-gap: 16px;
+  grid-row-gap: 32px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  justify-content: center;
+}
 
- .poster-list {
+.poster-list__item:hover {
+  box-shadow: 0px 0px 7px 4px rgba(80, 46, 165, 0.32);
+}
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 16px;
-    grid-row-gap: 1em;
-    padding-left: 32px;
-    padding-right: 32px;
-  
-  }
-  
-  .poster-list__item:hover {
-    box-shadow: 0px 0px 7px 4px rgba(80, 46, 165, 0.32);
-  }
-  
-  .poster-list__item {
-    position: relative;
-    justify-content: center;
-    margin-bottom: 1rem;
-    break-inside: avoid;
-  
-    box-shadow: 0px 3px 4px 1px rgba(44, 133, 200, 0.2);
-    border-radius: 16px;
-    cursor: pointer;
-  
-  }
-  
-  .poster-list__wrap {
-    padding: 10px;
-  
-  }
-  
-  .poster-list__title {
-    
+.poster-list__item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  break-inside: avoid;
+  height: 634px;
+  box-shadow: 0px 3px 4px 1px rgba(44, 133, 200, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.poster-list__wrap {
+  padding: 10px;
+}
+
+.poster-list__title {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -50,52 +46,50 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #000000;
-  }
-  
-  .poster-list__info {
-    display: flex;
-    align-items: baseline;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
-  }
-  
-  .poster-list__text {
-    font-family: 'Roboto';
+}
+
+.poster-list__info {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+}
+
+.poster-list__text {
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  color: #FF6B08;
+  color: #ff6b08;
   display: inline-block;
-  
-  }
-  
-  .poster-list__age{
-    position: relative;
-    display: inline-block;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    color: #FF6B08;
-    margin-left: 5px;
-  }
-  
-  
-  .poster-list__rate {
-    font-family: Roboto,sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 1px 10px;
-    background: #ff6b01;
-    border-radius: 5px;
-    color: #ffffff;
-  }
+}
+
+.poster-list__age {
+  position: relative;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff6b08;
+  margin-left: 5px;
+}
+
+.poster-list__rate {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 1px 10px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: #ffffff;
+}
