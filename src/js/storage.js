@@ -1,5 +1,10 @@
+// import { getTrending } from './js/api';
+// import modal from './js/modal';
+//import './js/trendings';
 //save(),load(),remove(),
-
+import { renderMarkup } from './renderMarkup';//createListMarkup
+import { createListMarkup } from './renderMarkup';//createListMarkup
+//import modal from './js/modal';
 const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
@@ -34,39 +39,43 @@ export default {
 	remove,
 };
 
-
-import { getTrending, IMG_BASE_URL, IMG_W400 } from './api';
-import { getMovieDetails } from './api';
-
 //console.log(getSearchMovie);
 
-const btnWatched = document.querySelector('.btn--watched');
-const btnQueue = document.querySelector('.btn--queue');
-const btnAddWatched = document.querySelector('.btn--addwatched');
-const btnAddQueue = document.querySelector('.btn--addqueue');
+const btnWatched = document.querySelector(".btn--watched");
+const btnQueue = document.querySelector(".btn--queue");
+const btnAddWatched = document.querySelector(".modal__watched");
+const btnAddQueue = document.querySelector(".modal__queue");
+console.log('btnWatched', btnAddWatched);
+console.log('btnQueue', btnAddWatched);
+console.log('btnAddWatched', btnAddWatched);
+console.log('btnAddQueue', btnAddWatched);
 
-btnWatched.addEventListener("click", filterWafched);
+btnWatched.addEventListener("click", filterWatched);//("click", handler);//
 btnQueue.addEventListener("click", filterQueue);
-btnAddWatched.addEventListener("click", toggle(addWafched,remWatched));
+btnAddWatched.addEventListener("click", toggle(addWatched,remWatched));
 btnAddQueue.addEventListener("click", toggle(addQueue, remQueue));
 
-const filterWafched = (wafched) => {
-	const wafchedList = localStorage.getItem(wafched)//.id;load
-	return wafchedList.map(() => {
+
+const handler = () => { console.log('id', 'id') };
+
+const filterWatched = () => {
+	const watchedList = localStorage.getItem()//.id;load
+
+	watchedList.map(() => {
 
 		//// getMovieDetails();
-		// createListMarkup(data)
+		createListMarkup(data)
 	})
-	// renderMarkup(data);
+	renderMarkup(data);
 };
 
 const filterQueue = (queue) => {
 	const queueList = localStorage.getItem(queue)//.id;
-	return queueList.map(() => {
+	queueList.map(() => {
 		//// getMovieDetails();
-		// createListMarkup(data)
+		createListMarkup(data)
 	})
-	// renderMarkup(data);
+	renderMarkup(data);
 };
 
 const toggle = (yes, no, e, save) => {
@@ -80,23 +89,28 @@ const toggle = (yes, no, e, save) => {
 	}
 }
 
-const addWafched = (save) => {
+const addWatched = (save) => {
 	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
 	// const id = e.getMovieDetails().then(r => r.id);
 	save(watched,id);
 };
 
 const addQueue = (save) => {
 	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
 	save(queue,id);
 };
 
 const remWatched = (remove) => {
 	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
 	remove(watched,id);
 };
 
 const remQueue = (remove) => {
 	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
 	remove(queue,id);
 };
+
