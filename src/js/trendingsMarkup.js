@@ -1,10 +1,5 @@
 import { getTrending, IMG_BASE_URL, IMG_W400 } from './api';
-import { list } from './refs'
-
-// Закинув твій реф в файл refs.js
-// const refs = {
-//   list: document.querySelector('.poster-list'),
-// };
+import { list } from './refs';
 
 getTrending(2).then(r => renderMarkup(r));
 
@@ -28,7 +23,7 @@ function createListMarkup(data) {
     <div class='poster-list__wrap'>
       <h3 class='poster-list__title'>${original_title}</h3>
       <div class='poster-list__info'>
-        <p class='poster-list__text'>${overview}</p>
+        <p class='poster-list__text'></p>
         <p class='poster-list__age'></p>
       </div>
     </div>
