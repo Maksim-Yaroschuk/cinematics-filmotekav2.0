@@ -5,6 +5,7 @@ const refs = {
   form: document.querySelector('.header__search-form'),
   warning: document.querySelector('.header-message'),
   toTopBtn: document.querySelector('.btn-to-top'),
+  imgError: document.querySelector('.image-error'),
 };
 
-export const { search, catalog, list, form, warning, toTopBtn } = refs;
+export const { search, catalog, list, form, warning, toTopBtn, imgError } = refs;
