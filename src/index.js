@@ -4,3 +4,4 @@ import './js/trendings';
 import './js/search';
 import './js/pagination';
 //import './js/spiner';
+import './js/scroll';
