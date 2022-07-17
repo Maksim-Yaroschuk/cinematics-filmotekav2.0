@@ -2,9 +2,6 @@ const prevBtn = document.querySelector('.page-btn.prev')
 const nextBtn = document.querySelector('.page-btn.next')
 const paginationBar = document.querySelector('.pagination-btns')
 
-
-console.log(1)
-console.dir(paginationBar)
 paginationBar.children[0].firstChild.classList.add('is-hidden')
 
 let page = 1
