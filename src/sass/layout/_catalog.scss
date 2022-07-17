@@ -47,6 +47,7 @@
   position: relative;
   break-inside: avoid;
   height: 443px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   @include mq(tablet-only) {
     height: 495px;
   }
@@ -55,14 +56,11 @@
   }
   border-radius: 10px;
   cursor: pointer;
-
-
 }
-.poster-list__item:hover{
-    
-    transform: scale(1.03) translateZ(0);
-    // box-shadow: 0 0 7px 4px #0a56c852;
-    transition: all .20s cubic-bezier(.4,0,.2,1); 
+.poster-list__item:hover {
+  transform: scale(1.03) translateZ(0);
+  // box-shadow: 0 0 7px 4px #0a56c852;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Див текста */
