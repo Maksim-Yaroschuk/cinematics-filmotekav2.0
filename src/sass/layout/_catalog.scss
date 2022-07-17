@@ -52,11 +52,16 @@
   @include mq(desktop) {
     height: 634px;
   }
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
+
+
 }
-.poster-list__item:hover .poster-list__img {
-  box-shadow: 0px 0px 7px 4px rgba(80, 46, 165, 0.32);
+.poster-list__item:hover{
+    
+    transform: scale(1.03) translateZ(0);
+    // box-shadow: 0 0 7px 4px #0a56c852;
+    transition: all .20s cubic-bezier(.4,0,.2,1); 
 }
 
 /* Див текста */
@@ -85,14 +90,14 @@
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.33;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   padding: 1px 10px;
   background: #ff6b01;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #ffffff;
 }
 
