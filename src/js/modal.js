@@ -32,3 +32,23 @@ function offModal() {
   document.removeEventListener('keydown', offModalForEscape);
   modalBeackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
 }
+
+//Модальне вікно футера зі списком команди
+
+const btnOnModalTeam = document.querySelector('.team-link');
+const btnOffModalTeam = document.querySelector('.modal__close');
+const backdropModalTeam = document.querySelector('.backdrop-team');
+
+btnOnModalTeam.addEventListener('click', onModalTeam);
+
+function onModalTeam(e) {
+  e.preventDefault();
+
+  backdropModalTeam.classList.add('backdrop_is-open');
+
+  btnOffModalTeam.addEventListener('click', offModalTeam);
+}
+
+function offModalTeam() {
+  backdropModalTeam.classList.remove('backdrop_is-open');
+}
