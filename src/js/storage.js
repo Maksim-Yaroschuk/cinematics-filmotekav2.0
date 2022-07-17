@@ -50,7 +50,7 @@ console.log('btnQueue', btnAddWatched);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddWatched);
 
-btnWatched.addEventListener("click", filterWatched);//("click", handler);//
+btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
