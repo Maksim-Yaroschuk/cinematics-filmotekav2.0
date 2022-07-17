@@ -1,5 +1,10 @@
+// import { getTrending } from './js/api';
+// import modal from './js/modal';
+//import './js/trendings';
 //save(),load(),remove(),
-
+import { renderMarkup } from './renderMarkup';//createListMarkup
+import { createListMarkup } from './renderMarkup';//createListMarkup
+//import modal from './js/modal';
 const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
@@ -33,3 +38,79 @@ export default {
 	load,
 	remove,
 };
+
+//console.log(getSearchMovie);
+
+const btnWatched = document.querySelector(".btn--watched");
+const btnQueue = document.querySelector(".btn--queue");
+const btnAddWatched = document.querySelector(".modal__watched");
+const btnAddQueue = document.querySelector(".modal__queue");
+console.log('btnWatched', btnAddWatched);
+console.log('btnQueue', btnAddWatched);
+console.log('btnAddWatched', btnAddWatched);
+console.log('btnAddQueue', btnAddWatched);
+
+btnWatched.addEventListener("click", filterWatched);//("click", handler);//
+btnQueue.addEventListener("click", filterQueue);
+btnAddWatched.addEventListener("click", toggle(addWatched,remWatched));
+btnAddQueue.addEventListener("click", toggle(addQueue, remQueue));
+
+
+const handler = () => { console.log('id', 'id') };
+
+const filterWatched = () => {
+	const watchedList = localStorage.getItem()//.id;load
+
+	watchedList.map(() => {
+
+		//// getMovieDetails();
+		createListMarkup(data)
+	})
+	renderMarkup(data);
+};
+
+const filterQueue = (queue) => {
+	const queueList = localStorage.getItem(queue)//.id;
+	queueList.map(() => {
+		//// getMovieDetails();
+		createListMarkup(data)
+	})
+	renderMarkup(data);
+};
+
+const toggle = (yes, no, e, save) => {
+	let val = localStorage.toggleVal.getItem();
+	if (val) {
+		val = false;
+		yes(e,save);
+	} else {
+		val = true;
+		no(e,save);
+	}
+}
+
+const addWatched = (save) => {
+	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
+	// const id = e.getMovieDetails().then(r => r.id);
+	save(watched,id);
+};
+
+const addQueue = (save) => {
+	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
+	save(queue,id);
+};
+
+const remWatched = (remove) => {
+	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
+	remove(watched,id);
+};
+
+const remQueue = (remove) => {
+	const id = document.querySelector('.poster-list__item').key;
+	console.log('id', id);
+	remove(queue,id);
+};
+
