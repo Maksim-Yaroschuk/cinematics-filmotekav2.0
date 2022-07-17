@@ -45,17 +45,21 @@ const btnWatched = document.querySelector(".btn--watched");
 const btnQueue = document.querySelector(".btn--queue");
 const btnAddWatched = document.querySelector(".modal__watched");
 const btnAddQueue = document.querySelector(".modal__queue");
-console.log('btnWatched', btnAddWatched);
-console.log('btnQueue', btnAddWatched);
+const poster = document.querySelector('.poster-list__item');
+console.log('btnWatched', btnWatched);
+console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
-console.log('btnAddQueue', btnAddWatched);
+console.log('btnAddQueue', btnAddQueue);
+console.log('poster', poster);
 
-btnWatched.addEventListener("click", filterWatched);
-btnQueue.addEventListener("click", filterQueue);
+//btnWatched.addEventListener("click", filterWatched);
+//btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
+poster.addEventListener("click", funAddQueue);
+
 function funAddWatched(e) {
-	const id = e.currentTarget.parentElement.id;
+	const id = e.currentTarget.parentElement.getAttribute(key);//id
 	console.log(id);
 	if (load(id)) {
 		remove(id);
@@ -65,10 +69,10 @@ function funAddWatched(e) {
 		console.log('id', load(id));
 		k.push(id);
 	}
-console.log('kid',k);
+//console.log('kid',k);
 }
 function funAddQueue(e) {
-	const id = e.currentTarget.parentElement.id;	
+	const id = e.currentTarget.parentElement.getAttribute(key);//.id;	
 	console.log(id);
 	if (load(id)) {
 		remove(id);
@@ -82,22 +86,25 @@ function funAddQueue(e) {
 
 }
 const filterWatched = () => {
+	console.log('hay');
 	//if()load()
-	watchedList.map(() => {
+	// watchedList.map(() => {
 
-		//// getMovieDetails();
-		createListMarkup(data)
-	})
-	renderMarkup(data);
+	// 	//// getMovieDetails();
+	// 	createListMarkup(data)
+	// })
+	// renderMarkup(data);
 };
 
+
 const filterQueue = () => {
-	const queueList = load()//.id;
-	queueList.map(() => {
-		//// getMovieDetails();
-		createListMarkup(data)
-	})
-	renderMarkup(data);
+	console.log('hay');
+	// const queueList = load()//.id;
+	// queueList.map(() => {
+	// 	//// getMovieDetails();
+	// 	createListMarkup(data)
+	// })
+	// renderMarkup(data);
 };
 
 

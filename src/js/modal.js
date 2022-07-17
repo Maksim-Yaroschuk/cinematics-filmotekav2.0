@@ -1,5 +1,5 @@
 const modal = document.querySelector('.modal-backdrop');
-const bntModalOpen = document.querySelector('.poster-list__item');
+const bntModalOpen = document.querySelector('.btn__open-modal');//('.poster-list__item');
 const btnModalCloss = document.querySelector('.btn__closs-modal');
 const modalBeackdrop = document.querySelector('.modal-backdrop');
 
