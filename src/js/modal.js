@@ -3,7 +3,9 @@ import { modalMoviemarkup } from './modalMovieMarkup';
 const modalBackdrop = document.querySelector('.modal-backdrop');
 const modal = document.querySelector('.modal-backdrop').firstElementChild
 
+
 const bntModalOpen = document.querySelector('.btn__open-modal');
+//('.poster-list__item');
 const btnModalCloss = document.querySelector('.btn__closs-modal');
 
 list.addEventListener('click', onModal)
