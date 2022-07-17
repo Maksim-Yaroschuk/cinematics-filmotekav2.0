@@ -8,7 +8,11 @@ console.dir(paginationBar)
 paginationBar.children[0].firstChild.classList.add('is-hidden')
 
 let page = 1
-const amountOfPages = 10
+const amountOfPages = 1
+
+if(amountOfPages==1) {
+	paginationBar.innerHTML= `<li class="page"><span>${page}</li>`
+}
 
 paginationBar.children[9].textContent = amountOfPages
 
