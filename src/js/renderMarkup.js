@@ -17,7 +17,7 @@ export function renderMarkup(data) {
           }
           genre_ids.splice(genre_ids.indexOf(id), 1, name);
         }
-        film.genre_names = genre_ids.join(', ');
+            film.genre_names = genre_ids.join(', ');
         if (film.release_date) {
           film.release_date = release_date.slice(0, 4);
         }
@@ -46,7 +46,7 @@ export function createListMarkup(data) {
       alt='${original_title}'
       loading='lazy'
     />
-    <span class='poster-list__rate'>${Math.round(vote_average)}</span>
+    <span class='poster-list__rate'>${(vote_average).toFixed(1)}</span>
     <div class='poster-list__wrap'>
       <h3 class='poster-list__title'>${original_title}</h3>
       <div class='poster-list__info'>
