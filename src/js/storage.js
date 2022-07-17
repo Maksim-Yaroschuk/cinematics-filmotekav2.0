@@ -59,7 +59,7 @@ btnAddQueue.addEventListener("click", funAddQueue);
 poster.addEventListener("click", funAddQueue);
 
 function funAddWatched(e) {
-	const id = e.currentTarget.parentElement.getAttribute(key);//id
+	const id = e.currentTarget.parentElement.id;//getAttribute(key);//
 	console.log(id);
 	if (load(id)) {
 		remove(id);
@@ -67,12 +67,12 @@ function funAddWatched(e) {
 	} else {
 		save(id, `'Watched:'${id}`);
 		console.log('id', load(id));
-		k.push(id);
+		//k.push(id);
 	}
 //console.log('kid',k);
 }
 function funAddQueue(e) {
-	const id = e.currentTarget.parentElement.getAttribute(key);//.id;	
+	const id = e.currentTarget.parentElement.id;//	.getAttribute(key);//
 	console.log(id);
 	if (load(id)) {
 		remove(id);
