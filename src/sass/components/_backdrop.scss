@@ -1,0 +1,46 @@
+.backdrop-team {
+  background: #e5e5e5;
+  opacity: 0;
+  background-color: transparent;
+  pointer-events: none;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  position: fixed;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.backdrop_is-open {
+  opacity: 1;
+  background: #e5e5e5;
+  pointer-events: initial;
+}
+
+.modal__close {
+  cursor: pointer;
+  // background-color: rgb(70, 63, 63);
+  top: 8px;
+  right: 8px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+}
+
+.modal__close-button {
+  // fill: #ff6b08;
+  fill: currentColor;
+}
+
+.modal__close-button:hover {
+  // fill: #ff6b08;
+  fill: var(--acent-modal-hover);
+}
+
+.team__list {
+  display: flex;
+  flex-wrap: wrap;
+}
