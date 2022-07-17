@@ -52,15 +52,37 @@ console.log('btnAddQueue', btnAddWatched);
 
 btnWatched.addEventListener("click", filterWatched);//("click", handler);//
 btnQueue.addEventListener("click", filterQueue);
-btnAddWatched.addEventListener("click", toggle(addWatched,remWatched));
-btnAddQueue.addEventListener("click", toggle(addQueue, remQueue));
+btnAddWatched.addEventListener("click",funAddWatched );
+btnAddQueue.addEventListener("click", funAddQueue);
+function funAddWatched(e) {
+	const id = e.currentTarget.parentElement.id;
+	console.log(id);
+	if (load(id)) {
+		remove(id);
+		console.log('id', load(id));
+	} else {
+		save(id, `'Watched:'${id}`);
+		console.log('id', load(id));
+		k.push(id);
+	}
+console.log('kid',k);
+}
+function funAddQueue(e) {
+	const id = e.currentTarget.parentElement.id;	
+	console.log(id);
+	if (load(id)) {
+		remove(id);
+		console.log('id', load(id));
+		
+	} else {
+		save(id, `'Queue:'${id}`);
+		console.log('id', load(id));
+		
+	}
 
-
-const handler = () => { console.log('id', 'id') };
-
+}
 const filterWatched = () => {
-	const watchedList = localStorage.getItem()//.id;load
-
+	//if()load()
 	watchedList.map(() => {
 
 		//// getMovieDetails();
@@ -69,8 +91,8 @@ const filterWatched = () => {
 	renderMarkup(data);
 };
 
-const filterQueue = (queue) => {
-	const queueList = localStorage.getItem(queue)//.id;
+const filterQueue = () => {
+	const queueList = load()//.id;
 	queueList.map(() => {
 		//// getMovieDetails();
 		createListMarkup(data)
@@ -78,39 +100,46 @@ const filterQueue = (queue) => {
 	renderMarkup(data);
 };
 
-const toggle = (yes, no, e, save) => {
-	let val = localStorage.toggleVal.getItem();
-	if (val) {
-		val = false;
-		yes(e,save);
-	} else {
-		val = true;
-		no(e,save);
-	}
-}
 
-const addWatched = (save) => {
-	const id = document.querySelector('.poster-list__item').key;
-	console.log('id', id);
-	// const id = e.getMovieDetails().then(r => r.id);
-	save(watched,id);
-};
+// const handler = () => { console.log('id', 'id') };
 
-const addQueue = (save) => {
-	const id = document.querySelector('.poster-list__item').key;
-	console.log('id', id);
-	save(queue,id);
-};
+// const filterWatched = () => {
+// 	const watchedList = localStorage.getItem()//.id;load
 
-const remWatched = (remove) => {
-	const id = document.querySelector('.poster-list__item').key;
-	console.log('id', id);
-	remove(watched,id);
-};
 
-const remQueue = (remove) => {
-	const id = document.querySelector('.poster-list__item').key;
-	console.log('id', id);
-	remove(queue,id);
-};
+// const toggle = (yes, no, e, save) => {
+// 	let val = localStorage.toggleVal.getItem();
+// 	if (val) {
+// 		val = false;
+// 		yes(e,save);
+// 	} else {
+// 		val = true;
+// 		no(e,save);
+// 	}
+// }
+
+// const addWatched = (save) => {
+// 	const id = document.querySelector('.poster-list__item').key;
+// 	console.log('id', id);
+// 	// const id = e.getMovieDetails().then(r => r.id);
+// 	save(watched,id);
+// };
+
+// const addQueue = (save) => {
+// 	const id = document.querySelector('.poster-list__item').key;
+// 	console.log('id', id);
+// 	save(queue,id);
+// };
+
+// const remWatched = (remove) => {
+// 	const id = document.querySelector('.poster-list__item').key;
+// 	console.log('id', id);
+// 	remove(watched,id);
+// };
+
+// const remQueue = (remove) => {
+// 	const id = document.querySelector('.poster-list__item').key;
+// 	console.log('id', id);
+// 	remove(queue,id);
+// };
 
