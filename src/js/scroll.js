@@ -7,10 +7,10 @@ function onScroll() {
     const scrolled = window.pageYOffset;
     const coords = document.documentElement.clientHeight;
     if (scrolled > coords) {
-        toTopBtn.style.transform = "translateX(0)";
+        toTopBtn.classList.add('btn-to-top--visible');
     };
-    if (scrolled < coords) {
-        toTopBtn.style.transform = "translateX(300%)";
+    if (scrolled <= coords) {
+        toTopBtn.classList.remove('btn-to-top--visible');
     };
 };
 function onToTopBtn() {
