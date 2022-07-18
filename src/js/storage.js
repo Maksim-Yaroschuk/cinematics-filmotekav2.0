@@ -43,14 +43,12 @@ const btnQueue = document.querySelector('.btn--queue');
 const btnAddWatched = document.querySelector('.modal__watched');
 const btnAddQueue = document.querySelector('.modal__queue');
 const poster = document.querySelector('.poster-list__item');
-const headerListButton = document.querySelector('.header__list-button');
 
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue',  btnAddQueue);
-console.log('poster', poster);//header__list-button
-console.log('headerListButton', headerListButton);
+console.log('poster', poster);
 
 btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);
@@ -130,8 +128,16 @@ const filterLiberty = (val) => {
 		return console.log('ваш список пуст!');
 	}
 	 watchedList.map(() => {
-		getMovieDetails();
-		createListMarkup(data)
+		getSearchMovieId();
+		//getMovieDetails();
+		createListMarkup(data);
 	 })
 	renderMarkup(data);
+};
+
+const getSearchMovieId = async (id) => {
+  const { data } = await axios.get(
+    `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
+  );
+  return data;
 };
