@@ -36,31 +36,41 @@ export default {
 	remove,
 };
 
-//console.log(getSearchMovie);
+
+
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
+
 const btnAddWatched = document.querySelector('.modal__watched');
 const btnAddQueue = document.querySelector('.modal__queue');
-//const poster = document.querySelector('.poster-list__item');
+
 
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
-//console.log('poster', poster);
 
+list.addEventListener('click', createId);
 btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
-//poster.addEventListener("click", funAddQueue);
 
-
+let modId;
+function createId(event) {
+	const selectedMovie = event.target.closest('li');
+  console.log('selectedMovie', selectedMovie);
+	if (selectedMovie) {
+		//Получение данных о фильме в модалку
+		modId = Number(selectedMovie.getAttribute('key'));
+	}
+	
+}
 function funAddWatched() {
 	const watchedArr = load('Watched') ? load('Watched') : [0] ;
 	console.log('WatchedArr', watchedArr);
-	const id = 20;//Number(selectedMovie.getAttribute('key'));
+	const id = modId;//Number(selectedMovie.getAttribute('key'));
 	const index = watchedArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {	
@@ -76,7 +86,7 @@ function funAddWatched() {
 function funAddQueue() {
 	const queueArr = load('Queue') ? load('Queue') : [0] ;
 	console.log('QueueArr', queueArr);
-	const id = 5;//Number(selectedMovie.getAttribute('key'));
+	const id = modId;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
 	const index = queueArr.indexOf(id);
 	console.log('index',index);
