@@ -1,10 +1,7 @@
-// import { getTrending } from './js/api';
-// import modal from './js/modal';
-//import './js/trendings';
-//save(),load(),remove(),
-import { renderMarkup } from './renderMarkup';//createListMarkup
-import { createListMarkup } from './renderMarkup';//createListMarkup
-//import modal from './js/modal';
+
+//import { renderMarkup } from './renderMarkup';//createListMarkup
+import { createListMarkup, getMovieDetails, renderMarkup } from './renderMarkup';
+
 const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
@@ -47,110 +44,94 @@ const btnAddWatched = document.querySelector('.modal__watched');
 const btnAddQueue = document.querySelector('.modal__queue');
 const poster = document.querySelector('.poster-list__item');
 const headerListButton = document.querySelector('.header__list-button');
+
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue',  btnAddQueue);
 console.log('poster', poster);//header__list-button
 console.log('headerListButton', headerListButton);
+
 btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
 poster.addEventListener("click", funAddQueue);
 
-function funAddWatched(e) {
-	const id = selectedMovieId;//e.currentTarget.parentElement.id;//getAttribute(key);//
-	console.log(id);
-	if (load(id)) {
-		remove(id);
-		console.log('id', load(id));
+function funAddWatched() {
+	const WatchedArr = load(Watched);
+	console.log('WatchedArr', WatchedArr);
+	const id = Number(selectedMovie.getAttribute('key'));
+	console.log('id', id);
+	const index = WatchedArr.indexOf(id);
+	console.log('index',index);
+	if (index<0) {
+		WatchedArr.push(id);
 	} else {
-		save(id, `'Watched:'${id}`);
-		console.log('id', load(id));
-		//k.push(id);
+		WatchedArr.splice(id, 1);
+		console.log('WatchedArr', WatchedArr);
 	}
-//console.log('kid',k);
+	save('Watched', WatchedArr);
+	console.log('load(Watched)', load(Watched));
 }
-function funAddQueue(e) {
-	const id = getMovieDetails;//10;//e.currentTarget.parentElement.id;//	.getAttribute(key);//
-	console.log(id);
-	if (load(id)) {
-		remove(id);
-		console.log('id', load(id));
-		
-	} else {
-		save(id, `'Queue:'${id}`);
-		console.log('id', load(id));
-		
-	}
 
+function funAddQueue() {
+	const QueueArr = load(Queue);
+	console.log('WatchedArr', QueueArr);
+	const id = Number(selectedMovie.getAttribute('key'));
+	console.log('id', id);
+	const index = QueueArr.indexOf(id);
+	console.log('index',index);
+	if (index<0) {
+		QueueArr.push(id);
+	} else {
+		QueueArr.splice(id, 1);
+		console.log('WatchedArr', QueueArr);
+	}
+	save('Watched', QueueArr);
+	console.log('load(Watched)', load(Queue));
 }
+
 
 const filterWatched = () => {
-	console.log('hay');
-	//массив Watched с ID
-	//if()load()
-	// watchedList.map(() => {
+	const WatchedList = load(Watched);
+	console.log('WatchedArr', WatchedArr);
 
-	// getMovieDetails();
-	// createListMarkup(data)
-	// })
-	// renderMarkup(data);
+	if (!WatchedList.length) {
+		return console.log('ваш список пуст!');
+	}
+	 watchedList.map(() => {
+		getMovieDetails();
+		createListMarkup(data)
+	 })
+	renderMarkup(data);
 };
 
 
 const filterQueue = () => {
-	console.log('hay');
-	//массив Queue с ID
-	// const queueList = load()//.id;
-	// queueList.map(() => {
-	// 	//// getMovieDetails();
-	// 	createListMarkup(data)
-	// })
-	// renderMarkup(data);
+	const WatchedList = load(Queue);
+	console.log('QueueArr', QueueList);
+
+	if (!WatchedList.length) {
+		return console.log('ваш список пуст!');
+	}
+	 watchedList.map(() => {
+		getMovieDetails();
+		createListMarkup(data)
+	 })
+	renderMarkup(data);
 };
 
+const filterLiberty = (val) => {
+	const List = load(val);
+	console.log('WatchedArr', List);
 
-// const handler = () => { console.log('id', 'id') };
-
-// const filterWatched = () => {
-// 	const watchedList = localStorage.getItem()//.id;load
-
-
-// const toggle = (yes, no, e, save) => {
-// 	let val = localStorage.toggleVal.getItem();
-// 	if (val) {
-// 		val = false;
-// 		yes(e,save);
-// 	} else {
-// 		val = true;
-// 		no(e,save);
-// 	}
-// }
-
-// const addWatched = (save) => {
-// 	const id = document.querySelector('.poster-list__item').key;
-// 	console.log('id', id);
-// 	// const id = e.getMovieDetails().then(r => r.id);
-// 	save(watched,id);
-// };
-
-// const addQueue = (save) => {
-// 	const id = document.querySelector('.poster-list__item').key;
-// 	console.log('id', id);
-// 	save(queue,id);
-// };
-
-// const remWatched = (remove) => {
-// 	const id = document.querySelector('.poster-list__item').key;
-// 	console.log('id', id);
-// 	remove(watched,id);
-// };
-
-// const remQueue = (remove) => {
-// 	const id = document.querySelector('.poster-list__item').key;
-// 	console.log('id', id);
-// 	remove(queue,id);
-// };
-
+	if (!List.length) {
+		return console.log('ваш список пуст!');
+	}
+	 watchedList.map(() => {
+		getMovieDetails();
+		createListMarkup(data)
+	 })
+	renderMarkup(data);
+};
