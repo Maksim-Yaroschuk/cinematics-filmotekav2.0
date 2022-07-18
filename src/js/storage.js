@@ -141,3 +141,4 @@ const getSearchMovieId = async (id) => {
   );
   return data;
 };
+
