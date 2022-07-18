@@ -6,5 +6,5 @@ import './js/trendings';
 import './js/storage';
 import './js/search';
 import './js/pagination';
-//import './js/spiner';
+import './js/spiner';
 import './js/scroll';
