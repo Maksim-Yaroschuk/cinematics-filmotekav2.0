@@ -30,11 +30,11 @@ try {
   }
 }
 
-export default {
-	save,
-	load,
-	remove,
-};
+// export default {
+// 	save,
+// 	load,
+// 	remove,
+// };
 
 
 
@@ -175,4 +175,7 @@ export {
 	filterLiberty,
 	filterWatched,
 	funAddQueue,
+	save,
+	load,
+	remove,
 };
