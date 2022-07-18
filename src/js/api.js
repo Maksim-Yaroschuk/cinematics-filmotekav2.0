@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const KEY = '119d79b053f922516c6af4b71b0fd3ac';
+export const KEY = '119d79b053f922516c6af4b71b0fd3ac';
 
 axios.defaults.baseURL = `https://api.themoviedb.org/3`;
 
@@ -35,7 +35,7 @@ export const getMovieDetails = async id => {
   return data;
 };
 
-// console.log(getMovieDetails(5050).then(r => console.log(r)));
+// console.log(getMovieDetails(507086).then(r => console.log(r)));
 
 export const getMovieGenres = async () => {
   const { data } = await axios.get(`/genre/movie/list?api_key=${KEY}`);
