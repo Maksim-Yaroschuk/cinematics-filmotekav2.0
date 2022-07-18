@@ -41,25 +41,26 @@ export default {
 
 //console.log(getSearchMovie);
 
-const btnWatched = document.querySelector(".btn--watched");
-const btnQueue = document.querySelector(".btn--queue");
-const btnAddWatched = document.querySelector(".modal__watched");
-const btnAddQueue = document.querySelector(".modal__queue");
+const btnWatched = document.querySelector('.btn--watched');
+const btnQueue = document.querySelector('.btn--queue');
+const btnAddWatched = document.querySelector('.modal__watched');
+const btnAddQueue = document.querySelector('.modal__queue');
 const poster = document.querySelector('.poster-list__item');
+const headerListButton = document.querySelector('.header__list-button');
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
-console.log('btnAddQueue', btnAddQueue);
-console.log('poster', poster);
-
-//btnWatched.addEventListener("click", filterWatched);
-//btnQueue.addEventListener("click", filterQueue);
+console.log('btnAddQueue',  btnAddQueue);
+console.log('poster', poster);//header__list-button
+console.log('headerListButton', headerListButton);
+btnWatched.addEventListener("click", filterWatched);
+btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
 poster.addEventListener("click", funAddQueue);
 
 function funAddWatched(e) {
-	const id = e.currentTarget.parentElement.id;//getAttribute(key);//
+	const id = selectedMovieId;//e.currentTarget.parentElement.id;//getAttribute(key);//
 	console.log(id);
 	if (load(id)) {
 		remove(id);
@@ -72,7 +73,7 @@ function funAddWatched(e) {
 //console.log('kid',k);
 }
 function funAddQueue(e) {
-	const id = e.currentTarget.parentElement.id;//	.getAttribute(key);//
+	const id = getMovieDetails;//10;//e.currentTarget.parentElement.id;//	.getAttribute(key);//
 	console.log(id);
 	if (load(id)) {
 		remove(id);
@@ -85,13 +86,15 @@ function funAddQueue(e) {
 	}
 
 }
+
 const filterWatched = () => {
 	console.log('hay');
+	//массив Watched с ID
 	//if()load()
 	// watchedList.map(() => {
 
-	// 	//// getMovieDetails();
-	// 	createListMarkup(data)
+	// getMovieDetails();
+	// createListMarkup(data)
 	// })
 	// renderMarkup(data);
 };
@@ -99,6 +102,7 @@ const filterWatched = () => {
 
 const filterQueue = () => {
 	console.log('hay');
+	//массив Queue с ID
 	// const queueList = load()//.id;
 	// queueList.map(() => {
 	// 	//// getMovieDetails();
