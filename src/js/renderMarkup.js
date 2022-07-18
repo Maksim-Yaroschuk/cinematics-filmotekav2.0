@@ -28,7 +28,7 @@ export function renderMarkup(data) {
   });
 }
 
-function createListMarkup(data) {
+export function createListMarkup(data) {
   return data
     .map(
       ({
