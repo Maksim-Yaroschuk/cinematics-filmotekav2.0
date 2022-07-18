@@ -28,64 +28,70 @@ const remove = key => {
   }
 };
 
-export default {
-  save,
-  load,
-  remove,
-};
-
-//console.log(getSearchMovie);
+// export default {
+// 	save,
+// 	load,
+// 	remove,
+// };
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
+
 const btnAddWatched = document.querySelector('.modal__watched');
 const btnAddQueue = document.querySelector('.modal__queue');
-//const poster = document.querySelector('.poster-list__item');
+
 
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
-//console.log('poster', poster);
 
 // btnWatched.addEventListener("click", filterWatched);
-// btnQueue.addEventListener("click", filterQueue);
+// btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
 // btnAddWatched.addEventListener("click",funAddWatched );
 // btnAddQueue.addEventListener("click", funAddQueue);
-//poster.addEventListener("click", funAddQueue);
+list.addEventListener('click', createId);
 
-
-function funAddWatched() {
-	const WatchedArr = load('Watched');
-	console.log('WatchedArr', WatchedArr);
-	const id = Number(selectedMovie.getAttribute('key'));
-	console.log('id', id);
-	const index = WatchedArr.indexOf(id);
-	console.log('index',index);
-	if (index<0) {
-		WatchedArr.push(id);
-	} else {
-		WatchedArr.splice(id, 1);
-		console.log('WatchedArr', WatchedArr);
+let modId;
+function createId(event) {
+	const selectedMovie = event.target.closest('li');
+  console.log('selectedMovie', selectedMovie);
+	if (selectedMovie) {
+		//Получение данных о фильме в модалку
+		modId = Number(selectedMovie.getAttribute('key'));
 	}
-	save('Watched', WatchedArr);
+	
+}
+function funAddWatched() {
+	const watchedArr = load('Watched') ? load('Watched') : [0] ;
+	console.log('WatchedArr', watchedArr);
+	const id = modId;//Number(selectedMovie.getAttribute('key'));
+	const index = watchedArr.indexOf(id);
+	console.log('index',index);
+	if (index<0) {	
+		watchedArr.push(id);
+	} else {
+		watchedArr.splice(index, 1);
+		console.log('WatchedArr', watchedArr);
+	}
+	save('Watched', watchedArr);
 	console.log('load', load('Watched'));
 }
 
 function funAddQueue() {
-	const QueueArr = load('Queue');
-	console.log('QueueArr', QueueArr);
-	const id = Number(selectedMovie.getAttribute('key'));
+	const queueArr = load('Queue') ? load('Queue') : [0] ;
+	console.log('QueueArr', queueArr);
+	const id = modId;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
-	const index = QueueArr.indexOf(id);
+	const index = queueArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {
-		QueueArr.push(id);
+		queueArr.push(id);
 	} else {
-		QueueArr.splice(id, 1);
-		console.log('QueueArr', QueueArr);
+		queueArr.splice(index, 1);
+		console.log('QueueArr', queueArr);
 	}
-	save('Queue', QueueArr);
+	save('Queue', queueArr);
 	console.log('load', load('Queue'));
 }
 
@@ -93,7 +99,7 @@ function filterWatched(){
 	const WatchedList = load('Watched');
 	console.log('WatchedList',WatchedList);
 
-	if (!WatchedList) {
+	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
 	//  watchedList.map(() => {
@@ -108,7 +114,8 @@ function filterQueue(){
 	console.log('QueueArList', QueueList);
 
 
-	if (!QueueList) {
+	if (!QueueList || !QueueList.length ) {
+
 		return console.log('ваш список Queue пуст!');
 	}
 	//  watchedList.map(() => {
@@ -157,4 +164,13 @@ function funAddLib(val) {
 	console.log('load', load(val));
 }
 
-
+export {
+	funAddLib,
+	getSearchMovieId,
+	filterLiberty,
+	filterWatched,
+	funAddQueue,
+	save,
+	load,
+	remove,
+};
