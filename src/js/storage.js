@@ -176,3 +176,6 @@ export {
 	loadLs,
 	removeLs,
 };
+export function moviesDataUpdate (data) { 
+	localStorage.setItem('moviesData', JSON.stringify(data.results))
+}
