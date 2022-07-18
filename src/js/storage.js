@@ -51,43 +51,42 @@ console.log('btnAddQueue', btnAddQueue);
 //console.log('poster', poster);
 
 btnWatched.addEventListener("click", filterWatched);
-btnQueue.addEventListener("click", filterQueue);
+btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
 //poster.addEventListener("click", funAddQueue);
 
 
 function funAddWatched() {
-	const WatchedArr = load('Watched');
-	console.log('WatchedArr', WatchedArr);
-	const id = Number(selectedMovie.getAttribute('key'));
-	console.log('id', id);
-	const index = WatchedArr.indexOf(id);
+	const watchedArr = load('Watched') ? load('Watched') : [0] ;
+	console.log('WatchedArr', watchedArr);
+	const id = 20;//Number(selectedMovie.getAttribute('key'));
+	const index = watchedArr.indexOf(id);
 	console.log('index',index);
-	if (index<0) {
-		WatchedArr.push(id);
+	if (index<0) {	
+		watchedArr.push(id);
 	} else {
-		WatchedArr.splice(id, 1);
-		console.log('WatchedArr', WatchedArr);
+		watchedArr.splice(index, 1);
+		console.log('WatchedArr', watchedArr);
 	}
-	save('Watched', WatchedArr);
+	save('Watched', watchedArr);
 	console.log('load', load('Watched'));
 }
 
 function funAddQueue() {
-	const QueueArr = load('Queue');
-	console.log('QueueArr', QueueArr);
-	const id = Number(selectedMovie.getAttribute('key'));
+	const queueArr = load('Queue') ? load('Queue') : [0] ;
+	console.log('QueueArr', queueArr);
+	const id = 5;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
-	const index = QueueArr.indexOf(id);
+	const index = queueArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {
-		QueueArr.push(id);
+		queueArr.push(id);
 	} else {
-		QueueArr.splice(id, 1);
-		console.log('QueueArr', QueueArr);
+		queueArr.splice(index, 1);
+		console.log('QueueArr', queueArr);
 	}
-	save('Queue', QueueArr);
+	save('Queue', queueArr);
 	console.log('load', load('Queue'));
 }
 
@@ -96,7 +95,7 @@ function filterWatched(){
 	const WatchedList = load('Watched');
 	console.log('WatchedList',WatchedList);
 
-	if (!WatchedList) {
+	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
 	//  watchedList.map(() => {
@@ -111,7 +110,7 @@ function filterQueue(){
 	const QueueList = load('Queue');
 	console.log('QueueArList', QueueList);
 
-	if (!QueueList) {
+	if (!QueueList || !QueueList.length ) {
 		return console.log('ваш список Queue пуст!');
 	}
 	//  watchedList.map(() => {
