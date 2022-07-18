@@ -6,6 +6,16 @@ const refs = {
   warning: document.querySelector('.header-message'),
   toTopBtn: document.querySelector('.btn-to-top'),
   imgError: document.querySelector('.image-error'),
+  modalBackdrop: document.querySelector('.modal-backdrop'),
 };
 
-export const { search, catalog, list, form, warning, toTopBtn, imgError } = refs;
+export const {
+  search,
+  catalog,
+  list,
+  form,
+  warning,
+  toTopBtn,
+  imgError,
+  modalBackdrop,
+} = refs;
