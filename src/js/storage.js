@@ -42,13 +42,13 @@ const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
 const btnAddWatched = document.querySelector('.modal__watched');
 const btnAddQueue = document.querySelector('.modal__queue');
-const poster = document.querySelector('.poster-list__item');
+//const poster = document.querySelector('.poster-list__item');
 
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
-console.log('poster', poster);
+//console.log('poster', poster);
 
 btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);
@@ -58,7 +58,7 @@ btnAddQueue.addEventListener("click", funAddQueue);
 
 
 function funAddWatched() {
-	const WatchedArr = load(Watched);
+	const WatchedArr = load('Watched');
 	console.log('WatchedArr', WatchedArr);
 	const id = Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
@@ -71,11 +71,11 @@ function funAddWatched() {
 		console.log('WatchedArr', WatchedArr);
 	}
 	save('Watched', WatchedArr);
-	console.log('load', load(Watched));
+	console.log('load', load('Watched'));
 }
 
 function funAddQueue() {
-	const QueueArr = load(Queue);
+	const QueueArr = load('Queue');
 	console.log('QueueArr', QueueArr);
 	const id = Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
@@ -88,31 +88,16 @@ function funAddQueue() {
 		console.log('QueueArr', QueueArr);
 	}
 	save('Queue', QueueArr);
-	console.log('load', load(Queue));
+	console.log('load', load('Queue'));
 }
 
 
-const filterWatched = () => {
-	//const WatchedList = load(Watched);
-	console.log('WatchedArr', WatchedList);
+function filterWatched(){
+	const WatchedList = load('Watched');
+	console.log('WatchedList',WatchedList);
 
-	// if (!WatchedList.length) {
-	// 	return console.log('ваш список пуст!');
-	// }
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
-};
-
-
-const filterQueue = () => {
-	const QueueList = load(Queue);
-	console.log('QueueArr', QueueList);
-
-	if (!QueueList.length) {
-		return console.log('ваш список пуст!');
+	if (!WatchedList) {
+		return console.log('ваш список Watched пуст!');
 	}
 	//  watchedList.map(() => {
 	// 	getMovieDetails();
@@ -121,7 +106,22 @@ const filterQueue = () => {
 	// renderMarkup(data);
 };
 
-const filterLiberty = (val) => {
+
+function filterQueue(){
+	const QueueList = load('Queue');
+	console.log('QueueArList', QueueList);
+
+	if (!QueueList) {
+		return console.log('ваш список Queue пуст!');
+	}
+	//  watchedList.map(() => {
+	// 	getMovieDetails();
+	// 	createListMarkup(data)
+	//  })
+	// renderMarkup(data);
+};
+
+function filterLiberty(val){
 	const list = load(val);
 	console.log('WatchedArr', list);
 
