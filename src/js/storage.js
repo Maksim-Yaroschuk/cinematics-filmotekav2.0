@@ -1,6 +1,6 @@
-//import { renderMarkup } from './renderMarkup';//createListMarkup
+//import { renderMarkup } from './renderMarkup';//createListMarkup getMovieDetails,
 import { list } from './refs';
-import { createListMarkup, getMovieDetails, renderMarkup } from './renderMarkup';
+import { createListMarkup, renderMarkup } from './renderMarkup';
 
 const save = (key, value) => {
   try {
@@ -47,7 +47,7 @@ const poster = document.querySelector('.poster-list__item');
 console.log('btnWatched', btnWatched);
 console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
-console.log('btnAddQueue',  btnAddQueue);
+console.log('btnAddQueue', btnAddQueue);
 console.log('poster', poster);
 
 btnWatched.addEventListener("click", filterWatched);
