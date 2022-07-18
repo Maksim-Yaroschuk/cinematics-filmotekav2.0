@@ -1,4 +1,3 @@
-
 //import { renderMarkup } from './renderMarkup';//createListMarkup
 import { createListMarkup, getMovieDetails, renderMarkup } from './renderMarkup';
 
