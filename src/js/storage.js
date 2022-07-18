@@ -51,11 +51,12 @@ console.log('btnQueue', btnQueue);
 console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
 
-list.addEventListener('click', createId);
+
 btnWatched.addEventListener("click", filterWatched);
 btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
+list.addEventListener('click', createId);
 
 let modId;
 function createId(event) {
