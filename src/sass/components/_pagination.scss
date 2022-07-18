@@ -1,5 +1,7 @@
 .pagination-section {
 	margin: 60px 0;
+	display: flex;
+	justify-content: center;
 }
 
 .pagination-btns {
@@ -7,11 +9,26 @@
 	align-items: center;
 	justify-content: center;
 }
-.page {
-	font-weight: 500;
-	margin-left: 16px;
+
+.dots {
+	padding: 8px;
+	margin-left: 8px;
 }
+
+.page {
+	padding: 8px;
+	font-weight: 500;
+	margin-left: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.page:hover {
+	transform: scale(140%);
+}
+
 .page.active {
+	cursor: default;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -20,6 +37,7 @@
 	width: 40px;
 	height: 40px;
 	border-radius: 5px;
+	transform: none;
 }
 .page-btn{
 	padding: 12px;
