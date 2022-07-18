@@ -12,7 +12,7 @@ const paginationBar = document.querySelector('.pagination-btns')
 prevBtn.classList.add('is-hidden')
 
 let page = 1
-let amountOfPages = 5
+let amountOfPages = 1000
 let query = ''
 
 function search(e) {
@@ -28,6 +28,14 @@ function search(e) {
 		clearPagination(amountOfPages)
 	})
 	page=1
+	if(query=='') {
+		paginationBar.classList.add('is-hidden')
+		nextBtn.classList.add('is-hidden')
+		prevBtn.classList.add('is-hidden')
+	} else {
+		paginationBar.classList.remove('is-hidden')
+		nextBtn.classList.remove('is-hidden')
+	}
 }
 
 function clearInput() {
