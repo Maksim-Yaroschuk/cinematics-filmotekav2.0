@@ -2,7 +2,7 @@
 import { list } from './refs';
 import { createListMarkup, renderMarkup } from './renderMarkup';
 
-const save = (key, value) => {
+const saveLS = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -11,7 +11,7 @@ const save = (key, value) => {
   }
 };
 
-const load = key => {
+const loadLS = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -20,7 +20,7 @@ const load = key => {
   }
 };
 
-const remove = key => {
+const removeLS = key => {
 
 try {
     localStorage.removeItem(key);
@@ -31,9 +31,9 @@ try {
 }
 
 // export default {
-// 	save,
-// 	load,
-// 	remove,
+// 	saveLS,
+// 	loadLS,
+// 	removeLS,
 // };
 
 
@@ -68,10 +68,10 @@ function createId(event) {
 	}
 	
 }
-function funAddWatched() {
-	const watchedArr = load('Watched') ? load('Watched') : [0] ;
+function funAddWatched(id) {
+	const watchedArr = loadLS('Watched') ? loadLS('Watched') : [0] ;
 	console.log('WatchedArr', watchedArr);
-	const id = modId;//Number(selectedMovie.getAttribute('key'));
+	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	const index = watchedArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {	
@@ -80,14 +80,14 @@ function funAddWatched() {
 		watchedArr.splice(index, 1);
 		console.log('WatchedArr', watchedArr);
 	}
-	save('Watched', watchedArr);
-	console.log('load', load('Watched'));
+	saveLS('Watched', watchedArr);
+	console.log('loadLS', loadLS('Watched'));
 }
 
-function funAddQueue() {
-	const queueArr = load('Queue') ? load('Queue') : [0] ;
+function funAddQueue(id) {
+	const queueArr = loadLS('Queue') ? loadLS('Queue') : [0] ;
 	console.log('QueueArr', queueArr);
-	const id = modId;//Number(selectedMovie.getAttribute('key'));
+	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
 	const index = queueArr.indexOf(id);
 	console.log('index',index);
@@ -97,13 +97,13 @@ function funAddQueue() {
 		queueArr.splice(index, 1);
 		console.log('QueueArr', queueArr);
 	}
-	save('Queue', queueArr);
-	console.log('load', load('Queue'));
+	saveLS('Queue', queueArr);
+	console.log('loadLS', loadLS('Queue'));
 }
 
 
 function filterWatched(){
-	const WatchedList = load('Watched');
+	const WatchedList = loadLS('Watched');
 	console.log('WatchedList',WatchedList);
 
 	if (!WatchedList || !WatchedList.length) {
@@ -132,7 +132,7 @@ function filterQueue(){
 };
 
 function filterLiberty(val){
-	const list = load(val);
+	const list = loadLS(val);
 	console.log('WatchedArr', list);
 
 	if (!list.length) {
@@ -166,7 +166,7 @@ function funAddLib(val) {
 		WatchedArr.splice(id, 1);
 		console.log('array', array);
 	}
-	save(val, array);
+	saveLS(val, array);
 	console.log('load', load(val));
 }
 export {
@@ -175,7 +175,7 @@ export {
 	filterLiberty,
 	filterWatched,
 	funAddQueue,
-	save,
-	load,
-	remove,
+	saveLS,
+	loadLS,
+	removeLS,
 };
