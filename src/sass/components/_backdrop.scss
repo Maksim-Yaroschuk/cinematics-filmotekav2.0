@@ -1,21 +1,33 @@
 .backdrop-team {
-  background: #e5e5e5;
   opacity: 0;
   background-color: transparent;
   pointer-events: none;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  height: 100%;
   position: fixed;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
 }
 
 .backdrop_is-open {
+  background-color: var(--backdrop-mobail-modal);
   opacity: 1;
-  background: #e5e5e5;
   pointer-events: initial;
+}
+
+.backdrop_is-open .team-modal {
+  background-color: var(--background-modal);
+  height: 100vh;
+  overflow: auto;
+  opacity: 1;
+  width: 840px;
+  max-width: 100%;
+  padding: 48px 20px 40px;
+  margin-bottom: 50px;
+  position: relative;
+  margin: auto;
 }
 
 .modal__close {
@@ -28,6 +40,7 @@
   height: 30px;
   border-radius: 50%;
   border: none;
+  padding-top: 3px;
 }
 
 .modal__close-button {
@@ -43,4 +56,40 @@
 .team__list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.team__item {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.team__image {
+  border-radius: 50%;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 134px;
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  max-width: 100%;
+}
+
+.team__subtitle,
+.team__text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.team__subtitle {
+  color: var(--primary-text-color);
+  padding-bottom: 5%;
+}
+
+.team__text {
+  color: var(--secondary-text-color);
+  padding-bottom: 20%;
 }
