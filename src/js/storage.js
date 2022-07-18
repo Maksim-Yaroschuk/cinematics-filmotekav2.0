@@ -1,4 +1,5 @@
 //import { renderMarkup } from './renderMarkup';//createListMarkup
+import { list } from './refs';
 import { createListMarkup, getMovieDetails, renderMarkup } from './renderMarkup';
 
 const save = (key, value) => {
@@ -54,6 +55,24 @@ btnQueue.addEventListener("click", filterQueue);
 btnAddWatched.addEventListener("click",funAddWatched );
 btnAddQueue.addEventListener("click", funAddQueue);
 poster.addEventListener("click", funAddQueue);
+
+
+function funAddLib(val) {
+	const array = load(val);
+	console.log('array', array);
+	const id = Number(selectedMovie.getAttribute('key'));
+	console.log('id', id);
+	const index = array.indexOf(id);
+	console.log('index',index);
+	if (index<0) {
+		WatchedArr.push(id);
+	} else {
+		WatchedArr.splice(id, 1);
+		console.log('array', array);
+	}
+	save(val, array);
+	console.log('load', load(val));
+}
 
 function funAddWatched() {
 	const WatchedArr = load(Watched);
