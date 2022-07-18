@@ -48,10 +48,10 @@ console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
 //console.log('poster', poster);
 
-btnWatched.addEventListener("click", filterWatched);
-btnQueue.addEventListener("click", filterQueue);
-btnAddWatched.addEventListener("click",funAddWatched );
-btnAddQueue.addEventListener("click", funAddQueue);
+// btnWatched.addEventListener("click", filterWatched);
+// btnQueue.addEventListener("click", filterQueue);
+// btnAddWatched.addEventListener("click",funAddWatched );
+// btnAddQueue.addEventListener("click", funAddQueue);
 //poster.addEventListener("click", funAddQueue);
 
 
