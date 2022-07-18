@@ -1,12 +1,107 @@
 <footer class="footer container">
+  <p></p>
+    © 2020 | All Rights Reserved | Developed with
+    <svg
+      width="14"
+      height="13"
+      viewBox="0 0 14 13"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7 12.88L6.02 11.9C2.38 8.68 0 6.51 0 3.85C0 1.68 1.68 0 3.85 0C5.04 0 6.23 0.56 7 1.47C7.77 0.56 8.96 0 10.15 0C12.32 0 14 1.68 14 3.85C14 6.51 11.62 8.68 7.98 11.9L7 12.88Z"
+        fill="#FF6B08"
+      />
+    </svg>
+    <!-- <img width="14px", height="12.75px", src="./images/footer.svg"> -->
+    by <a href class="team-link" data-action="open-modal-teamlist">GoIT Students</a>
+  </p>
 
-    <p>© 2020 | All Rights Reserved | Developed with 
-        <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M7 12.88L6.02 11.9C2.38 8.68 0 6.51 0 3.85C0 1.68 1.68 0 3.85 0C5.04 0 6.23 0.56 7 1.47C7.77 0.56 8.96 0 10.15 0C12.32 0 14 1.68 14 3.85C14 6.51 11.62 8.68 7.98 11.9L7 12.88Z"
-                fill="#FF6B08" />
+  <!--Модальне вікно футера зі списком команди-->
+
+  <div class="backdrop-team" id="backdrop">
+    <div class="team-modal team_is-open">
+      <div class="modal__team-content">
+        <div class="team__container">
+            <div class="team__content">
+                <ul class="team__list">
+                    <li class="team__item">
+                        <a href="https://github.com/dimaniagara">
+                          <img class ="team__image" src="./images/team/Dima.jfif" />
+                        </a>
+                        <p class="team__subtitle">Dmitri Suhak</p>
+                        <p class="team__text text">Junior Developer</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                    <li class="team__item">
+                      <a href="https://github.com/dimaniagara">
+                        <img class ="team__image" src="./images/team/Dima.jfif" />
+                      </a>
+                        <p class="team__subtitle">Name Last Name</p>
+                        <p class="team__text text">Position</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      <button type="button" data-action="close-modal" class="modal__close modal__btn-close" id="close-modal close-button-js">
+        <svg class="modal__close-button" width="14px" height="14px">
+<!-- <symbol id="icon-close" viewBox="0 0 32 32"> -->
+            <use href="./images/icons.svg#icon-modal"></use>
         </svg>
-<!-- <img width="14px", height="12.75px", src="./images/footer.svg"> -->
-        by <a href="#" class="team-link">GoIT Students</a></p>
-
+      </button>
+    </div>
+  </div>
 </footer>
+
+
+<!-- class="modal__close" -->
+<!-- class="btn__closs-modal" -->
