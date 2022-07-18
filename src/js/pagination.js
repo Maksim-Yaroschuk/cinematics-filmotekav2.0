@@ -2,7 +2,7 @@ import * as api from './api';
 import * as renderMarkup from './renderMarkup';
 // import search from './search';
 import { list, form, warning } from './refs';
-
+import { moviesDataUpdate } from './storage'
 form.addEventListener('submit', search);
 
 const prevBtn = document.querySelector('.page-btn.prev')
@@ -23,6 +23,7 @@ function search(e) {
 	console.log(query)
 	api.getSearchMovie(query, page).then((data) => {
 		renderMarkup.renderMarkup(data)
+		moviesDataUpdate(data)
 		amountOfPages = data.total_pages
 		console.log(data.total_pages)
 		clearPagination(amountOfPages)
@@ -116,6 +117,7 @@ console.log(search)
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			
 			console.log(data)
 		})
 	} else {
@@ -126,6 +128,7 @@ console.log(search)
 			});
 			console.log(data)
 				renderMarkup.renderMarkup(data)
+				moviesDataUpdate(data)
 			})
 	}
 }
@@ -184,6 +187,7 @@ function onPrevBtnClick() {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			
 			console.log(data)
 		})
 	} else {
@@ -194,6 +198,7 @@ function onPrevBtnClick() {
 			});
 			console.log(data)
 				renderMarkup.renderMarkup(data)
+				moviesDataUpdate(data)
 			})
 	}
 }
@@ -307,6 +312,7 @@ function renderPagination(e) {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			
 			console.log(data)
 		})
 	} else {
@@ -315,8 +321,12 @@ function renderPagination(e) {
 				top: 100,
 				behavior: 'smooth'
 			});
+			//Добавление данных о фильмах этой страницы в localStorage
+			moviesDataUpdate(data)
+			//
 			console.log(data)
 				renderMarkup.renderMarkup(data)
+				
 			})
 	}
 }
