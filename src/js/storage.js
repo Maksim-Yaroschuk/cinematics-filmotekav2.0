@@ -52,10 +52,10 @@ console.log('btnAddWatched', btnAddWatched);
 console.log('btnAddQueue', btnAddQueue);
 
 
-btnWatched.addEventListener("click", filterWatched);
-btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
-btnAddWatched.addEventListener("click",funAddWatched );
-btnAddQueue.addEventListener("click", funAddQueue);
+// btnWatched.addEventListener("click", filterWatched);
+// btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
+// btnAddWatched.addEventListener("click",funAddWatched );
+// btnAddQueue.addEventListener("click", funAddQueue);
 list.addEventListener('click', createId);
 
 let modId;
@@ -169,4 +169,10 @@ function funAddLib(val) {
 	save(val, array);
 	console.log('load', load(val));
 }
-
+export {
+	funAddLib,
+	getSearchMovieId,
+	filterLiberty,
+	filterWatched,
+	funAddQueue,
+};
