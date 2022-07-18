@@ -7,7 +7,7 @@ const save = (key, value) => {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
   } catch (error) {
-    console.error("Set state error: ", error.message);
+    console.error('Set state error: ', error.message);
   }
 };
 
@@ -16,24 +16,22 @@ const load = key => {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
-    console.error("Get state error: ", error.message);
+    console.error('Get state error: ', error.message);
   }
 };
 
 const remove = key => {
-
-try {
+  try {
     localStorage.removeItem(key);
-    
   } catch (error) {
-    console.error("Get state error: ", error.message);
+    console.error('Get state error: ', error.message);
   }
-}
+};
 
 export default {
-	save,
-	load,
-	remove,
+  save,
+  load,
+  remove,
 };
 
 //console.log(getSearchMovie);
@@ -91,7 +89,6 @@ function funAddQueue() {
 	console.log('load', load('Queue'));
 }
 
-
 function filterWatched(){
 	const WatchedList = load('Watched');
 	console.log('WatchedList',WatchedList);
@@ -106,10 +103,10 @@ function filterWatched(){
 	// renderMarkup(data);
 };
 
-
 function filterQueue(){
 	const QueueList = load('Queue');
 	console.log('QueueArList', QueueList);
+
 
 	if (!QueueList) {
 		return console.log('ваш список Queue пуст!');
@@ -134,15 +131,15 @@ function filterLiberty(val){
 		createListMarkup(data);
 	 })
 	renderMarkup(data);
+
 };
 
-const getSearchMovieId = async (id) => {
+const getSearchMovieId = async id => {
   const { data } = await axios.get(
     `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
   );
   return data;
 };
-
 function funAddLib(val) {
 	const array = load(val);
 	console.log('array', array);
@@ -159,4 +156,5 @@ function funAddLib(val) {
 	save(val, array);
 	console.log('load', load(val));
 }
+
 
