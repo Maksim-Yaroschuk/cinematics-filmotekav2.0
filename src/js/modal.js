@@ -1,31 +1,39 @@
-import { list } from './refs';
+import { list, modalBackdrop } from './refs';
 import { modalMoviemarkup } from './modalMovieMarkup';
-const modalBackdrop = document.querySelector('.modal-backdrop');
-const modal = document.querySelector('.modal-backdrop').firstElementChild;
 
-const bntModalOpen = document.querySelector('.btn__open-modal');
-//('.poster-list__item');
-const btnModalCloss = document.querySelector('.btn__closs-modal');
+list.addEventListener('click', createModal);
 
-list.addEventListener('click', onModal);
-function onModal(event) {
+function createModal(event) {
   const selectedMovie = event.target.closest('li');
-  const selectedMovieId = Number(selectedMovie.getAttribute('key'));
-  const moviesData = JSON.parse(localStorage.getItem('moviesData'));
-  const movieData = moviesData.find(movie => movie.id === selectedMovieId);
-
-  //Рендер данных о фильме в модалку
-
   //Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
   if (selectedMovie) {
-    modalBackdrop.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
-    //Закрытие модалки
-    btnModalCloss.addEventListener('click', offModal);
-    modalBackdrop.addEventListener('click', offModalForClickBeackdrop);
-    document.addEventListener('keydown', offModalForEscape);
+    //Получение данных о фильме в модалку
+    const selectedMovieId = Number(selectedMovie.getAttribute('key'));
+    const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+    const movieData = moviesData.find(movie => movie.id === selectedMovieId);
+
+    renderModalContent(movieData);
+    openModal();
   }
-  modal.innerHTML = modalMoviemarkup(movieData);
+}
+
+function openModal() {
+  modalBackdrop.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+
+  setCloseOptionModal();
+}
+
+function setCloseOptionModal() {
+  modalBackdrop.addEventListener('click', offModalForClickBeackdrop);
+  document.addEventListener('keydown', offModalForEscape);
+  document
+    .querySelector('.modal__btn-closs')
+    .addEventListener('click', offModal);
+}
+
+function renderModalContent(movieData) {
+  modalBackdrop.firstElementChild.innerHTML = modalMoviemarkup(movieData);
 }
 
 function offModalForEscape(e) {
