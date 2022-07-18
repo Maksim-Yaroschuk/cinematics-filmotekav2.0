@@ -52,20 +52,20 @@ console.log('btnAddQueue', btnAddQueue);
 // btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
 // btnAddWatched.addEventListener("click",funAddWatched );
 // btnAddQueue.addEventListener("click", funAddQueue);
-list.addEventListener('click', createId);
+// list.addEventListener('click', createId);
 
-let modId;
-function createId(event) {
-	const selectedMovie = event.target.closest('li');
-  console.log('selectedMovie', selectedMovie);
-	if (selectedMovie) {
-		//Получение данных о фильме в модалку
-		modId = Number(selectedMovie.getAttribute('key'));
-	}
+
+// function createId(event) {
+// 	const selectedMovie = event.target.closest('li');
+//   console.log('selectedMovie', selectedMovie);
+// 	if (selectedMovie) {
+// 		//Получение данных о фильме в модалку
+// 		modId = Number(selectedMovie.getAttribute('key'));
+// 	}
 	
-}
+// }
 function funAddWatched(id) {
-	const watchedArr = loadLS('Watched') ? loadLS('Watched') : [0] ;
+	const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0] ;
 	console.log('WatchedArr', watchedArr);
 	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	const index = watchedArr.indexOf(id);
@@ -76,12 +76,12 @@ function funAddWatched(id) {
 		watchedArr.splice(index, 1);
 		console.log('WatchedArr', watchedArr);
 	}
-	saveLS('Watched', watchedArr);
-	console.log('loadLS', loadLS('Watched'));
+	saveLs('Watched', watchedArr);
+	console.log('loadLs', loadLs('Watched'));
 }
 
 function funAddQueue(id) {
-	const queueArr = loadLS('Queue') ? loadLS('Queue') : [0] ;
+	const queueArr = loadLs('Queue') ? loadLs('Queue') : [0] ;
 	console.log('QueueArr', queueArr);
 	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
@@ -93,12 +93,12 @@ function funAddQueue(id) {
 		queueArr.splice(index, 1);
 		console.log('QueueArr', queueArr);
 	}
-	saveLS('Queue', queueArr);
-	console.log('loadLS', loadLS('Queue'));
+	saveLs('Queue', queueArr);
+	console.log('loadLs', loadLs('Queue'));
 }
 
 function filterWatched(){
-	const WatchedList = loadLS('Watched');
+	const WatchedList = loadLs('Watched');
 	console.log('WatchedList',WatchedList);
 
 	if (!WatchedList || !WatchedList.length) {
@@ -112,7 +112,7 @@ function filterWatched(){
 };
 
 function filterQueue(){
-	const QueueList = load('Queue');
+	const QueueList = loadLs('Queue');
 	console.log('QueueArList', QueueList);
 
 
@@ -128,7 +128,7 @@ function filterQueue(){
 };
 
 function filterLiberty(val){
-	const list = loadLS(val);
+	const list = loadLs(val);
 	console.log('WatchedArr', list);
 
 	if (!list.length) {
@@ -150,7 +150,7 @@ const getSearchMovieId = async id => {
   return data;
 };
 function funAddLib(val) {
-	const array = load(val);
+	const array = loadLs(val);
 	console.log('array', array);
 	const id = Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
@@ -162,8 +162,8 @@ function funAddLib(val) {
 		WatchedArr.splice(id, 1);
 		console.log('array', array);
 	}
-	saveLS(val, array);
-	console.log('load', load(val));
+	saveLs(val, array);
+	console.log('loadLs', loadLs(val));
 }
 
 export {
@@ -172,7 +172,7 @@ export {
 	filterLiberty,
 	filterWatched,
 	funAddQueue,
-	saveLS,
-	loadLS,
-	removeLS,
+	saveLs,
+	loadLs,
+	removeLs,
 };
