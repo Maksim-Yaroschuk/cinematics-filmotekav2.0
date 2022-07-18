@@ -1,4 +1,4 @@
-import './js/serviceStorageFunc'
+import './js/serviceStorageFunc';
 import { getTrending } from './js/api';
 import modal from './js/modal';
 import './js/trendings';
