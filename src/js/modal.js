@@ -30,8 +30,13 @@ function onBntAddLibray(selectedMovieId) {
   const btnAddQueue = document.querySelector('.modal__add-queue');
 
   // фц проверяют есть ли в локале фильмы и ставять соответсвенный класс
-  setStileBntWatched(selectedMovieId, btnAddWatched);
-  setStileBntQueue(selectedMovieId, btnAddQueue);
+  if (localStorage.getItem('Watched') !== null) {
+    setStileBntWatched(selectedMovieId, btnAddWatched);
+  }
+
+  if (localStorage.getItem('Queue') !== null) {
+    setStileBntQueue(selectedMovieId, btnAddQueue);
+  }
 
   // слушатели на клик
   btnAddWatched.addEventListener('click', () => {
@@ -50,22 +55,30 @@ function onBntAddLibray(selectedMovieId) {
 }
 
 function setStileBntWatched(selectedMovieId, btnAddWatched) {
-  const watched = localStorage.getItem('Watched').includes(selectedMovieId);
-  btnAddWatched.dataset.watched = watched;
-  if (watched) {
-    btnAddWatched.textContent = 'remove from watched';
+  if (localStorage.getItem('Watched') === null) {
+    return;
   } else {
-    btnAddWatched.textContent = 'add to watched';
+    const watched = localStorage.getItem('Watched').includes(selectedMovieId);
+    btnAddWatched.dataset.watched = watched;
+    if (watched) {
+      btnAddWatched.textContent = 'remove from watched';
+    } else {
+      btnAddWatched.textContent = 'add to watched';
+    }
   }
 }
 
 function setStileBntQueue(selectedMovieId, btnAddQueue) {
-  const queue = localStorage.getItem('Queue').includes(selectedMovieId);
-  btnAddQueue.dataset.queue = queue;
-  if (queue) {
-    btnAddQueue.textContent = 'remove from queue';
+  if (localStorage.getItem('Queue') === null) {
+    return;
   } else {
-    btnAddQueue.textContent = 'add to queue';
+    const queue = localStorage.getItem('Queue').includes(selectedMovieId);
+    btnAddQueue.dataset.queue = queue;
+    if (queue) {
+      btnAddQueue.textContent = 'remove from queue';
+    } else {
+      btnAddQueue.textContent = 'add to queue';
+    }
   }
 }
 
