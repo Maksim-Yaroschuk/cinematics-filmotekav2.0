@@ -1,6 +1,4 @@
-//import { renderMarkup } from './renderMarkup';//createListMarkup getMovieDetails,
-import { list } from './refs';
-import { createListMarkup, renderMarkup } from './renderMarkup';
+
 
 const saveLs = (key, value) => {
   try {
@@ -30,42 +28,9 @@ try {
   }
 };
 
-// export default {
-// 	saveLs,
-// 	loadLs,
-// 	removeLs,
-// };
 
-const btnWatched = document.querySelector('.btn--watched');
-const btnQueue = document.querySelector('.btn--queue');
-
-const btnAddWatched = document.querySelector('.modal__watched');
-const btnAddQueue = document.querySelector('.modal__queue');
-
-
-console.log('btnWatched', btnWatched);
-console.log('btnQueue', btnQueue);
-console.log('btnAddWatched', btnAddWatched);
-console.log('btnAddQueue', btnAddQueue);
-
-// btnWatched.addEventListener("click", filterWatched);
-// btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
-// btnAddWatched.addEventListener("click",funAddWatched );
-// btnAddQueue.addEventListener("click", funAddQueue);
-list.addEventListener('click', createId);
-
-let modId;
-function createId(event) {
-	const selectedMovie = event.target.closest('li');
-  console.log('selectedMovie', selectedMovie);
-	if (selectedMovie) {
-		//Получение данных о фильме в модалку
-		modId = Number(selectedMovie.getAttribute('key'));
-	}
-	
-}
 function funAddWatched(id) {
-	const watchedArr = loadLS('Watched') ? loadLS('Watched') : [0] ;
+	const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0] ;
 	console.log('WatchedArr', watchedArr);
 	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	const index = watchedArr.indexOf(id);
@@ -76,12 +41,12 @@ function funAddWatched(id) {
 		watchedArr.splice(index, 1);
 		console.log('WatchedArr', watchedArr);
 	}
-	saveLS('Watched', watchedArr);
-	console.log('loadLS', loadLS('Watched'));
+	saveLs('Watched', watchedArr);
+	console.log('loadLs', loadLs('Watched'));
 }
 
 function funAddQueue(id) {
-	const queueArr = loadLS('Queue') ? loadLS('Queue') : [0] ;
+	const queueArr = loadLs('Queue') ? loadLs('Queue') : [0] ;
 	console.log('QueueArr', queueArr);
 	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	console.log('id', id);
@@ -93,86 +58,17 @@ function funAddQueue(id) {
 		queueArr.splice(index, 1);
 		console.log('QueueArr', queueArr);
 	}
-	saveLS('Queue', queueArr);
-	console.log('loadLS', loadLS('Queue'));
-}
-
-function filterWatched(){
-	const WatchedList = loadLS('Watched');
-	console.log('WatchedList',WatchedList);
-
-	if (!WatchedList || !WatchedList.length) {
-		return console.log('ваш список Watched пуст!');
-	}
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
-};
-
-function filterQueue(){
-	const QueueList = load('Queue');
-	console.log('QueueArList', QueueList);
-
-
-	if (!QueueList || !QueueList.length ) {
-
-		return console.log('ваш список Queue пуст!');
-	}
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
-};
-
-function filterLiberty(val){
-	const list = loadLS(val);
-	console.log('WatchedArr', list);
-
-	if (!list.length) {
-		return console.log('ваш список пуст!');
-	}
-	 list.map(() => {
-		getSearchMovieId();
-		//getMovieDetails();
-		createListMarkup(data);
-	 })
-	renderMarkup(data);
-
-};
-
-const getSearchMovieId = async id => {
-  const { data } = await axios.get(
-    `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
-  );
-  return data;
-};
-function funAddLib(val) {
-	const array = load(val);
-	console.log('array', array);
-	const id = Number(selectedMovie.getAttribute('key'));
-	console.log('id', id);
-	const index = array.indexOf(id);
-	console.log('index',index);
-	if (index<0) {
-		WatchedArr.push(id);
-	} else {
-		WatchedArr.splice(id, 1);
-		console.log('array', array);
-	}
-	saveLS(val, array);
-	console.log('load', load(val));
+	saveLs('Queue', queueArr);
+	console.log('loadLs', loadLs('Queue'));
 }
 
 export {
-	funAddLib,
-	getSearchMovieId,
-	filterLiberty,
-	filterWatched,
+	funAddWatched,
 	funAddQueue,
-	saveLS,
-	loadLS,
-	removeLS,
+	saveLs,
+	loadLs,
+	removeLs,
 };
+export function moviesDataUpdate (data) { 
+	localStorage.setItem('moviesData', JSON.stringify(data.results))
+}
