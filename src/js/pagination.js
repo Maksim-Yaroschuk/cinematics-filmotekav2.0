@@ -3,12 +3,19 @@ import * as renderMarkup from './renderMarkup';
 import { list, form, warning, imgError} from './refs';
 import { moviesDataUpdate } from './storage'
 
+if(form){
+form.addEventListener('submit', search);}
+
 const prevBtn = document.querySelector('.page-btn.prev')
 const nextBtn = document.querySelector('.page-btn.next')
 const paginationBar = document.querySelector('.pagination-btns')
+
 const paginationSection = document.querySelector('.pagination-section')
 
-prevBtn.classList.add('is-hidden')
+if(prevBtn){
+prevBtn.classList.add('is-hidden')}
+//prevBtn.classList.add('is-hidden')
+
 
 let page = 1
 let amountOfPages = 1000
@@ -26,14 +33,23 @@ if(amountOfPages==1) {
 		paginationBar.children[0].classList.add('active')
 	}
 } else {
-	paginationBar.children[8].textContent = amountOfPages
+	if(paginationBar){
+	paginationBar.children[8].textContent = amountOfPages}
 }
 
+if (nextBtn) {
+	nextBtn.addEventListener('click', onNextBtnClick);
+	prevBtn.addEventListener('click', onPrevBtnClick);
 
-nextBtn.addEventListener('click', onNextBtnClick)
-prevBtn.addEventListener('click', onPrevBtnClick)
-paginationBar.addEventListener('click', onPageClick)
+
+	paginationBar.addEventListener('click', onPageClick);
+}
+
+//nextBtn.addEventListener('click', onNextBtnClick)
+//prevBtn.addEventListener('click', onPrevBtnClick)
+//paginationBar.addEventListener('click', onPageClick)
 form.addEventListener('submit', search);
+
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {
