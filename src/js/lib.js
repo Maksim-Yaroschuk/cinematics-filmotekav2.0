@@ -6,8 +6,8 @@ import { filterWatched, filterQueue } from './storage';
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
 
-const btnAddWatched = document.querySelector('.modal__watched');
-const btnAddQueue = document.querySelector('.modal__queue');
+// const btnAddWatched = document.querySelector('.modal__watched');
+// const btnAddQueue = document.querySelector('.modal__queue');
 
 
 console.log('btnWatched', btnWatched);
