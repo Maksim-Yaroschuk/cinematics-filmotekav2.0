@@ -31,7 +31,6 @@ export function renderMarkup(data) {
 }
 
 export function createListMarkup(data) {
-	console.log('dada', data);
   return data
     .map(
       ({

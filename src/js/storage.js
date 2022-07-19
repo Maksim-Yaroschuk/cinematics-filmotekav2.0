@@ -58,4 +58,14 @@ export function funAddQueue(id) {
 	console.log('loadLs', loadLs('Queue'));
 }
 
+export {
+	funAddWatched,
+	funAddQueue,
+	saveLs,
+	loadLs,
+	removeLs,
+};
+export function moviesDataUpdate (data) { 
+	localStorage.setItem('moviesData', JSON.stringify(data.results))
+}
 

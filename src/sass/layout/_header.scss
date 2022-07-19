@@ -61,8 +61,8 @@
             border-radius: 1px;
             position: absolute;
             left: 0;
-            bottom: 0;
-        }   
+            bottom: -5px;
+        }
     }
 }
 .header__name {
@@ -75,7 +75,7 @@
         line-height: calc(35 / 30);
         margin-left: 10px;
         color: var(--just-white);
-    }    
+    }
 }
 .header__list {
     display: flex;
@@ -98,12 +98,13 @@
     font-weight: 500;
     font-size: 12px;
     line-height: calc(14 / 12);
-    color: var(--just-white);
     padding-bottom: 5px;
+    cursor: pointer;
+    color: var(--just-white);
     transition: text-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:focus,
     &:hover {
-    text-shadow: 0px 3px 5px var(--just-white);
+        text-shadow: 0px 3px 5px var(--just-white);
     }
 }
 .current-link {
@@ -146,6 +147,12 @@
     color: var(--just-white);
     &::placeholder {
         color: var(--just-white);
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &:focus {
+        &::placeholder {
+            color: transparent;
+        }
     }
 }
 .header__search-button {
@@ -192,6 +199,11 @@
 .button {
     width: 130px;
     height: 44px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: calc(30 / 16);
+    letter-spacing: 0.06em;
     @include mq(tablet) {
         width: 152px;
     }
@@ -203,7 +215,9 @@
     background-color: transparent;
     border: 1px solid var(--just-white);
     border-radius: 5px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
         border: 1px solid var(--secondary-text-color);
     }
@@ -219,4 +233,3 @@
     line-height: calc(16 / 12);
     color: var(--just-white);
 }
-
