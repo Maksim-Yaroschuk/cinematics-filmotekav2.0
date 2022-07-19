@@ -7,6 +7,7 @@ const refs = {
   toTopBtn: document.querySelector('.btn-to-top'),
   imgError: document.querySelector('.image-error'),
   modalBackdrop: document.querySelector('.modal-backdrop'),
+  btnOnModalTeam: document.querySelector('.team-link'),
 };
 
 export const {
@@ -18,4 +19,5 @@ export const {
   toTopBtn,
   imgError,
   modalBackdrop,
+  btnOnModalTeam,
 } = refs;
