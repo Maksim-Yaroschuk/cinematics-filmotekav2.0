@@ -318,6 +318,8 @@ function clearPagination(amountOfPages) {
 }
 
 function search(e) {
+	page=1
+	prevBtn.classList.add('is-hidden')
   e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
