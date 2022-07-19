@@ -7,8 +7,7 @@ async function getGenres() {
 }
 
 export function renderMarkup(data) {
-	console.log('daRa', data);
-  getGenres().then(({ genres }) => {
+	getGenres().then(({ genres }) => {
     data.results.forEach(film => {
       const { genre_ids, release_date } = film;
       genres.forEach(({ name, id }) => {

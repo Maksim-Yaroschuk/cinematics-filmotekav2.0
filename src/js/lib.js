@@ -2,7 +2,7 @@
 import { list } from './refs';
 import { renderMarkup , createListMarkup} from './renderMarkup';
 import { loadLs } from './storage';
-import { getSearchMovieId } from './api';
+import { getTrending, getSearchMovieId } from './api';
 
 //import { filterWatched, filterQueue } from './storage';
 
@@ -25,32 +25,21 @@ function filterWatched() {
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	getSearchMovieId(1).then((r) => {
+	getTrending(1).then((r) => {
+		console.log('ваш список Watched', r);
 	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
 	
 };
 
-// const getSearchMovieId = async id => {
-//   const { data } = await axios.get(
-//     `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
-//   );
-//   return data;
-// };
-
 function filterQueue(){
 	const QueueList = loadLs('Queue');
 	console.log('QueueArList', QueueList);
-
-
 	if (!QueueList || !QueueList.length ) {
-
 		return console.log('ваш список Queue пуст!');
 	}
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
+	getSearchMovieId(1).then((q) => {
+		console.log('ваш список Queue', q);
+	renderMarkup(q)});
 };
 
 // function filterLiberty(val){
