@@ -25,50 +25,22 @@ function filterWatched() {
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	api.getTrending(2).then((r) => {
-		console.log('ваш список Watched пуст!', r);
+	getTrending(1).then((r) => {
+		console.log('ваш список Watched', r);
 	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
 	
 };
 
-// const getSearchMovieId = async id => {
-//   const { data } = await axios.get(
-//     `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
-//   );
-//   return data;
-// };
-
 function filterQueue(){
 	const QueueList = loadLs('Queue');
 	console.log('QueueArList', QueueList);
-
-
 	if (!QueueList || !QueueList.length ) {
-
 		return console.log('ваш список Queue пуст!');
 	}
-	api.getSearchMovieId('616037').then((data) => {
-			window.scrollTo({
-				top: 100,
-				behavior: 'smooth'
-			});
-		renderMarkup.renderMarkup(data);
-		moviesDataUpdate(data);
-			
-		console.log(data);
-		})
+	getSearchMovieId(1).then((q) => {
+		console.log('ваш список Queue', q);
+	renderMarkup(q)});
 };
-
-// api.getSearchMovie(query, page).then((data) => {
-// 			window.scrollTo({
-// 				top: 100,
-// 				behavior: 'smooth'
-// 			});
-// 			renderMarkup.renderMarkup(data)
-// 			moviesDataUpdate(data)
-			
-// 			console.log(data)
-// 		})
 
 // function filterLiberty(val){
 // 	const list = loadLs(val);
