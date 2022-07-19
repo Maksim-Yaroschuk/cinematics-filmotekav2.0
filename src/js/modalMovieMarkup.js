@@ -1,5 +1,20 @@
 import { IMG_BASE_URL, IMG_W400 } from './api'
-const modalMoviemarkup = ({poster_path, popularity, vote_average, vote_count, original_title, genres, overview}) => {
+import {loadLs} from './storage'
+
+//Функция конвертации id жанра в название жанра
+const genresList = loadLs('genresList')
+const genresConverting = (genresIds) => {
+  const genreArray = []
+  genresIds.map(genreId => {
+    genresList.map(genre => {
+      if (genreId === genre.id) {genreArray.push(genre.name)} 
+    })
+  })
+  return(genreArray.join(', '));
+}
+
+//Функция создания разметки модального окна фильма
+const modalMoviemarkup = ({poster_path, popularity, vote_average, vote_count, original_title, genre_ids, overview}) => {
 return `
 <button class="modal__btn-closs btn__closs-modal">
       <svg
@@ -29,11 +44,11 @@ return `
       <span>${vote_average.toFixed(1)}</span> <span>/</span> <span>${vote_count}</span>
     </li>
     <li class="info-card__item info-card__item-paramter">Popularity</li>
-    <li class="info-card__item info-card__item-point">${popularity}</li>
+    <li class="info-card__item info-card__item-point">${popularity.toFixed(1)}</li>
     <li class="info-card__item info-card__item-paramter">Original Title</li>
     <li class="info-card__item info-card__item-point">${original_title}</li>
     <li class="info-card__item info-card__item-paramter">Genre</li>
-    <li class="info-card__item info-card__item-point">${genres}</li>
+    <li class="info-card__item info-card__item-point">${genresConverting(genre_ids)}</li>
   </ul>
 </div>
 
@@ -46,6 +61,11 @@ return `
 <div class="modal__buttons">
       <button type="button" class="modal__add-watched" data-watched='false'>add to watched</button>
       <button type="button" class="modal__add-queue" data-queue='false'>add to queue</button>
+      
+    </div>
+    <div> 
+    
+
     </div>
     </div>`
 }
