@@ -26,7 +26,7 @@ return `
   <ul class="info-card__list-parametrs">
     <li class="info-card__item info-card__item-paramter">Vote / Votes</li>
     <li class="info-card__item info-card__item-point">
-      <span>${vote_average}</span> <span>/</span> <span>${vote_count}</span>
+      <span>${vote_average.toFixed(1)}</span> <span>/</span> <span>${vote_count}</span>
     </li>
     <li class="info-card__item info-card__item-paramter">Popularity</li>
     <li class="info-card__item info-card__item-point">${popularity}</li>
