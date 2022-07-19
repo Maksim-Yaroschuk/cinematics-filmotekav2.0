@@ -48,8 +48,9 @@ if (nextBtn) {
 //nextBtn.addEventListener('click', onNextBtnClick)
 //prevBtn.addEventListener('click', onPrevBtnClick)
 //paginationBar.addEventListener('click', onPageClick)
+if(form){
 form.addEventListener('submit', search);
-
+}
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {
