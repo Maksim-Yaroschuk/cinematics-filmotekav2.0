@@ -15,7 +15,6 @@ import { list, form, warning, imgError } from './refs';
 //     warningShown();
 //     return;
 //   };
-// 	console.log(name)
 //   const result = await getSearchMovie(name);
 //   if (result.results.length < 1) {
 //     warningShown();
