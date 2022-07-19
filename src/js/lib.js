@@ -1,9 +1,11 @@
 //import { renderMarkup } from './renderMarkup';//createListMarkup getMovieDetails,
-import { list } from './refs';
-import { renderMarkup , createListMarkup} from './renderMarkup';
+//import { list } from './refs';
+//import { renderMarkup , createListMarkup} from './renderMarkup';
 import { loadLs } from './storage';
 import { getTrending, getSearchMovieId } from './api';
-
+import { getSearchMovie, IMG_BASE_URL, IMG_W500 } from './api';
+import { renderMarkup } from './renderMarkup';
+import { list, form, warning, imgError } from './refs';
 //import { filterWatched, filterQueue } from './storage';
 
 const btnWatched = document.querySelector('.btn--watched');
@@ -21,15 +23,42 @@ if (btnWatched!==null) {
 function filterWatched() {
 	const WatchedList = loadLs('Watched');
 	console.log('WatchedList',WatchedList);
-
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	getTrending(1).then((r) => {
+	const datas = loadLs('WatchData');
+	console.log('datas', datas);
+	getTrending(2).then((r) => {
 		console.log('ваш список Watched', r);
 	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
 	
 };
+
+
+
+
+function searchId(evn) {
+  
+  const { searchMovie } = evn.currentTarget;
+  
+  const dat= loadLs(WatchData);
+ 	const name = dat.find(movie => movie.id === id).name;
+  const result = getSearchMovie(name);
+  if (result.results.length < 1) {
+    warningShown();
+    form.reset();
+  } else {
+    warningUnShown();
+    renderMarkup(result);
+    form.reset();
+  }
+}
+
+
+
+
+
+
 
 function filterQueue(){
 	const QueueList = loadLs('Queue');
@@ -37,9 +66,18 @@ function filterQueue(){
 	if (!QueueList || !QueueList.length ) {
 		return console.log('ваш список Queue пуст!');
 	}
-	getSearchMovieId(1).then((q) => {
-		console.log('ваш список Queue', q);
-	renderMarkup(q)});
+	let dat = loadLs('moviesData');
+	console.log('dat', dat);
+	const name = dat.find(movie => movie.id === 616037);
+
+	console.log('name ', name );
+	for (let i = 1; i < dat.length; i++)
+		dat.forEach(q => {
+			//renderMarkup(q);
+			console.log('result', q);
+		});
+		
+	//console.log('ваш список Queue', q);
 };
 
 // function filterLiberty(val){
