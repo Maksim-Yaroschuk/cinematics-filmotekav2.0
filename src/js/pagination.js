@@ -40,8 +40,6 @@ if(amountOfPages==1) {
 if (nextBtn) {
 	nextBtn.addEventListener('click', onNextBtnClick);
 	prevBtn.addEventListener('click', onPrevBtnClick);
-
-
 	paginationBar.addEventListener('click', onPageClick);
 }
 
@@ -49,7 +47,7 @@ if (nextBtn) {
 //prevBtn.addEventListener('click', onPrevBtnClick)
 //paginationBar.addEventListener('click', onPageClick)
 if(form){
-form.addEventListener('submit', search);
+	form.addEventListener('submit', search);
 }
 
 function onPageClick(e) {

@@ -2,7 +2,7 @@
 import { list } from './refs';
 import { renderMarkup , createListMarkup} from './renderMarkup';
 import { loadLs } from './storage';
-import { getSearchMovieId } from './api';
+import { getTrending, getSearchMovieId } from './api';
 
 //import { filterWatched, filterQueue } from './storage';
 
@@ -25,7 +25,8 @@ function filterWatched() {
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	getSearchMovieId(1).then((r) => {
+	getTrending(2).then((r) => {
+		console.log('ваш список Watched пуст!', r);
 	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
 	
 };
@@ -46,11 +47,9 @@ function filterQueue(){
 
 		return console.log('ваш список Queue пуст!');
 	}
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
+	getSearchMovieId(616037).then((r) => {
+		console.log('ваш список Watched пуст!', r);
+	renderMarkup(r)});
 };
 
 // function filterLiberty(val){
