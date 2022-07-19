@@ -48,8 +48,9 @@ if (nextBtn) {
 //nextBtn.addEventListener('click', onNextBtnClick)
 //prevBtn.addEventListener('click', onPrevBtnClick)
 //paginationBar.addEventListener('click', onPageClick)
+if(form){
 form.addEventListener('submit', search);
-
+}
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {
@@ -204,84 +205,84 @@ function renderPagination(e) {
 		if(page==1) {
 			paginationBar.innerHTML= `
 			<li class="page is-hidden">1</li>
-			<li class="page is-hidden">...</li>
+			<li class="dots is-hidden">...</li>
 			<li class="page active">1</li>
 			<li class="page">2</li>
 			<li class="page">3</li>
 			<li class="page">4</li>
 			<li class="page">5</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${amountOfPages}</li>`
 		} else if(page==2) {
 			paginationBar.innerHTML= `
 			<li class="page is-hidden">1</li>
-			<li class="page is-hidden">...</li>
+			<li class="dots is-hidden">...</li>
 			<li class="page">1</li>
 			<li class="page active">2</li>
 			<li class="page">3</li>
 			<li class="page">4</li>
 			<li class="page">5</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${amountOfPages}</li>`
 		} else if(page==3) {
 			paginationBar.innerHTML= `
 			<li class="page is-hidden">1</li>
-			<li class="page is-hidden">...</li>
+			<li class="dots is-hidden">...</li>
 			<li class="page">1</li>
 			<li class="page">2</li>
 			<li class="page active">3</li>
 			<li class="page">4</li>
 			<li class="page">5</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${amountOfPages}</li>`
 		} else if(page>3) {
 			if(page<=amountOfPages-2) {
 				paginationBar.innerHTML= `
 			<li class="page">1</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${page-2}</li>
 			<li class="page">${page-1}</li>
 			<li class="page active">${page}</li>
 			<li class="page">${page+1}</li>
 			<li class="page">${page+2}</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${amountOfPages}</li>`
 			} 
 			if(page>=amountOfPages-2) {
 				paginationBar.innerHTML= `
 			<li class="page">1</li>
-			<li class="page">...</li>
+			<li class="dots">...</li>
 			<li class="page">${page-2}</li>
 			<li class="page">${page-1}</li>
 			<li class="page active">${page}</li>
 			<li class="page">${page+1}</li>
 			<li class="page">${page+2}</li>
-			<li class="page is-hidden">...</li>
+			<li class="dots is-hidden">...</li>
 			<li class="page is-hidden">${amountOfPages}</li>`
 			}
 			if(page==amountOfPages-1) {
 				paginationBar.innerHTML= `
 				<li class="page">1</li>
-				<li class="page">...</li>
+				<li class="dots">...</li>
 				<li class="page">${amountOfPages-4}</li>
 				<li class="page">${amountOfPages-3}</li>
 				<li class="page">${amountOfPages-2}</li>
 				<li class="page active">${amountOfPages-1}</li>
 				<li class="page">${amountOfPages}</li>
-				<li class="page is-hidden">...</li>
+				<li class="dots is-hidden">...</li>
 				<li class="page is-hidden">${amountOfPages}</li>`
 				}
 			}
 			if(page==amountOfPages) {
 				paginationBar.innerHTML= `
 				<li class="page">1</li>
-				<li class="page">...</li>
+				<li class="dots">...</li>
 				<li class="page">${amountOfPages-4}</li>
 				<li class="page">${amountOfPages-3}</li>
 				<li class="page">${amountOfPages-2}</li>
 				<li class="page">${amountOfPages-1}</li>
 				<li class="page active">${amountOfPages}</li>
-				<li class="page is-hidden">...</li>
+				<li class="dots is-hidden">...</li>
 				<li class="page is-hidden">${amountOfPages}</li>`
 			}
 	}
