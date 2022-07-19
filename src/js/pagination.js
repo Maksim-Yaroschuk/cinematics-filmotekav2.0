@@ -1,13 +1,12 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-// import search from './search';
-import { list, form, warning } from './refs';
+import { list, form, warning, imgError} from './refs';
 import { moviesDataUpdate } from './storage'
-form.addEventListener('submit', search);
 
 const prevBtn = document.querySelector('.page-btn.prev')
 const nextBtn = document.querySelector('.page-btn.next')
 const paginationBar = document.querySelector('.pagination-btns')
+const paginationSection = document.querySelector('.pagination-section')
 
 prevBtn.classList.add('is-hidden')
 
@@ -15,34 +14,7 @@ let page = 1
 let amountOfPages = 1000
 let query = ''
 
-function search(e) {
-  e.preventDefault();
-  const { searchMovie } = e.currentTarget;
-  clearInput();
-  query = searchMovie.value.toLowerCase().trim();
-	console.log(query)
-	api.getSearchMovie(query, page).then((data) => {
-		renderMarkup.renderMarkup(data)
-		moviesDataUpdate(data)
-		amountOfPages = data.total_pages
-		console.log(data.total_pages)
-		clearPagination(amountOfPages)
-	})
-	page=1
-	if(query=='') {
-		paginationBar.classList.add('is-hidden')
-		nextBtn.classList.add('is-hidden')
-		prevBtn.classList.add('is-hidden')
-	} else {
-		paginationBar.classList.remove('is-hidden')
-		nextBtn.classList.remove('is-hidden')
-	}
-}
 
-function clearInput() {
-  list.innerHTML = '';
-  page = 1;
-}
 
 if(amountOfPages==1) {
 	paginationBar.innerHTML= `<li class="page active">1</li>`
@@ -61,6 +33,7 @@ if(amountOfPages==1) {
 nextBtn.addEventListener('click', onNextBtnClick)
 prevBtn.addEventListener('click', onPrevBtnClick)
 paginationBar.addEventListener('click', onPageClick)
+form.addEventListener('submit', search);
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {
@@ -117,6 +90,7 @@ console.log(search)
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
@@ -187,6 +161,7 @@ function onPrevBtnClick() {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
@@ -312,6 +287,7 @@ function renderPagination(e) {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
@@ -324,10 +300,8 @@ function renderPagination(e) {
 			//Добавление данных о фильмах этой страницы в localStorage
 			moviesDataUpdate(data)
 			//
-			console.log(data)
-				renderMarkup.renderMarkup(data)
-				
-			})
+			renderMarkup.renderMarkup(data)
+		})
 	}
 }
 
@@ -341,5 +315,62 @@ function clearPagination(amountOfPages) {
 	<li class="page">5</li>
 	<li class="dots">...</li>
 	<li class="page">${amountOfPages}</li>`
-	console.log(amountOfPages)
+}
+
+function search(e) {
+	page=1
+	prevBtn.classList.add('is-hidden')
+  e.preventDefault();
+  const { searchMovie } = e.currentTarget;
+  query = searchMovie.value.toLowerCase().trim();
+	if(query=='') {
+		paginationSection.classList.add('is-hidden')
+		warningShown();
+		form.reset();
+	} else {
+		warningUnShown();
+		form.reset();
+		paginationSection.classList.remove('is-hidden')
+	}
+	api.getSearchMovie(query, page).then((data) => {
+		moviesDataUpdate(data)
+		amountOfPages = data.total_pages
+		clearPagination(amountOfPages)
+		if(amountOfPages==1) {
+			prevBtn.classList.add('is-hidden')
+			paginationBar.innerHTML= `<li class="page active">1</li>`
+			nextBtn.classList.add('is-hidden')
+		} else if(amountOfPages>1 &&amountOfPages<6) {
+			paginationBar.innerHTML= ``
+			for(let i=1; i<=amountOfPages; i++) {
+				paginationBar.insertAdjacentHTML('beforeend', `<li class="page">${i}</li>`)
+				paginationBar.children[0].classList.add('active')
+			}
+		} else {
+			paginationBar.children[8].textContent = amountOfPages
+		}
+		if (data.results.length < 1 || query=='') {
+			warningShown();
+			form.reset();
+			paginationSection.classList.add('is-hidden')
+		}  else {
+			warningUnShown();
+			renderMarkup.renderMarkup(data);
+			form.reset();
+			paginationSection.classList.remove('is-hidden')
+		} 
+	})
+	page=1
+}
+
+function warningShown() {
+  warning.classList.remove('visually-hidden');
+  imgError.classList.remove('visually-hidden');
+  list.classList.add('visually-hidden');
+}
+
+function warningUnShown() {
+  warning.classList.add('visually-hidden');
+  imgError.classList.add('visually-hidden');
+  list.classList.remove('visually-hidden');
 }
