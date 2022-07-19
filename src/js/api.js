@@ -29,9 +29,7 @@ export const getSearchMovie = async (query, page) => {
 };
 
 export const getSearchMovieId = async (id) => {
-  const { data } = await axios.get(
-    `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
-  );
+  const { data } = await axios.get(`/movie/?api_key=${KEY}`);
   return data;
 };
 // console.log(getSearchMovie('cat', 1).then(r => console.log(r)));

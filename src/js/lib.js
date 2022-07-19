@@ -25,7 +25,7 @@ function filterWatched() {
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	getTrending(2).then((r) => {
+	api.getTrending(2).then((r) => {
 		console.log('ваш список Watched пуст!', r);
 	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
 	
@@ -47,10 +47,28 @@ function filterQueue(){
 
 		return console.log('ваш список Queue пуст!');
 	}
-	getSearchMovieId(616037).then((r) => {
-		console.log('ваш список Watched пуст!', r);
-	renderMarkup(r)});
+	api.getSearchMovieId('616037').then((data) => {
+			window.scrollTo({
+				top: 100,
+				behavior: 'smooth'
+			});
+		renderMarkup.renderMarkup(data);
+		moviesDataUpdate(data);
+			
+		console.log(data);
+		})
 };
+
+// api.getSearchMovie(query, page).then((data) => {
+// 			window.scrollTo({
+// 				top: 100,
+// 				behavior: 'smooth'
+// 			});
+// 			renderMarkup.renderMarkup(data)
+// 			moviesDataUpdate(data)
+			
+// 			console.log(data)
+// 		})
 
 // function filterLiberty(val){
 // 	const list = loadLs(val);
