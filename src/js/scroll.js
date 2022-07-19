@@ -1,6 +1,7 @@
 import { toTopBtn } from './refs';
 
 window.addEventListener('scroll', onScroll);
+if(toTopBtn)
 toTopBtn.addEventListener('click', onToTopBtn);
 
 function onScroll() {
@@ -9,7 +10,7 @@ function onScroll() {
     if (scrolled > coords) {
         toTopBtn.classList.add('btn-to-top--visible');
     };
-    if (scrolled <= coords) {
+    if (scrolled <= coords && toTopBtn) {
         toTopBtn.classList.remove('btn-to-top--visible');
     };
 };

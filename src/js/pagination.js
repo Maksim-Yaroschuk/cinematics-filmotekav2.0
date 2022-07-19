@@ -2,14 +2,14 @@ import * as api from './api';
 import * as renderMarkup from './renderMarkup';
 // import search from './search';
 import { list, form, warning } from './refs';
-
-form.addEventListener('submit', search);
+if(form){
+form.addEventListener('submit', search);}
 
 const prevBtn = document.querySelector('.page-btn.prev')
 const nextBtn = document.querySelector('.page-btn.next')
 const paginationBar = document.querySelector('.pagination-btns')
-
-prevBtn.classList.add('is-hidden')
+if(prevBtn){
+prevBtn.classList.add('is-hidden')}
 
 let page = 1
 let amountOfPages = 1000
@@ -53,13 +53,16 @@ if(amountOfPages==1) {
 		paginationBar.children[0].classList.add('active')
 	}
 } else {
-	paginationBar.children[8].textContent = amountOfPages
+	if(paginationBar){
+	paginationBar.children[8].textContent = amountOfPages}
 }
 
+if (nextBtn) {
+	nextBtn.addEventListener('click', onNextBtnClick);
+	prevBtn.addEventListener('click', onPrevBtnClick);
 
-nextBtn.addEventListener('click', onNextBtnClick)
-prevBtn.addEventListener('click', onPrevBtnClick)
-paginationBar.addEventListener('click', onPageClick)
+	paginationBar.addEventListener('click', onPageClick);
+}
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {

@@ -7,6 +7,7 @@ async function getGenres() {
 }
 
 export function renderMarkup(data) {
+	console.log('daRa', data);
   getGenres().then(({ genres }) => {
     data.results.forEach(film => {
       const { genre_ids, release_date } = film;
@@ -23,12 +24,14 @@ export function renderMarkup(data) {
         }
       });
     });
-    const markupList = createListMarkup(data.results);
-    list.innerHTML = markupList;
+	  const markupList = createListMarkup(data.results);
+	  if(list){
+    list.innerHTML = markupList;}
   });
 }
 
-function createListMarkup(data) {
+export function createListMarkup(data) {
+	console.log('dada', data);
   return data
     .map(
       ({

@@ -1,40 +1,41 @@
 //import { renderMarkup } from './renderMarkup';//createListMarkup getMovieDetails,
 import { list } from './refs';
-import { renderMarkup } from './renderMarkup';
-import { filterWatched, filterQueue } from './storage';
+import { renderMarkup , createListMarkup} from './renderMarkup';
+import { loadLs } from './storage';
+import { getSearchMovieId } from './api';
+
+//import { filterWatched, filterQueue } from './storage';
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
-
-// const btnAddWatched = document.querySelector('.modal__watched');
-// const btnAddQueue = document.querySelector('.modal__queue');
-
-
+if(btnWatched ){
 console.log('btnWatched', btnWatched);
-console.log('btnQueue', btnQueue);
-console.log('btnAddWatched', btnAddWatched);
-console.log('btnAddQueue', btnAddQueue);
+console.log('btnQueue', btnQueue);}
+// 
 
-// btnWatched.addEventListener("click", filterWatched);
-// btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
-// btnAddWatched.addEventListener("click",funAddWatched );
-// btnAddQueue.addEventListener("click", funAddQueue);
-// list.addEventListener('click', createId);
+if (btnWatched!==null) {
+	btnWatched.addEventListener("click", filterWatched);
+	btnQueue.addEventListener("click", filterQueue);
+}
 
-
-function filterWatched(){
+function filterWatched() {
 	const WatchedList = loadLs('Watched');
 	console.log('WatchedList',WatchedList);
 
 	if (!WatchedList || !WatchedList.length) {
 		return console.log('ваш список Watched пуст!');
 	}
-	//  watchedList.map(() => {
-	// 	getMovieDetails();
-	// 	createListMarkup(data)
-	//  })
-	// renderMarkup(data);
+	getSearchMovieId(1).then((r) => {
+	renderMarkup(r)});//.console.log('btnQueue', btnQueue);
+	
 };
+
+// const getSearchMovieId = async id => {
+//   const { data } = await axios.get(
+//     `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
+//   );
+//   return data;
+// };
 
 function filterQueue(){
 	const QueueList = loadLs('Queue');
@@ -52,25 +53,27 @@ function filterQueue(){
 	// renderMarkup(data);
 };
 
-function filterLiberty(val){
-	const list = loadLs(val);
-	console.log('WatchedArr', list);
+// function filterLiberty(val){
+// 	const list = loadLs(val);
+// 	console.log('WatchedArr', list);
 
-	if (!list.length) {
-		return console.log('ваш список пуст!');
-	}
-	 list.map(() => {
-		getSearchMovieId();
-		//getMovieDetails();
-		//createListMarkup(data);
-	 })
-	renderMarkup(data);
+// 	if (!list.length) {
+// 		return console.log('ваш список пуст!');
+// 	}
+// 	 list.map(() => {
+// 		getSearchMovieId();
+// 		//getMovieDetails();
+// 		//createListMarkup(data);
+// 	 })
+// 	renderMarkup(data);
 
-};
+// };
 
-// const getSearchMovieId = async id => {
+
+
+// export const getTrending = async (page = 1) => {
 //   const { data } = await axios.get(
-//     `/search/movie?api_key=${KEY}&language=en-US&id=${id}`
+//     `/trending/movie/week?api_key=${KEY}&page=${page}`
 //   );
 //   return data;
 // };
@@ -111,3 +114,10 @@ function filterLiberty(val){
 // 	loadLs,
 // 	removeLs,
 // };
+// btnWatched.addEventListener("click", filterWatched);
+// btnQueue.addEventListener("click", filterQueue);//("click",funAddWatched );//
+// btnAddWatched.addEventListener("click",funAddWatched );
+// btnAddQueue.addEventListener("click", funAddQueue);
+// list.addEventListener('click', createId);
+//console.log('btnAddWatched', btnAddWatched);
+// console.log('btnAddQueue', btnAddQueue);

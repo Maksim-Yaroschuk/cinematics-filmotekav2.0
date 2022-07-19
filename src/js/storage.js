@@ -1,6 +1,5 @@
 
-
-const saveLs = (key, value) => {
+export const saveLs = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
     localStorage.setItem(key, serializedState);
@@ -9,7 +8,7 @@ const saveLs = (key, value) => {
   }
 };
 
-const loadLs = key => {
+export const loadLs = key => {
   try {
     const serializedState = localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
@@ -18,7 +17,7 @@ const loadLs = key => {
   }
 };
 
-const removeLs = key => {
+export const removeLs = key => {
 
 try {
 
@@ -28,11 +27,9 @@ try {
   }
 };
 
-
-function funAddWatched(id) {
+export function funAddWatched(id) {
+	
 	const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0] ;
-	console.log('WatchedArr', watchedArr);
-	//const id = modId;//Number(selectedMovie.getAttribute('key'));
 	const index = watchedArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {	
@@ -43,13 +40,12 @@ function funAddWatched(id) {
 	}
 	saveLs('Watched', watchedArr);
 	console.log('loadLs', loadLs('Watched'));
+	//localStorage.clear();
 }
 
-function funAddQueue(id) {
+export function funAddQueue(id) {
 	const queueArr = loadLs('Queue') ? loadLs('Queue') : [0] ;
 	console.log('QueueArr', queueArr);
-	//const id = modId;//Number(selectedMovie.getAttribute('key'));
-	console.log('id', id);
 	const index = queueArr.indexOf(id);
 	console.log('index',index);
 	if (index<0) {
@@ -62,10 +58,4 @@ function funAddQueue(id) {
 	console.log('loadLs', loadLs('Queue'));
 }
 
-export {
-	funAddWatched,
-	funAddQueue,
-	saveLs,
-	loadLs,
-	removeLs,
-};
+

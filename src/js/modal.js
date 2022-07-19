@@ -1,19 +1,32 @@
 import { list, modalBackdrop } from './refs';
 import { modalMoviemarkup } from './modalMovieMarkup';
 
-list.addEventListener('click', createModal);
 
+if(list){
+	list.addEventListener('click', createModal);
+}
+import { saveLs, loadLs, funAddWatched, funAddQueue} from './storage';
 function createModal(event) {
-  const selectedMovie = event.target.closest('li');
-  //Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
-  if (selectedMovie) {
+	const selectedMovie = event.target.closest('li');
+	//Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
+	if (selectedMovie) {
     //Получение данных о фильме в модалку
-    const selectedMovieId = Number(selectedMovie.getAttribute('key'));
-    const moviesData = JSON.parse(localStorage.getItem('moviesData'));
-    const movieData = moviesData.find(movie => movie.id === selectedMovieId);
-
-    renderModalContent(movieData);
-    openModal();
+		const selectedMovieId = Number(selectedMovie.getAttribute('key'));
+		console.log('selectedMovieId', selectedMovieId);
+		const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+		const movieData = moviesData.find(movie => movie.id === selectedMovieId);
+		renderModalContent(movieData);
+		openModal();
+		const btnAddWatched = document.querySelector('.modal__watched');
+		const btnAddQueue = document.querySelector('.modal__queue');
+		if (btnAddWatched) {
+			console.log('btnAddWatched',btnAddWatched );
+			console.log('btnAddQueue', btnAddQueue);
+			btnAddWatched.addEventListener("click",()=>{
+				funAddWatched(selectedMovieId);
+			});
+			btnAddQueue.addEventListener("click", ()=>{funAddQueue(selectedMovieId)});
+		}
   }
 }
 
@@ -60,8 +73,8 @@ function offModal() {
 const btnOnModalTeam = document.querySelector('.team-link');
 const btnOffModalTeam = document.querySelector('.modal__close');
 const backdropModalTeam = document.querySelector('.backdrop-team');
-
-btnOnModalTeam.addEventListener('click', onModalTeam);
+if(btnOnModalTeam){
+btnOnModalTeam.addEventListener('click', onModalTeam);}
 
 function onModalTeam(e) {
   e.preventDefault();
