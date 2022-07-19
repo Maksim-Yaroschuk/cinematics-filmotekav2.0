@@ -25,14 +25,17 @@ const removeLs = key => {
 };
 
 function funAddWatched(id) {
+	const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+    const movieData = moviesData.find(movie => movie.id === id);
   const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0];
   const index = watchedArr.indexOf(id);
-  console.log('index', index);
   if (index < 0) {
-    watchedArr.push(id);
+	  watchedArr.push(id);
+	  saveLs('WatchData', movieData);
   } else {
     watchedArr.splice(index, 1);
-    console.log('WatchedArr', watchedArr);
+	  console.log('WatchedArr', watchedArr);
+	  removeLs('WatchData');
   }
   saveLs('Watched', watchedArr);
   console.log('loadLs', loadLs('Watched'));
@@ -40,15 +43,16 @@ function funAddWatched(id) {
 }
 
 function funAddQueue(id) {
+	const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+    const movieData = moviesData.find(movie => movie.id === id);
   const queueArr = loadLs('Queue') ? loadLs('Queue') : [0];
-  console.log('QueueArr', queueArr);
   const index = queueArr.indexOf(id);
-  console.log('index', index);
   if (index < 0) {
-    queueArr.push(id);
+	  queueArr.push(id);
+	  saveLs('QueueData', movieData);
   } else {
     queueArr.splice(index, 1);
-    console.log('QueueArr', queueArr);
+    removeLs('QueueData');
   }
   saveLs('Queue', queueArr);
   console.log('loadLs', loadLs('Queue'));
