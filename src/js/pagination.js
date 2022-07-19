@@ -90,6 +90,7 @@ console.log(search)
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
@@ -160,6 +161,7 @@ function onPrevBtnClick() {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
@@ -285,6 +287,7 @@ function renderPagination(e) {
 				behavior: 'smooth'
 			});
 			renderMarkup.renderMarkup(data)
+			moviesDataUpdate(data)
 			
 			console.log(data)
 		})
