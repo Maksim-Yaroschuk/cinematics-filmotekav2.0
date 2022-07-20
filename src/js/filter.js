@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { KEY } from './api';
+import { renderMarkup } from './renderMarkup';
 
 const refs = {
   sortForm: document.querySelector('#sortForm'),
@@ -9,68 +10,66 @@ const refs = {
 refs.genreForm.addEventListener('input', eventGenre);
 refs.yearForm.addEventListener('input', eventYear);
 refs.sortForm.addEventListener('input', eventSort);
-
+let query = '';
+let genre = '';
+let year = '';
+let sort = '';
 //Выводит выбранный жанр
 function eventGenre(evn) {
-  let genre = '';
   if (evn) {
     genre = evn.target.value;
   }
-  return genre;
+  return console.log(
+    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
+  );
 }
 //Выводит выбранный год
 function eventYear(evn) {
-  let year = '';
   if (evn) {
     year = evn.target.value;
   }
-  return year;
+  return console.log(
+    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
+  );
 }
 //Выводит выбранный сорт
 function eventSort(evn) {
-  let sort = '';
   if (evn) {
     sort = evn.target.value;
   }
-  return sort;
+  return console.log(
+    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
+  );
 }
 
-export const getSearchForm = async (query, genre, year, sort) => {
+export const getSearchForm = async (
+  query = '',
+  genre = '',
+  year = '',
+  sort = ''
+) => {
   let f = {
-    year: `&primary_release_year=${year}`,
-    genre: `&with_genres=${genre}`,
+    year:
+      year !== '' && year !== 'start' ? `&primary_release_year=${year}` : '',
+    genre: genre !== '' && genre !== 'start' ? `&with_genres=${genre}` : '',
     queryFetch: `&query=${query}`,
-    trendingFetch: `/trending`,
-    sort: `&sort_by=${sort}`,
+    sort: sort !== '' && sort !== 'start' ? `&sort_by=${sort}` : '',
     discover: `/discover`,
-    week: `/week`,
   };
-  if (sort === 'start' || sort === '') {
-    f.sort = '';
-  }
-  if (year === 'start' || year === '') {
-    f.year === '';
-  }
-  if (genre === 'start' || genre === '') {
-    f.genre = '';
-  }
   if (query === '') {
     f.queryFetch = '';
-    f.discover = '';
   }
   if (query !== '' && genre === '') {
-    f.trendingFetch = '';
-    f.week = '';
     f.discover = '/search';
   }
   if (query !== '' && genre !== '') {
-    f.trendingFetch = '';
     f.week = '';
   }
-  const { data } = await axios.get(
-    `${f.trendingFetch}${f.discover}/movie${f.week}?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=1`
+  if (query !== '') {
+    f.trendingFetch = '';
+  }
+  let { data } = await axios.get(
+    `${f.discover}/movie?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=1`
   );
   return data;
 };
-
-getSearchForm('cat', 28, 2020, 'original_title.asc').then(r => console.log(r));
