@@ -10,3 +10,4 @@ import './js/pagination';
 import './js/spiner';
 import './js/scroll';
 import './js/trailer';
+import './js/theme';
