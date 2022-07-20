@@ -28,11 +28,7 @@ export const getSearchMovie = async (query, page) => {
   return data;
 };
 
-export const getSearchMovieId = async (id) => {
-	const { data } = await axios.get(`/id/movie/list?api_key=${KEY}&id=${id}`);
-	console.log(data);
-  return data;
-};
+
 // console.log(getSearchMovie('cat', 1).then(r => console.log(r)));
 
 export const getMovieDetails = async id => {

@@ -1,6 +1,8 @@
 import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
+
 import { list, lib } from './refs';
-import { saveLs } from './storage'
+import { saveLs } from './storage';
+
 async function getGenres() {
 	const genres = await getMovieGenres().then(({ genres }) => genres);
 	console.log('genres', {genres});
@@ -12,7 +14,7 @@ export function renderMarkup(data) {
 //Добавление списка жанров в localStorage
     saveLs('genresList', genres)
 		if(data.results){
-    data.results.forEach(film => {
+   	data.results.forEach(film => {
       const { genre_ids, release_date } = film;
       genres.forEach(({ name, id }) => {
         if (genre_ids.includes(id)) {
