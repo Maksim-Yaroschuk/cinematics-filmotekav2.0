@@ -28,6 +28,7 @@ export const getSearchMovie = async (query, page) => {
   return data;
 };
 
+
 // console.log(getSearchMovie('cat', 1).then(r => console.log(r)));
 
 export const getMovieDetails = async id => {

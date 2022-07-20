@@ -1,8 +1,13 @@
-import { list, modalBackdrop, btnOnModalTeam } from './refs';
-import { modalMoviemarkup } from './modalMovieMarkup';
+import { list, lib, modalBackdrop, btnOnModalTeam } from './refs';
+import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
+import { addListLibrary, funAddQueue } from './storage';
 
-list.addEventListener('click', createModal);
-
+if (list) {
+  list.addEventListener('click', createModal);
+}
+if (lib) {
+  lib.addEventListener('click', createModal);
+}
 btnOnModalTeam.addEventListener('click', onModalTeam);
 
 function createModal(event) {
@@ -16,6 +21,66 @@ function createModal(event) {
 
     renderModalContent(movieData);
     openModal();
+    onBntAddLibray(selectedMovieId);
+  }
+}
+
+// Кнопки
+function onBntAddLibray(selectedMovieId) {
+  // ссылки на элемент кнопки
+  const btnAddWatched = document.querySelector('.modal__add-watched');
+  const btnAddQueue = document.querySelector('.modal__add-queue');
+
+  // фц проверяют есть ли в локале фильмы и ставять соответсвенный класс
+  if (localStorage.getItem('Watched') !== null) {
+    setStileBntWatched(selectedMovieId, btnAddWatched);
+  }
+
+  if (localStorage.getItem('Queue') !== null) {
+    setStileBntQueue(selectedMovieId, btnAddQueue);
+  }
+
+  // слушатели на клик
+  btnAddWatched.addEventListener('click', () => {
+    // добавить в локал
+    addListLibrary(selectedMovieId, 'Watched');
+    // еще раз проверить наличие в локал и изменить кнопку
+    setStileBntWatched(selectedMovieId, btnAddWatched);
+  });
+
+  btnAddQueue.addEventListener('click', () => {
+    // добавить в локал
+    addListLibrary(selectedMovieId, 'Queue');
+    // еще раз проверить наличие в локал и изменить кнопку
+    setStileBntQueue(selectedMovieId, btnAddQueue);
+  });
+}
+
+function setStileBntWatched(selectedMovieId, btnAddWatched) {
+  if (localStorage.getItem('Watched') === null) {
+    return;
+  } else {
+    const watched = localStorage.getItem('Watched').includes(selectedMovieId);
+    btnAddWatched.dataset.watched = watched;
+    if (watched) {
+      btnAddWatched.textContent = 'remove from watched';
+    } else {
+      btnAddWatched.textContent = 'add to watched';
+    }
+  }
+}
+
+function setStileBntQueue(selectedMovieId, btnAddQueue) {
+  if (localStorage.getItem('Queue') === null) {
+    return;
+  } else {
+    const queue = localStorage.getItem('Queue').includes(selectedMovieId);
+    btnAddQueue.dataset.queue = queue;
+    if (queue) {
+      btnAddQueue.textContent = 'remove from queue';
+    } else {
+      btnAddQueue.textContent = 'add to queue';
+    }
   }
 }
 
@@ -57,7 +122,7 @@ function offModal() {
   modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
 }
 
-//Модальне вікно футера зі списком команди
+// модалка команды
 
 function onModalTeam(e) {
   e.preventDefault();
@@ -67,83 +132,5 @@ function onModalTeam(e) {
 }
 
 function createTeamModal() {
-  const teamModalCard = `<button class="modal__btn-closs btn__closs-modal">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="14"
-    height="14"
-    fill="currentColor"
-    class="bi bi-x-lg"
-    viewBox="0 0 16 16"
-  >
-    <path
-      d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-    />
-  </svg>
-</button> <ul class="team__list">
-  <li class="team__item">
-      <a href="https://github.com/dimaniagara">
-        <img class ="team__image" src="./images/team/Dima.jfif" />
-      </a>
-      <p class="team__subtitle">Dmitri Suhak</p>
-      <p class="team__text text">Junior Developer</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-  <li class="team__item">
-    <a href="https://github.com/dimaniagara">
-      <img class ="team__image" src="./images/team/Dima.jfif" />
-    </a>
-      <p class="team__subtitle">Name Last Name</p>
-      <p class="team__text text">Position</p>
-  </li>
-</ul>`;
-  modalBackdrop.firstElementChild.innerHTML = teamModalCard;
+  modalBackdrop.firstElementChild.innerHTML = modalTeamLayout;
 }

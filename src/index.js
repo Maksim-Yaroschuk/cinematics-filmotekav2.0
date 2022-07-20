@@ -1,4 +1,3 @@
-
 import { saveLS, loadLS, removeLS } from './js/storage';
 
 import { getTrending } from './js/api';
@@ -7,7 +6,12 @@ import './js/trendings';
 import './js/storage';
 import './js/search';
 import './js/pagination';
-import './js/spiner';
+// import './js/spiner';
 import './js/scroll';
+
+import './js/lib';
+
 import './js/trailer';
+
 import './js/theme';
+
