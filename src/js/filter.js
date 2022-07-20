@@ -10,9 +10,13 @@ const refs = {
   yearForm: document.querySelector('#yearForm'),
 };
 
-if (refs.filterForm) {
+if (refs.genreForm) {
   refs.genreForm.addEventListener('input', eventGenre);
+}
+if (refs.yearForm) {
   refs.yearForm.addEventListener('input', eventYear);
+}
+if (refs.sortForm) {
   refs.sortForm.addEventListener('input', eventSort);
 }
 
@@ -26,27 +30,21 @@ function eventGenre(evn) {
   if (evn) {
     genre = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 //Выводит выбранный год
 function eventYear(evn) {
   if (evn) {
     year = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 //Выводит выбранный сорт
 function eventSort(evn) {
   if (evn) {
     sort = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 
 export const getSearchForm = async (
