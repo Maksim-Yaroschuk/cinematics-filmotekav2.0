@@ -1,6 +1,6 @@
 import { list, modalBackdrop, btnOnModalTeam } from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
-import { funAddWatched, funAddQueue } from './storage';
+import { addListLibrary, funAddQueue } from './storage';
 
 if (list) {
   list.addEventListener('click', createModal);
@@ -41,14 +41,14 @@ function onBntAddLibray(selectedMovieId) {
   // слушатели на клик
   btnAddWatched.addEventListener('click', () => {
     // добавить в локал
-    funAddWatched(selectedMovieId);
+    addListLibrary(selectedMovieId, 'Watched');
     // еще раз проверить наличие в локал и изменить кнопку
     setStileBntWatched(selectedMovieId, btnAddWatched);
   });
 
   btnAddQueue.addEventListener('click', () => {
     // добавить в локал
-    funAddQueue(selectedMovieId);
+    addListLibrary(selectedMovieId, 'Queue');
     // еще раз проверить наличие в локал и изменить кнопку
     setStileBntQueue(selectedMovieId, btnAddQueue);
   });
