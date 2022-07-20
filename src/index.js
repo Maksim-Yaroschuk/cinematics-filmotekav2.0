@@ -13,4 +13,4 @@ import './js/lib';
 
 import './js/trailer';
 import './js/modal-log-in';
-
+import './js/filter';
