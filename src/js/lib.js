@@ -1,13 +1,12 @@
 import { loadLs } from './storage';
-import { renderMarkup } from './renderMarkup';
-
+import { renderMarkupId, createListMarkup, createLibMarkup } from './renderMarkup';
+import { lib } from './refs';
+import { getMovieGenres} from './api';
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
-if(btnWatched ){
-console.log('btnWatched', btnWatched);
-console.log('btnQueue', btnQueue);}
-// 
+
+
 
 if (btnWatched!==null) {
 	btnWatched.addEventListener("click", () => {
@@ -18,23 +17,19 @@ if (btnWatched!==null) {
 	});
 }
 
-
-
-
-function libMarkup(selectLs){
+function libMarkup(selectLs) {
+	let sel = selectLs + 'Data';
+	console.log('sel', sel);
 	const QueueList = loadLs(selectLs);
-	console.log('QueueArList', QueueList);
+	console.log('List', QueueList);
 	if (!QueueList || !QueueList.length ) {
 		return console.log('ваш список Queue пуст!');
 	}
-	let dat = loadLs('moviesData');
+	let dat = loadLs(sel);
 	console.log('dat', dat);
-	//const name = dat.find(movie => movie.id === 504827);console.log('name ', name );
-	dat.forEach(q => {
-			renderMarkup(q);
-			console.log('result', q);
-		});
-		
-	//console.log('ваш список Queue', q);
+	const markupList = createListMarkup(dat);
+	console.log('markupList', markupList);
+	
+    lib.innerHTML = createListMarkup(dat);
 };
 

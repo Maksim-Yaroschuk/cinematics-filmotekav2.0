@@ -23,42 +23,55 @@ const removeLs = key => {
     console.error('Get state error: ', error.message);
   }
 };
+///localStorage.clear();
+const moviesData = loadLs('moviesData');
+console.log('moviesData', moviesData);
+const WatchedData = loadLs('WatchedData');
+console.log('WatchedData', WatchedData);
+const QueueData = loadLs('QueueData');
+console.log('QueueData', QueueData);
+const Watched = loadLs('Watched');
+console.log('Watched', Watched);
+const Queue = loadLs('Queue');
+console.log('Queue', Queue);
 
-function funAddWatched(id) {
+function addListLibrary(id, select) {
+	const sel = select + 'Data';
 	const moviesData = loadLs('moviesData');
 	const movieData = moviesData.find(movie => movie.id === id);
-	const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0];
-	const index = watchedArr.indexOf(id);
+	const libArr = loadLs(select) ? loadLs(select) : [];
+	const libData = loadLs(sel) ? loadLs(sel) : [];
+	const index = libArr.indexOf(id);
 	if (index < 0) {
-		watchedArr.push(id);
-		saveLs('WatchData', movieData);
+		libArr.push(id);
+		libData.push(movieData);
 	} else {
-    watchedArr.splice(index, 1);
-	  console.log('WatchedArr', watchedArr);
-	  removeLs('WatchData');
-  }
-  saveLs('Watched', watchedArr);
-  console.log('loadLs', loadLs('Watched'));
-  //localStorage.clear();
+		libArr.splice(index, 1);
+		const libData = loadLs(sel);
+		libData.splice(index, 1);
+	}
+	saveLs(select, libArr);
+	saveLs(sel, libData);
 }
-
 function funAddQueue(id) {
-	const moviesData = JSON.parse(localStorage.getItem('moviesData'));
-    const movieData = moviesData.find(movie => movie.id === id);
-  const queueArr = loadLs('Queue') ? loadLs('Queue') : [0];
-  const index = queueArr.indexOf(id);
-  if (index < 0) {
-	  queueArr.push(id);
-	  saveLs('QueueData', movieData);
-  } else {
-    queueArr.splice(index, 1);
-    removeLs('QueueData');
-  }
-  saveLs('Queue', queueArr);
-  console.log('loadLs', loadLs('Queue'));
+	const moviesData = loadLs('moviesData');
+	const movieData = moviesData.find(movie => movie.id === id);
+	const libArr = loadLs('Queue') ? loadLs('Queue') : [];
+	const libData = loadLs('QueueData') ? loadLs('QueueData') : [{}];
+	const index = libArr.indexOf(id);
+	if (index < 0) {
+		libArr.push(id);
+		libData.push(movieData);
+	} else {
+		libArr.splice(index, 1);
+		const libData = loadLs('QueueData');
+		libData.splice(index, 1);
+	}
+	saveLs('Queue', libArr);
+	saveLs('QueueData', libData);
 }
 
-export { funAddWatched, funAddQueue, saveLs, loadLs, removeLs };
+export { addListLibrary, funAddQueue, saveLs, loadLs, removeLs };
 export function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
 }
