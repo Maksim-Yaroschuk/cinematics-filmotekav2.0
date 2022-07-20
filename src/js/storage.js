@@ -25,7 +25,7 @@ const removeLs = key => {
 };
 
 function funAddWatched(id) {
-	const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+	const moviesData = loadLs('moviesData');
     const movieData = moviesData.find(movie => movie.id === id);
   const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0];
   const index = watchedArr.indexOf(id);
