@@ -26,13 +26,13 @@ const removeLs = key => {
 
 function funAddWatched(id) {
 	const moviesData = loadLs('moviesData');
-    const movieData = moviesData.find(movie => movie.id === id);
-  const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0];
-  const index = watchedArr.indexOf(id);
-  if (index < 0) {
-	  watchedArr.push(id);
-	  saveLs('WatchData', movieData);
-  } else {
+	const movieData = moviesData.find(movie => movie.id === id);
+	const watchedArr = loadLs('Watched') ? loadLs('Watched') : [0];
+	const index = watchedArr.indexOf(id);
+	if (index < 0) {
+		watchedArr.push(id);
+		saveLs('WatchData', movieData);
+	} else {
     watchedArr.splice(index, 1);
 	  console.log('WatchedArr', watchedArr);
 	  removeLs('WatchData');
