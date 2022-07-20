@@ -3,13 +3,15 @@ body.dark {
     color: #fff;
 }
 
-body {
-    background-color: var(--light-body-theme);
-}
+// body {
+//     background-color: var(--light-body-theme);
+// }
+
 #toggle-theme-btn {
-    position: fixed;
-    top: 160px;
-    right: 100px;
+    // position: fixed;
+    position: absolute;
+    top: 150px;
+    right: 190px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -17,7 +19,6 @@ body {
     border-radius: 50px;
     transition: 0.3s;
     box-shadow: 0 0 5px #c0c0c0;
-    cursor: pointer;
 }
 
 #toggle-theme-btn:hover {
@@ -27,19 +28,6 @@ body {
 
 #toggle-theme-btn img {
     width: 25px;
-}
-#toggle-theme-btn {
-    position: absolute;
-    top: 160px;
-    right: 100px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50px;
-    transition: 0.3s;
-    box-shadow: 0 0 5px #c0c0c0;
-    cursor: pointer;
 }
 
 #toggle-theme-btn:hover {
