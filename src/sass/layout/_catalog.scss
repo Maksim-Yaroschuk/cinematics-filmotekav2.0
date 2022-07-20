@@ -1,6 +1,6 @@
 /* Фото картинки */
 
-.poster-list__img {
+.poster-list__img, .poster-lib__img  {
   border-radius: inherit;
   height: 402px;
   @include mq(tablet-only) {
@@ -13,7 +13,7 @@
 }
 
 /*  Список */
-.poster-list {
+.poster-list, .poster-lib {
   display: grid;
   max-width: calc(320px - 40px);
   grid-template-columns: repeat(1, minmax(280px, 1fr));
@@ -41,7 +41,7 @@
 }
 
 /* Итем Списка */
-.poster-list__item {
+.poster-list__item, .poster-lib__item  {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -57,17 +57,17 @@
   border-radius: 10px;
   cursor: pointer;
 }
-.poster-list__item:hover {
+.poster-list__item:hover, .poster-lib__item:hover  {
   transform: scale(1.03) translateZ(0);
   // box-shadow: 0 0 7px 4px #0a56c852;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Див текста */
-.poster-list__wrap {
+.poster-list__wrap, .poster-lib__wrap{
   padding: 10px 10px 0px 10px;
 }
-.poster-list__title {
+.poster-list__title, .poster-lib__title{
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -85,7 +85,7 @@
 }
 
 /* Рейтинг */
-.poster-list__rate {
+.poster-list__rate, .poster-lib__rate {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -101,7 +101,7 @@
 }
 
 /* Див жанр и год  */
-.poster-list__info {
+.poster-list__info, .poster-lib__info {
   display: flex;
   align-items: baseline;
   font-style: normal;
@@ -114,7 +114,7 @@
   }
 }
 
-.poster-list__text {
+.poster-list__text, .poster-lib__text {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -122,7 +122,7 @@
   color: #ff6b08;
 }
 
-.poster-list__age {
+.poster-list__age, .poster-lib__age {
   position: relative;
   display: inline-block;
   font-family: 'Roboto';
