@@ -23,17 +23,17 @@ const removeLs = key => {
     console.error('Get state error: ', error.message);
   }
 };
-///localStorage.clear();
-const moviesData = loadLs('moviesData');
-console.log('moviesData', moviesData);
-const WatchedData = loadLs('WatchedData');
-console.log('WatchedData', WatchedData);
-const QueueData = loadLs('QueueData');
-console.log('QueueData', QueueData);
-const Watched = loadLs('Watched');
-console.log('Watched', Watched);
-const Queue = loadLs('Queue');
-console.log('Queue', Queue);
+//localStorage.clear();
+// const moviesData = loadLs('moviesData');
+// console.log('moviesData', moviesData);
+// const WatchedData = loadLs('WatchedData');
+// console.log('WatchedData', WatchedData);
+// const QueueData = loadLs('QueueData');
+// console.log('QueueData', QueueData);
+// const Watched = loadLs('Watched');
+// console.log('Watched', Watched);
+// const Queue = loadLs('Queue');
+// console.log('Queue', Queue);
 
 function addListLibrary(id, select) {
 	const sel = select + 'Data';
@@ -47,7 +47,6 @@ function addListLibrary(id, select) {
 		libData.push(movieData);
 	} else {
 		libArr.splice(index, 1);
-		//const libData = loadLs(sel);
 		libData.splice(index, 1);
 	}
 	saveLs(select, libArr);
