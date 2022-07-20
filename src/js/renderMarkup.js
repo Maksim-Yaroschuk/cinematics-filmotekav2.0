@@ -4,8 +4,7 @@ import { list, lib } from './refs';
 import { saveLs } from './storage';
 async function getGenres() {
 	const genres = await getMovieGenres().then(({ genres }) => genres);
-	console.log('genres', {genres});
-  return { genres };
+	return { genres };
 }
 
 export function renderMarkup(data) {
