@@ -18,12 +18,13 @@ if (btnWatched!==null) {
 function libMarkup(selectLs) {
 	let sel = selectLs + 'Data';
 	//console.log('sel', sel);
-	const QueueList = loadLs(selectLs);
-	//console.log('List', QueueList);
-	if (!QueueList || !QueueList.length ) {
+	const lsList = loadLs(selectLs);
+	//console.log('lsList', lsList);
+	if (!lsList || !lsList.length ) {
 		return console.log('ваш список пуст!');
 	}
 	let dat = loadLs(sel);
+	console.log('lsdata', dat);
 	lib.innerHTML = createLibMarkup(dat);
 };
 
