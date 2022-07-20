@@ -12,5 +12,6 @@ import './js/scroll';
 import './js/lib';
 
 import './js/trailer';
-import './js/modal-log-in';
-import './js/filter';
+
+import './js/theme';
+

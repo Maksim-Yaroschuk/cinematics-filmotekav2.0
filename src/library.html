@@ -6,12 +6,17 @@
     <title>Filmoteka</title>
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
-  <body>
+
+<script type="module" src="./index.js" defer></script>
+</head>
+<body>
+
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->
     <!-- 1234 -->
+<button id="toggle-theme-btn">
+    <img src="./images/moon-line.svg" id="toggle-theme-image">
+</button>
     <include src="./partials/header-library.html"></include>
 
     <include src="./partials/libCatalog.html"></include>
