@@ -15,14 +15,14 @@ if (btnWatched !== null) {
   });
 }
 
-export function libMarkup(selectLs) {
-  let sel = selectLs + 'Data';
-  // console.log('sel', sel);
-  const QueueList = loadLs(selectLs);
-  // console.log('List', QueueList);
-  if (!QueueList || !QueueList.length) {
-    return console.log('ваш список пуст!');
-  }
+function libMarkup(selectLs) {
+	let sel = selectLs + 'Data';
+	//console.log('sel', sel);
+	const lsList = loadLs(selectLs);
+	//console.log('lsList', lsList);
+	if (!lsList || !lsList.length ) {
+		return console.log('ваш список пуст!');
+	}
   let data = { results: loadLs(sel) };
   // console.log('dat', data);
   // const markupList = createListMarkup(data);
@@ -30,4 +30,3 @@ export function libMarkup(selectLs) {
   renderLibMarkup(data);
   // console.log(data);
 }
-
