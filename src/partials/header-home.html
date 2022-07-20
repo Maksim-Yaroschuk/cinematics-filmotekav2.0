@@ -36,7 +36,7 @@
           </ul>
         </nav>
       </div>
-      
+
       <form class="header__search-form" id="search-form">
         <input
           class="header__input"
@@ -56,22 +56,8 @@
       </form>
 
       <form class="filter_form" id="filter-form">
-        <select class="filter_form__select" name="sortForm" id="sortForm">
-          <option value="start">-</option>
-          <option value="popularity.desc">Popularity (decreasing)</option>
-          <option value="popularity.asc">Popularity (increasing)</option>
-          <option value="primary_release_date.desc">
-            Release date (decreasing)
-          </option>
-          <option value="primary_release_date.asc">
-            Release date (ascending)
-          </option>
-          <option value="original_title.asc">Name (A-Z)</option>
-          <option value="original_title.desc">Name (Z-A)</option>
-        </select>
-
         <select class="filter_form__select" name="genreForm" id="genreForm">
-          <option value="start">-</option>
+          <option value="start">Genre</option>
           <option value="28">Action</option>
           <option value="12">Adventure</option>
           <option value="16">Animation</option>
@@ -94,7 +80,7 @@
         </select>
 
         <select class="filter_form__select" name="yearForm" id="yearForm">
-          <option value="start">-</option>
+          <option value="start">Year</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -113,11 +99,25 @@
           <option value="2007">2007</option>
           <option value="2006">2006</option>
           <option value="2005">2005</option>
-          <option value="2004">2004</option>
+          <!-- <option value="2004">2004</option>
           <option value="2003">2003</option>
           <option value="2002">2002</option>
           <option value="2001">2001</option>
-          <option value="2000">2000</option>
+          <option value="2000">2000</option> -->
+        </select>
+
+        <select class="filter_form__select" name="sortForm" id="sortForm">
+          <option value="start">Sorting</option>
+          <option value="popularity.desc">Popularity (decreasing)</option>
+          <option value="popularity.asc">Popularity (increasing)</option>
+          <option value="primary_release_date.desc">
+            Release date (decreasing)
+          </option>
+          <option value="primary_release_date.asc">
+            Release date (ascending)
+          </option>
+          <option value="original_title.asc">Name (A-Z)</option>
+          <option value="original_title.desc">Name (Z-A)</option>
         </select>
       </form>
     </div>
