@@ -1,6 +1,6 @@
 <header class="header">
   <section class="header__seaction_home">
-    <div class="container">
+    <div class="header__container container">
       <div class="header__div">
         <a href="./index.html" class="header__logo">
           <svg width="24" height="24">
@@ -36,6 +36,7 @@
           </ul>
         </nav>
       </div>
+      
       <form class="header__search-form" id="search-form">
         <input
           class="header__input"
@@ -54,8 +55,8 @@
         </p>
       </form>
 
-      <form id="filter-form">
-        <select name="sortForm" id="sortForm">
+      <form class="filter_form" id="filter-form">
+        <select class="filter_form__select" name="sortForm" id="sortForm">
           <option value="start">-</option>
           <option value="popularity.desc">Popularity (decreasing)</option>
           <option value="popularity.asc">Popularity (increasing)</option>
@@ -69,7 +70,7 @@
           <option value="original_title.desc">Name (Z-A)</option>
         </select>
 
-        <select name="genreForm" id="genreForm">
+        <select class="filter_form__select" name="genreForm" id="genreForm">
           <option value="start">-</option>
           <option value="28">Action</option>
           <option value="12">Adventure</option>
@@ -92,7 +93,7 @@
           <option value="37">Western</option>
         </select>
 
-        <select name="yearForm" id="yearForm">
+        <select class="filter_form__select" name="yearForm" id="yearForm">
           <option value="start">-</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
