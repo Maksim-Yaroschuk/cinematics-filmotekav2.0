@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { KEY } from './api';
+import { saveLs } from './storage';
 import { renderMarkup } from './renderMarkup';
 
 const refs = {
@@ -15,12 +16,11 @@ if (refs.filterForm) {
   refs.sortForm.addEventListener('input', eventSort);
 }
 
-
 let query = '';
 let genre = '';
 let year = '';
 let sort = '';
-}
+
 //Выводит выбранный жанр
 function eventGenre(evn) {
   if (evn) {
@@ -78,5 +78,7 @@ export const getSearchForm = async (
   let { data } = await axios.get(
     `${f.discover}/movie?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=1`
   );
+  saveLs('moviesData', data.results);
+
   return data;
 };
