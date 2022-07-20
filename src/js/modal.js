@@ -1,11 +1,13 @@
-import { list, modalBackdrop, btnOnModalTeam } from './refs';
+import { list, lib, modalBackdrop, btnOnModalTeam } from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
 
 if (list) {
   list.addEventListener('click', createModal);
 }
-
+if (lib) {
+  lib.addEventListener('click', createModal);
+}
 btnOnModalTeam.addEventListener('click', onModalTeam);
 
 function createModal(event) {
