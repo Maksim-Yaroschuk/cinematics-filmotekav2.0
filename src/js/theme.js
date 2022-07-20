@@ -1,22 +1,22 @@
 const toggleThemeBtn = document.getElementById('toggle-theme-btn');
 const toggleThemeImage = document.getElementById('toggle-theme-image');
+const titleCard = document.getElementsByClassName('.poster-list__title')
 
 function setLightTheme() {
    document.body.classList.remove('dark');
    toggleThemeImage.href.baseVal = '/icons.adfc4680.svg#icon-moon-line'
-   // toggleThemeImage.src = '../images/moon-line.svg';
    localStorage.theme = 'light';
 };
 
 function setDarkTheme() {
    document.body.classList.add('dark')
+   // document.titleCard.classList.add('dark')
    toggleThemeImage.href.baseVal = '/icons.adfc4680.svg#icon-day-sunny'
-   // toggleThemeImage.src = '../images/day-sunny.svg';
    localStorage.theme = 'dark';
 };
 
 toggleThemeBtn.addEventListener('click', () => {
-   console.log(toggleThemeImage.href)
+   // console.log(titleCard)
    
    if (document.body.classList.contains('dark')) {
       setLightTheme(); 
