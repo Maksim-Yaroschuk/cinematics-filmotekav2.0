@@ -4,7 +4,7 @@ import { lib } from './refs';
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
-
+const btnResetLs = document.querySelector('.reset-localStor');
 if (btnWatched!==null) {
 	btnWatched.addEventListener("click", () => {
 		libMarkup('Watched');
@@ -12,21 +12,18 @@ if (btnWatched!==null) {
 	btnQueue.addEventListener("click", () => {
 		libMarkup('Queue');
 	});
+	btnResetLs.addEventListener("click", () => { localStorage.clear() });
 }
 
 function libMarkup(selectLs) {
 	let sel = selectLs + 'Data';
-	console.log('sel', sel);
+	//console.log('sel', sel);
 	const QueueList = loadLs(selectLs);
-	console.log('List', QueueList);
+	//console.log('List', QueueList);
 	if (!QueueList || !QueueList.length ) {
 		return console.log('ваш список пуст!');
 	}
 	let dat = loadLs(sel);
-	console.log('dat', dat);
-	// const markupList = createListMarkup(dat);
-	// console.log('markupList', markupList);
-	
-    lib.innerHTML = createLibMarkup(dat);
+	lib.innerHTML = createLibMarkup(dat);
 };
 
