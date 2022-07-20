@@ -3,14 +3,19 @@ import { KEY } from './api';
 import { renderMarkup } from './renderMarkup';
 
 const refs = {
+  filterForm: document.querySelector('#filter-form'),
   sortForm: document.querySelector('#sortForm'),
   genreForm: document.querySelector('#genreForm'),
   yearForm: document.querySelector('#yearForm'),
 };
-if(refs.sortForm){
-refs.genreForm.addEventListener('input', eventGenre);
-refs.yearForm.addEventListener('input', eventYear);
-refs.sortForm.addEventListener('input', eventSort);
+
+if (refs.filterForm) {
+  refs.genreForm.addEventListener('input', eventGenre);
+  refs.yearForm.addEventListener('input', eventYear);
+  refs.sortForm.addEventListener('input', eventSort);
+}
+
+
 let query = '';
 let genre = '';
 let year = '';
