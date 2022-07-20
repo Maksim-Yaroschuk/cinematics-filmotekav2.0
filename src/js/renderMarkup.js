@@ -2,7 +2,6 @@ import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
 
 import { list, lib } from './refs';
 import { saveLs } from './storage';
-
 async function getGenres() {
 	const genres = await getMovieGenres().then(({ genres }) => genres);
 	console.log('genres', {genres});
@@ -36,7 +35,7 @@ export function renderMarkup(data) {
 }
 
 export function createListMarkup(data) {
-	console.log('dataOUT1', data);
+	
 	if(data){//console.log('dataCreate', data);
 	return data
     .map(
@@ -67,34 +66,36 @@ export function createListMarkup(data) {
     )
     .join('');}
 }
-// export function createLibMarkup(data) {
-// 	if(data){console.log('dataCreate1', data);
-// 	return data
-//     .map(
-//       ({
-//         original_title,
-//         poster_path,
-//         overview,
-//         vote_average,
-//         id,
-//         genre_names,
-//         release_date,
-//       }) => `<li class='poster-list__item' key='${id}'>
-//     <img
-//       class='poster-list__img'
-//       src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
-//       alt='${original_title}'
-//       loading='lazy'
-//     />
-//     <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
-//     <div class='poster-list__wrap'>
-//       <h3 class='poster-list__title'>${original_title}</h3>
-//       <div class='poster-list__info'>
-//         <p class='poster-list__text'>${genre_names}</p>
-//         <p class='poster-list__age'>| ${release_date}</p>
-//       </div>
-//     </div>
-//   </li>`
-//     )
-//     .join('');}
-// }
+
+export function createLibMarkup(data) {
+	if(data){
+	return data
+    .map(
+      ({
+        original_title,
+        poster_path,
+        overview,
+        vote_average,
+        id,
+        //genre_names,
+        release_date,
+      }) => `<li class='poster-lib__item' key='${id}'>
+    <img
+      class='poster-lib__img'
+      src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
+      alt='${original_title}'
+      loading='lazy'
+    />
+    <span class='poster-lib__rate'>${vote_average.toFixed(1)}</span>
+    <div class='poster-lib__wrap'>
+      <h3 class='poster-lib__title'>${original_title}</h3>
+      <div class='poster-lib__info'>
+        
+        <p class='poster-lib__age'>| ${release_date}</p>
+      </div>
+    </div>
+  </li>`
+    )
+    .join('');}
+}
+////<p class='poster-lib__text'>${genre_names}</p>
