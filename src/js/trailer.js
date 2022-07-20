@@ -16,8 +16,8 @@ export const movieTrailer = async keyId => {
   await getMoviesTrailer(keyId).then(
     r => (movie = `https://www.youtube.com/embed/${r[0].key}`)
   );
-  // return movie;
-  return console.log('movie:', movie);
+  return movie;
+  // return console.log('movie:', movie);
 };
 
 // функция на экспорт. Принимает ключ(id фильма как 'key' в 'li')
