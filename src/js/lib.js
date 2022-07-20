@@ -5,6 +5,7 @@ import { lib } from './refs';
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
 
+
 if (btnWatched !== null) {
   btnWatched.addEventListener('click', () => {
     libMarkup('Watched');
@@ -29,3 +30,4 @@ export function libMarkup(selectLs) {
   renderLibMarkup(data);
   // console.log(data);
 }
+

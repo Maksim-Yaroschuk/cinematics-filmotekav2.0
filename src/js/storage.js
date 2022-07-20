@@ -23,6 +23,7 @@ const removeLs = key => {
     console.error('Get state error: ', error.message);
   }
 };
+
 ///localStorage.clear();
 const moviesData = loadLs('moviesData');
 // console.log('moviesData', moviesData);
@@ -52,6 +53,7 @@ function addListLibrary(id, select) {
   }
   saveLs(select, libArr);
   saveLs(sel, libData);
+
 }
 
 // function funAddQueue(id) {

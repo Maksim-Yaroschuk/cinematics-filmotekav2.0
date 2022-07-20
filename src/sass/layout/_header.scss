@@ -38,6 +38,9 @@
     padding-bottom: 92px;
     text-align: center;
 }
+.header__container {
+    position: relative;
+}
 .header__div {
     display: flex;
     justify-content: center;
@@ -167,7 +170,7 @@
     position: absolute;
     bottom: -55px;
     @include mq(desktop) {
-        bottom: -35px;
+        bottom: -42px;
     }
     font-weight: 400;
     font-size: 14px;
@@ -232,4 +235,30 @@
     font-size: 12px;
     line-height: calc(16 / 12);
     color: var(--just-white);
+}
+.filter_form {
+    position: absolute;
+    right: 0%;
+    bottom: -65%;
+    @include mq(tablet) {
+        right: 28.5%;
+        bottom: -50%;
+    }
+    @include mq(desktop) {
+        right: 37.5%;
+        bottom: -50%;
+    }
+}
+.filter_form__select {
+    @include mq(mobile-only) {
+        &:last-child {
+            margin-top: 10px;
+        }
+    }
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 4px;
+    outline: none;
+    color: var(--secondary-text-color);
+    background-color: var(--just-white);
+
 }

@@ -8,16 +8,19 @@ const refs = {
   genreForm: document.querySelector('#genreForm'),
   yearForm: document.querySelector('#yearForm'),
 };
+
 if (refs.filterForm) {
   refs.genreForm.addEventListener('input', eventGenre);
   refs.yearForm.addEventListener('input', eventYear);
   refs.sortForm.addEventListener('input', eventSort);
 }
 
+
 let query = '';
 let genre = '';
 let year = '';
 let sort = '';
+}
 //Выводит выбранный жанр
 function eventGenre(evn) {
   if (evn) {
