@@ -1,12 +1,9 @@
 import { loadLs } from './storage';
-import { renderMarkupId, createListMarkup, createLibMarkup } from './renderMarkup';
+import { createListMarkup, createLibMarkup } from './renderMarkup';
 import { lib } from './refs';
-import { getMovieGenres} from './api';
 
 const btnWatched = document.querySelector('.btn--watched');
 const btnQueue = document.querySelector('.btn--queue');
-
-
 
 if (btnWatched!==null) {
 	btnWatched.addEventListener("click", () => {
@@ -23,13 +20,13 @@ function libMarkup(selectLs) {
 	const QueueList = loadLs(selectLs);
 	console.log('List', QueueList);
 	if (!QueueList || !QueueList.length ) {
-		return console.log('ваш список Queue пуст!');
+		return console.log('ваш список пуст!');
 	}
 	let dat = loadLs(sel);
 	console.log('dat', dat);
-	const markupList = createListMarkup(dat);
-	console.log('markupList', markupList);
+	// const markupList = createListMarkup(dat);
+	// console.log('markupList', markupList);
 	
-    lib.innerHTML = createListMarkup(dat);
+    lib.innerHTML = createLibMarkup(dat);
 };
 
