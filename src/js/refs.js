@@ -9,6 +9,8 @@ const refs = {
   modalBackdrop: document.querySelector('.modal-backdrop'),
   btnOnModalTeam: document.querySelector('.team-link'),
   filterForm: document.querySelector('.filter_form'),
+  libCatalog: document.querySelector('.poster-lib__item'),
+  lib: document.querySelector('.poster-lib'),
 };
 
 export const {
@@ -22,4 +24,6 @@ export const {
   modalBackdrop,
   btnOnModalTeam,
   filterForm,
+  libCatalog,
+  lib,
 } = refs;
