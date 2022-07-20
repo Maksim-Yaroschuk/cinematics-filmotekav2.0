@@ -197,3 +197,12 @@
     transform: scale(1.2) rotate(90deg);
   }
 }
+.reset-localStor{
+	color:#fffff0;
+	background-color: #ffffff;
+	border: #fffff0;
+	padding: 10px;
+	&:hover{
+		cursor: pointer;
+	}
+}
