@@ -122,15 +122,12 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  color: var(--acent-modal);
   @include mq(desktop) {
     font-size: 20px;
     line-height: 1.2;
   }
 }
-
-
-
-
 
 
 .poster-list__text, .poster-lib__text {
@@ -265,4 +262,5 @@
   &:hover {
     cursor: pointer;
   }
+}
 }
