@@ -12,15 +12,16 @@ if (btnWatched !== null) {
 	btnQueue.addEventListener('click', () => {
 	  libMarkup('Queue');
 	});
-	IndexWatched = loadLs('Watched');
-	IndexQueue = loadLs('Queue');
-	if ((IndexQueue === 0 || IndexWatched ===0)&& IndexQueue > IndexWatched){
-	document.addEventListener("DOMContentLoaded", () => {
-	  libMarkup('Queue');
+
+	indexWatched = loadLs('Watched');
+	indexQueue = loadLs('Queue');
+	if ((indexQueue === 0 || indexWatched ===0)&& indexQueue > indexWatched){
+		document.addEventListener("DOMContentLoaded", () => {
+		libMarkup('Queue');
 	});
 	} else {
 		document.addEventListener("DOMContentLoaded", () => {
-	  libMarkup('Watched');
+		libMarkup('Watched');
 	});
 	}
 }
