@@ -1,7 +1,7 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
 import { list, form, warning, divError, filterForm} from './refs';
-import { moviesDataUpdate } from './storage'
+import { loadLs, moviesDataUpdate, saveLs } from './storage'
 
 if(form){
 form.addEventListener('submit', search);}
@@ -21,7 +21,11 @@ let page = 1
 let amountOfPages = 1000
 let query = ''
 
+saveLs('page-pg', page)
 
+// let page = loadLs('page-pg')
+
+// console.log(loadLs('page-pg'))
 
 if(amountOfPages==1) {
 	paginationBar.innerHTML= `<li class="page active">1</li>`
