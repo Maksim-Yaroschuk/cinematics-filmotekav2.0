@@ -15,7 +15,9 @@ if (btnWatched !== null) {
 
 	const indexWatched = loadLs('Watched');
 	const indexQueue = loadLs('Queue');
-	if ((indexQueue === 0 || indexWatched ===0)&& indexQueue > indexWatched){
+	console.log('indexWatched ', indexWatched );
+	console.log('indexQueue', indexQueue);
+	if ((indexQueue || indexWatched)&& indexQueue > indexWatched){
 		document.addEventListener("DOMContentLoaded", () => {
 		libMarkup('Queue');
 	});
@@ -47,7 +49,6 @@ function createEmptyLibMarkup(data) {
 function libMarkup(selectLs) {
 	lib.classList.remove('list-empty');
 	lib.innerHTML = '';
-	
 	let sel = selectLs + 'Data';
 	//console.log('sel', sel);
 	const lsList = loadLs(selectLs);
