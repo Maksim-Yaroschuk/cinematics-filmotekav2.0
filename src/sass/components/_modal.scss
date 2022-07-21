@@ -96,14 +96,13 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
- 
+
   @include mq(desktop) {
     font-weight: 500;
     font-size: 30px;
     line-height: 1.07;
   }
 }
-
 
 .modal__info-card {
   margin-bottom: 20px;
@@ -140,7 +139,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color:var(--modal-darck-text);
+  color: var(--modal-darck-text);
 }
 
 .info-card__item-paramter {
@@ -322,4 +321,14 @@
     margin-right: 14px;
     width: 136px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+::-webkit-scrollbar-thumb {
+  background: grey;
 }
