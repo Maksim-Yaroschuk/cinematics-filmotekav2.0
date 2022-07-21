@@ -1,43 +1,57 @@
 <header class="header">
-    <section class="header__seaction_library">
-        <div class="container">
-            <div class="header__div">
-                <a href="./index.html" class="header__logo">
-                    <svg width="24" height="24">
-                        <use href="./images/sprite/symbol-defs.svg#icon-logo-filmoteka"></use>
-                    </svg>
-                    <p class="header__name">Filmoteka</p>
-                </a>
-                <nav class="header__nav">
-                    <ul class="header__list">
-                        <li class="header__item">
-                            <a class="header__link" href="./index.html" id="header-home">HOME</a>
-                        </li>
-                        <li class="header__item">
-                            <a class="header__link current-link" href="./library.html" id="header-myLibrary">MY LIBRARY</a>
-                        </li>
-                        <li class="header__item">
-                            <a class="header__link" href="./library.html" id="header-myLibrary">LOG OUT</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <ul class="header__list-button">
-                <li class="header__item-button">
-                    <button type="button" class="button button--current btn--watched"><span class="button-text">WATCHED</span></button>
-                </li>
-                <li class="header__item-button">
-                    <button type="button" class="button btn--queue"><span class="button-text ">QUEUE</span></button>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <button id="toggle-theme-btn">
-                <svg width="25px" height="25px">
-                    <use id="toggle-theme-image" href="./images/icons.svg#icon-day-sunny"></use>
-                </svg>
-            </button>
-        </div>
-    </section>
+  <section class="header__seaction_library">
+    <h1 class="visually-hidden">library</h1>
+    <h2 class="visually-hidden">header library</h2>
+    <div class="container">
+      <div class="header__div">
+        <a href="./index.html" class="header__logo">
+          <svg class="header__icon_logo" width="24" height="24">
+            <use
+              href="./images/sprite/symbol-defs.svg#icon-logo-filmoteka"
+            ></use>
+          </svg>
+          <p class="header__name">Filmoteka</p>
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="./index.html" id="header-home"
+                >HOME</a
+              >
+            </li>
+            <li class="header__item">
+              <a
+                class="header__link current-link"
+                href="./library.html"
+                id="header-myLibrary"
+                >MY LIBRARY</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <ul class="header__list-button">
+        <li class="header__item-button">
+          <button type="button" class="button button--current btn--watched">
+            <span class="button-text">WATCHED</span>
+          </button>
+        </li>
+        <li class="header__item-button">
+          <button type="button" class="button btn--queue">
+            <span class="button-text">QUEUE</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button id="toggle-theme-btn">
+        <svg width="25px" height="25px">
+          <use
+            id="toggle-theme-image"
+            href="./images/icons.svg#icon-day-sunny"
+          ></use>
+        </svg>
+      </button>
+    </div>
+  </section>
 </header>
-

@@ -69,6 +69,9 @@
     }
   }
 }
+.header__icon_logo {
+  animation: animate360 3000ms cubic-bezier(.25, .1, .25, 1) infinite;
+}
 .header__name {
   display: none;
   @include mq(tablet) {
@@ -254,6 +257,7 @@
   @include mq(mobile-only) {
     &:last-child {
       margin-top: 10px;
+      margin-right: 10px;
     }
   }
   border: 0px;

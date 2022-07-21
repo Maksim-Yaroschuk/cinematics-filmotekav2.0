@@ -1,10 +1,11 @@
 <header class="header">
   <section class="header__seaction_home">
+    <h1 class="visually-hidden">home</h1>
     <h2 class="visually-hidden">header home</h2>
     <div class="header__container container">
       <div class="header__div">
         <a href="./index.html" class="header__logo">
-          <svg width="24" height="24">
+          <svg class="header__icon_logo" width="24" height="24">
             <use
               href="./images/sprite/symbol-defs.svg#icon-logo-filmoteka"
             ></use>
@@ -50,10 +51,11 @@
           <svg width="12" height="12">
             <use href="./images/sprite/symbol-defs.svg#icon-search"></use>
           </svg>
+          <span class="visually-hidden">search</span>
         </button>
-        <p class="header-message visually-hidden">
+        <!-- <p class="header-message visually-hidden">
           Search result not successful. Enter the correct movie name
-        </p>
+        </p> -->
       </form>
 
       <form class="filter_form" id="filter-form">
@@ -124,10 +126,13 @@
     </div>
     <div>
       <button id="toggle-theme-btn">
-        <svg width="25px" height="25px">     
-          <use id="toggle-theme-image" href="./images/icons.svg#icon-day-sunny"></use>
-
+        <svg width="25px" height="25px">
+          <use
+            id="toggle-theme-image"
+            href="./images/icons.svg#icon-day-sunny"
+          ></use>
         </svg>
+        <span class="visually-hidden">theme</span>
       </button>
     </div>
   </section>

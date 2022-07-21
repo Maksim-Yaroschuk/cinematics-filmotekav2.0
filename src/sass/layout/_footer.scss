@@ -2,12 +2,16 @@
   text-align: center;
   background-color: #f7f7f7;
   width: 100%;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px;
+  
 
   color: #545454;
   font-size: 16px;
   line-height: 1.19;
+}
+
+.footer__icon_logo {
+  animation: heartbeat 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
 }
 
 .footer a {
