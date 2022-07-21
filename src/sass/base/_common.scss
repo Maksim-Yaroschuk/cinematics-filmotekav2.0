@@ -34,6 +34,7 @@ body {
   color: var(--primary-text-color);
   background-color: var(--light-body-theme);
 }
+
 img {
   display: block;
   max-width: 100%;
@@ -42,4 +43,15 @@ img {
 
 li {
   list-style: none;
+}
+
+//Скрол
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+::-webkit-scrollbar-thumb {
+  background: grey;
 }
