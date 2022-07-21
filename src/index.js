@@ -10,7 +10,7 @@ import './js/pagination';
 import './js/scroll';
 import './js/filter';
 import './js/lib';
-
+import './js/modal-log-in';
 import './js/trailer';
 
 import './js/theme';

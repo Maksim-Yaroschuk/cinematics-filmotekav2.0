@@ -254,6 +254,7 @@
   @include mq(mobile-only) {
     &:last-child {
       margin-top: 10px;
+      margin-right: 10px;
     }
   }
   border: 0px;
