@@ -259,3 +259,39 @@
 		cursor: pointer;
 	}
 }
+.list-empty{
+	position: relative;
+	width: auto;
+	height: 60vh;
+	background-size: cover;
+	background-position: center;
+	background-image: url('../images/maxresdefault.jpg');
+	&__shild{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%); 
+		background-color: #000000;
+		color: #909090;
+		padding: 3vw;
+		font-size: 1vw;
+		text-align: center;
+		max-width: 40em;
+	}
+	&__title{
+		margin: 15px;
+		font-size: 2vw;
+		color: #ffffff;
+		
+  	
+	}
+	
+}
+
+.blink{
+	animation: blink 1s linear infinite;
+}
+@keyframes blink {
+   from { opacity: 1; /* Непрозрачный текст */ }
+   to { opacity: 0.5; /* Прозрачный текст */ }
+}
