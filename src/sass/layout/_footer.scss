@@ -10,6 +10,10 @@
   line-height: 1.19;
 }
 
+.footer__icon_logo {
+  animation: heartbeat 1250ms cubic-bezier(.25, .1, .25, 1) infinite;
+}
+
 .footer a {
   text-decoration: underline;
   color: #545454;

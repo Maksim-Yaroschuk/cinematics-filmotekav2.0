@@ -245,20 +245,6 @@
     color: var(--just-white);
   }
 }
-
-@keyframes animate90 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: scale(1.2) rotate(60deg);
-  }
-
-  100% {
-    transform: scale(1.2) rotate(90deg);
-  }
-}
 .reset-localStor {
   color: #fffff0;
   background-color: #ffffff;
