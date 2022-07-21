@@ -20,6 +20,7 @@
   background-color: var(--backdrop-mobail-modal);
   padding-top: 20px;
   padding-bottom: 38px;
+  padding: 20px 10px 38px;
   overflow: auto;
   width: 100%;
   height: 100%;
@@ -28,14 +29,15 @@
 
 .modal {
   background-color: var(--background-modal);
-  width: 280px;
+  // min-width: 280px;
+  max-width: 380px;
   padding: 48px 20px 40px;
   margin-bottom: 50px;
   position: relative;
   margin: auto;
 
   @include mq(tablet) {
-    width: 704px;
+    max-width: 704px;
     padding: 40px 72px 40px 36px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,7 +45,7 @@
   }
 
   @include mq(desktop) {
-    width: 806px;
+    max-width: 806px;
     padding: 40px 12px;
     display: grid;
     grid-template-columns: 375px 1fr;
@@ -68,7 +70,8 @@
 }
 
 .modal__movi-poster {
-  width: 240px;
+  max-width: 360px;
+
   @include mq(tablet) {
     width: 264px;
   }
@@ -80,8 +83,11 @@
 }
 
 .modal > .modal__movi-poster > img {
+  margin-left: auto;
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: fill;
   border-radius: 5px;
   margin-bottom: 20px;
   @include mq(desktop) {
@@ -96,6 +102,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
+  text-align: center;
   @include mq(desktop) {
     font-weight: 500;
     font-size: 30px;

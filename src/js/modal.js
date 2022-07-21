@@ -1,8 +1,9 @@
 import { list, lib, modalBackdrop, btnOnModalTeam } from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
-import team from './team-info';
+import { libMarkup } from './lib';
 
+import team from './team-info';
 
 if (list) {
   list.addEventListener('click', createModal);
@@ -23,38 +24,47 @@ function createModal(event) {
 
     renderModalContent(movieData);
     openModal();
-    onBntAddLibray(selectedMovieId);
+
+    // записываем айди в модалку
+    modalBackdrop.firstElementChild.dataset.id = movieData.id;
+    // подключаем кнопки
+    onBntAddLibray();
   }
 }
 
 // Кнопки
-function onBntAddLibray(selectedMovieId) {
+function onBntAddLibray() {
   // ссылки на элемент кнопки
   const btnAddWatched = document.querySelector('.modal__add-watched');
   const btnAddQueue = document.querySelector('.modal__add-queue');
+  const idMovie = Number(modalBackdrop.firstElementChild.dataset.id);
 
   // фц проверяют есть ли в локале фильмы и ставять соответсвенный класс
   if (localStorage.getItem('Watched') !== null) {
-    setStileBntWatched(selectedMovieId, btnAddWatched);
+    setStileBntWatched(idMovie, btnAddWatched);
   }
 
   if (localStorage.getItem('Queue') !== null) {
-    setStileBntQueue(selectedMovieId, btnAddQueue);
+    setStileBntQueue(idMovie, btnAddQueue);
   }
 
   // слушатели на клик
-  btnAddWatched.addEventListener('click', () => {
-    // добавить в локал
-    addListLibrary(selectedMovieId, 'Watched');
+  btnAddWatched.addEventListener('click', e => {
+    // console.log(idMovie, 'A');
+    // добавить в локал или убрать с локала
+
+    addListLibrary(idMovie, 'Watched');
+    updataLibery(e, idMovie, 'Watched');
+
     // еще раз проверить наличие в локал и изменить кнопку
-    setStileBntWatched(selectedMovieId, btnAddWatched);
+    setStileBntWatched(idMovie, btnAddWatched);
   });
 
-  btnAddQueue.addEventListener('click', () => {
-    // добавить в локал
-    addListLibrary(selectedMovieId, 'Queue');
+  btnAddQueue.addEventListener('click', e => {
+    // добавить в локал или убрать с локала
+    addListLibrary(idMovie, 'Queue');
     // еще раз проверить наличие в локал и изменить кнопку
-    setStileBntQueue(selectedMovieId, btnAddQueue);
+    setStileBntQueue(idMovie, btnAddQueue);
   });
 }
 
@@ -64,6 +74,7 @@ function setStileBntWatched(selectedMovieId, btnAddWatched) {
   } else {
     const watched = localStorage.getItem('Watched').includes(selectedMovieId);
     btnAddWatched.dataset.watched = watched;
+
     if (watched) {
       btnAddWatched.textContent = 'remove from watched';
     } else {
@@ -84,6 +95,18 @@ function setStileBntQueue(selectedMovieId, btnAddQueue) {
       btnAddQueue.textContent = 'add to queue';
     }
   }
+}
+
+function updataLibery(e, id, list) {
+  const dataWebLocation = e.target
+    .closest('body')
+    .getAttribute('data-weblocation');
+
+  if (dataWebLocation === 'library') {
+    lib.innerHTML = '';
+    libMarkup('Watched');
+  }
+  return;
 }
 
 function openModal() {
@@ -122,6 +145,7 @@ function offModal() {
   document.body.style.overflow = 'auto';
   document.removeEventListener('keydown', offModalForEscape);
   modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
+  modalBackdrop.firstElementChild.dataset.id = '';
 }
 
 // модалка команды
@@ -141,7 +165,7 @@ const modalCloseBtn = `
         />
       </svg>
     </button>
-`
+`;
 
 const modalTeamList = document.createElement('ul');
 
@@ -157,15 +181,18 @@ function onModalTeam(e) {
 // }
 
 function renderTeamModal() {
-	modalBackdrop.firstElementChild.innerHTML=''
-	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
-	modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn)
-	team.map((member) => {
-		const markup = `<li>
+  modalBackdrop.firstElementChild.innerHTML = '';
+  modalBackdrop.firstElementChild.insertAdjacentElement(
+    'beforeend',
+    modalTeamList
+  );
+  modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn);
+  team.map(member => {
+    const markup = `<li>
 		<img src="${member.img}">
 		<p>${member.name}</p>
 		<a href="${member.git}"><img src="./git.img"></a>
-		</li>`
-		modalTeamList.insertAdjacentHTML('beforeend', markup)
-	})
+		</li>`;
+    modalTeamList.insertAdjacentHTML('beforeend', markup);
+  });
 }

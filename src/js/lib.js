@@ -15,7 +15,7 @@ if (btnWatched !== null) {
   });
 }
 
-function libMarkup(selectLs) {
+export function libMarkup(selectLs) {
 	let sel = selectLs + 'Data';
 	//console.log('sel', sel);
 	const lsList = loadLs(selectLs);
@@ -28,5 +28,4 @@ function libMarkup(selectLs) {
   // const markupList = createListMarkup(data);
   // console.log('markupList', markupList);
   renderLibMarkup(data);
-  // console.log(data);
 }
