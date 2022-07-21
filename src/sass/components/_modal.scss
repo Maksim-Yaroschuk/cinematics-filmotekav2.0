@@ -38,7 +38,7 @@
     width: 704px;
     padding: 40px 72px 40px 36px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 264px 1fr;
     grid-column-gap: 68px;
   }
 
@@ -68,6 +68,7 @@
 }
 
 .modal__movi-poster {
+  position: relative;
   width: 240px;
   @include mq(tablet) {
     width: 264px;
@@ -332,3 +333,60 @@
 ::-webkit-scrollbar-thumb {
   background: grey;
 }
+
+//Стили кнопки и плеера трейлера
+#ytplayer {
+  width: 100%;
+  height: 360px;
+  margin-top: 20px;
+  border-radius: 4px;
+
+  @include mq(tablet) {
+    width: 632px;
+    height: 425px;
+
+  }
+  @include mq(desktop) {
+    width: 782px;
+    height: 425px;
+    margin-top: 16px;
+  }
+}
+
+.trailerBtn {
+  cursor: pointer;
+  width: 300px;
+  height: 100px;
+  background-color: transparent;
+  background-image: url('../images/trailerBtn.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  transform-style: preserve-3d;
+  transition: transform 0.15s, box-shadow 0.15s;
+  &:hover,
+  &:focus {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 5px #642a00;
+    transform: translate(0, 0.25em);
+    &::before {
+      transform: translate3d(0, 0.5em, -1em);
+  }
+
+  &:active {
+    transform: translate3d(0, 1em, -1em);
+    &::before {
+      transform: translate3d(0, 0, -1em);
+    }
+  }
+  }
+}
+.trailerBtnWrap {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+//--------------------------------------------
