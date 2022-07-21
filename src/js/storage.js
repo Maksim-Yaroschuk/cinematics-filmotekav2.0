@@ -56,24 +56,6 @@ function addListLibrary(id, select) {
 
 }
 
-// function funAddQueue(id) {
-// 	const moviesData = loadLs('moviesData');
-// 	const movieData = moviesData.find(movie => movie.id === id);
-// 	const libArr = loadLs('Queue') ? loadLs('Queue') : [];
-// 	const libData = loadLs('QueueData') ? loadLs('QueueData') : [{}];
-// 	const index = libArr.indexOf(id);
-// 	if (index < 0) {
-// 		libArr.push(id);
-// 		libData.push(movieData);
-// 	} else {
-// 		libArr.splice(index, 1);
-// 		const libData = loadLs('QueueData');
-// 		libData.splice(index, 1);
-// 	}
-// 	saveLs('Queue', libArr);
-// 	saveLs('QueueData', libData);
-// }
-
 export { addListLibrary, funAddQueue, saveLs, loadLs, removeLs };
 export function moviesDataUpdate(data) {
   localStorage.setItem('moviesData', JSON.stringify(data.results));
