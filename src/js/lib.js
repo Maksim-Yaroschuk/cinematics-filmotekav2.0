@@ -27,7 +27,7 @@ if (btnWatched !== null) {
 }
 function funEmptyLib(libName) {
 	lib.classList.remove('list-empty');
-	libIndex = loadLs(libName);//'Queue'//'Watched'
+	const libIndex = loadLs(libName);//'Queue'//'Watched'
 	console.log('libIndex',libIndex);
 	if (libIndex) {
 		lib.classList.add('list-empty');
