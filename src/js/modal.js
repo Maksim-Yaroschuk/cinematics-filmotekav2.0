@@ -2,7 +2,7 @@ import { list, lib, modalBackdrop, btnOnModalTeam } from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
 import team from './team-info';
-
+import { trailerBtnListener } from './trailer';
 
 if (list) {
   list.addEventListener('click', createModal);
@@ -20,10 +20,11 @@ function createModal(event) {
     const selectedMovieId = Number(selectedMovie.getAttribute('key'));
     const moviesData = JSON.parse(localStorage.getItem('moviesData'));
     const movieData = moviesData.find(movie => movie.id === selectedMovieId);
-
     renderModalContent(movieData);
     openModal();
     onBntAddLibray(selectedMovieId);
+    trailerBtnListener(selectedMovieId)
+    
   }
 }
 
