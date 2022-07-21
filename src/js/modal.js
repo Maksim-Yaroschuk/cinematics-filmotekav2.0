@@ -1,6 +1,8 @@
 import { list, modalBackdrop, btnOnModalTeam } from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
+import team from './team-info';
+
 
 if (list) {
   list.addEventListener('click', createModal);
@@ -122,13 +124,47 @@ function offModal() {
 
 // модалка команды
 
+const modalCloseBtn = `
+<button class="modal__btn-closs btn__closs-modal">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+        />
+      </svg>
+    </button>
+`
+
+const modalTeamList = document.createElement('ul');
+modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
+modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn)
+
 function onModalTeam(e) {
   e.preventDefault();
 
-  createTeamModal();
+  renderTeamModal();
   openModal();
 }
 
-function createTeamModal() {
-  modalBackdrop.firstElementChild.innerHTML = modalTeamLayout;
+// function createTeamModal() {
+//   modalBackdrop.firstElementChild.innerHTML = modalTeamLayout;
+// }
+
+function renderTeamModal() {
+	modalBackdrop.firstElementChild.innerHTML=''
+	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
+	team.map((member) => {
+		const markup = `<li>
+		<img src="${member.img}">
+		<p>${member.name}</p>
+		<a href="${member.git}"><img src="./git.img"></a>
+		</li>`
+		modalTeamList.insertAdjacentHTML('beforeend', markup)
+	})
 }
