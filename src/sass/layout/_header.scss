@@ -234,11 +234,11 @@
   &:hover {
     border: 1px solid var(--secondary-text-color);
   }
-  &:focus {
-    background-color: var(--secondary-text-color);
-    border: 1px solid var(--secondary-text-color);
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  }
+//   &:focus {
+//     background-color: var(--secondary-text-color);
+//     border: 1px solid var(--secondary-text-color);
+//     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+//   }
 }
 .button-text {
   font-weight: 500;
@@ -279,4 +279,8 @@
 }
 .filter_form__select:not(:last-child) {
   margin-right: 10px;
+}
+
+.btn-orange{
+	 background-color: var(--secondary-text-color);
 }

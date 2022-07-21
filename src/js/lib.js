@@ -17,7 +17,7 @@ if (btnWatched !== null) {
 	const indexQueue = loadLs('Queue');
 	console.log('indexWatched ', indexWatched );
 	console.log('indexQueue', indexQueue);
-	if ((indexQueue || indexWatched)&& indexQueue > indexWatched){
+	if ((indexQueue || indexWatched) && indexQueue > indexWatched) {
 		document.addEventListener("DOMContentLoaded", () => {
 		libMarkup('Queue');
 	});
@@ -27,9 +27,16 @@ if (btnWatched !== null) {
 	});
 	}
 }
+
 function funEmptyLib(libName) {
-	lib.classList.remove('list-empty');
 	const libIndex = loadLs(libName);//'Queue'//'Watched'
+	if (libName === 'Queue') {
+		btnQueue.classList.add('btn-orange');
+		btnWatched.classList.remove('btn-orange');
+	} else {
+		btnQueue.classList.remove('btn-orange');
+		btnWatched.classList.add('btn-orange');
+	}
 	console.log('libIndex',libIndex);
 	if (libIndex) {
 		lib.classList.add('list-empty');
@@ -47,6 +54,13 @@ function createEmptyLibMarkup(data) {
 }
 
 function libMarkup(selectLs) {
+	if (selectLs === 'Queue') {
+		btnQueue.classList.add('btn-orange');
+		btnWatched.classList.remove('btn-orange');
+	} else {
+		btnQueue.classList.remove('btn-orange');
+		btnWatched.classList.add('btn-orange');
+	}
 	lib.classList.remove('list-empty');
 	lib.innerHTML = '';
 	let sel = selectLs + 'Data';
