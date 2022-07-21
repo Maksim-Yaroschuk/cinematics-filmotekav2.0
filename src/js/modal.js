@@ -158,6 +158,7 @@ function onModalTeam(e) {
 
 function renderTeamModal() {
 	modalBackdrop.firstElementChild.innerHTML=''
+	modalTeamList.innerHTML=''
 	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
 	modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn)
 	team.map((member) => {
