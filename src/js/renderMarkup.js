@@ -1,4 +1,4 @@
-import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
+import { getMovieGenres, IMG_BASE_URL, IMG_W400 } from './api';
 
 import { list, lib } from './refs';
 import { saveLs } from './storage';
@@ -53,8 +53,9 @@ export function createListMarkup(data) {
         }) => `<li class='poster-list__item' key='${id}'>
     <img
       class='poster-list__img'
-      src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
+      src='${IMG_BASE_URL}${IMG_W400}${poster_path}'
       alt='${original_title}'
+      width
       loading='lazy'
     />
     <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
