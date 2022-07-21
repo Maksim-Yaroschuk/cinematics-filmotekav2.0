@@ -56,6 +56,14 @@ body {
     width: 25px;
 }
 
+  // .poster-list__title {
+//     color: #000000;
+// }
+
+// .poster-list__title.dark {
+//     color: #dbdbdb;
+// } 
+
 
 .dark .poster-list__title {
     color: bisque;
@@ -68,4 +76,6 @@ body {
 .dark .poster-list__age {
     color: var(--primary-current-color);
   }
-  
+
+
+
