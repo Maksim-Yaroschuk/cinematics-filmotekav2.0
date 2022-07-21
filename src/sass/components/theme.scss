@@ -1,6 +1,7 @@
 body.dark {
     background-color: var(--dark-body-theme);
-    color: #fff;
+
+    
 }
 
 body {
@@ -8,8 +9,8 @@ body {
 }
 #toggle-theme-btn {
     position: fixed;
-    top: 160px;
-    right: 100px;
+    top: 190px;
+    right: 15px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -30,8 +31,8 @@ body {
 }
 #toggle-theme-btn {
     position: absolute;
-    top: 160px;
-    right: 100px;
+    top: 210px;
+    right: 10px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -40,6 +41,10 @@ body {
     transition: 0.3s;
     box-shadow: 0 0 5px #c0c0c0;
     cursor: pointer;
+    @include mq(desktop) {
+        top: 200px;
+        right: 32px;
+    }
 }
 
 #toggle-theme-btn:hover {
@@ -50,3 +55,17 @@ body {
 #toggle-theme-btn img {
     width: 25px;
 }
+
+
+.dark .poster-list__title {
+    color: bisque;
+  }
+  
+.dark .poster-list__text{
+    color: var(--primary-current-color);
+  }
+  
+.dark .poster-list__age {
+    color: var(--primary-current-color);
+  }
+  

@@ -19,7 +19,8 @@
   grid-template-columns: repeat(1, minmax(280px, 1fr));
   // grid-column-gap: 16px;
   grid-row-gap: 20px;
-  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   list-style: none;
@@ -29,14 +30,17 @@
     grid-template-columns: repeat(2, minmax(336px, 1fr));
     grid-column-gap: 32px;
     grid-row-gap: 32px;
-    margin-top: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   @include mq(desktop) {
     max-width: calc(1280px - 64px);
     grid-template-columns: repeat(3, minmax(395px, 1fr));
     grid-column-gap: 16px;
     grid-row-gap: 32px;
-    margin-top: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
   }
 }
 
@@ -84,6 +88,8 @@
   color: #000000;
 }
 
+
+
 /* Рейтинг */
 .poster-list__rate, .poster-lib__rate {
   font-family: Roboto, sans-serif;
@@ -113,6 +119,10 @@
     line-height: 1.2;
   }
 }
+
+
+
+
 
 .poster-list__text, .poster-lib__text {
   font-family: 'Roboto';
