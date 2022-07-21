@@ -1,6 +1,7 @@
 <header class="header">
   <section class="header__seaction_home">
-    <div class="container">
+    <h2 class="visually-hidden">header home</h2>
+    <div class="header__container container">
       <div class="header__div">
         <a href="./index.html" class="header__logo">
           <svg width="24" height="24">
@@ -36,6 +37,7 @@
           </ul>
         </nav>
       </div>
+
       <form class="header__search-form" id="search-form">
         <input
           class="header__input"
@@ -54,23 +56,9 @@
         </p>
       </form>
 
-      <form id="filter-form">
-        <select name="sortForm" id="sortForm">
-          <option value="start">-</option>
-          <option value="popularity.desc">Popularity (decreasing)</option>
-          <option value="popularity.asc">Popularity (increasing)</option>
-          <option value="primary_release_date.desc">
-            Release date (decreasing)
-          </option>
-          <option value="primary_release_date.asc">
-            Release date (ascending)
-          </option>
-          <option value="original_title.asc">Name (A-Z)</option>
-          <option value="original_title.desc">Name (Z-A)</option>
-        </select>
-
-        <select name="genreForm" id="genreForm">
-          <option value="start">-</option>
+      <form class="filter_form" id="filter-form">
+        <select class="filter_form__select" name="genreForm" id="genreForm">
+          <option value="start">Genre</option>
           <option value="28">Action</option>
           <option value="12">Adventure</option>
           <option value="16">Animation</option>
@@ -92,8 +80,8 @@
           <option value="37">Western</option>
         </select>
 
-        <select name="yearForm" id="yearForm">
-          <option value="start">-</option>
+        <select class="filter_form__select" name="yearForm" id="yearForm">
+          <option value="start">Year</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -112,13 +100,37 @@
           <option value="2007">2007</option>
           <option value="2006">2006</option>
           <option value="2005">2005</option>
-          <option value="2004">2004</option>
+          <!-- <option value="2004">2004</option>
           <option value="2003">2003</option>
           <option value="2002">2002</option>
           <option value="2001">2001</option>
-          <option value="2000">2000</option>
+          <option value="2000">2000</option> -->
+        </select>
+
+        <select class="filter_form__select" name="sortForm" id="sortForm">
+          <option value="start">Sorting</option>
+          <option value="popularity.desc">Popularity (decreasing)</option>
+          <option value="popularity.asc">Popularity (increasing)</option>
+          <option value="primary_release_date.desc">
+            Release date (decreasing)
+          </option>
+          <option value="primary_release_date.asc">
+            Release date (ascending)
+          </option>
+          <option value="original_title.asc">Name (A-Z)</option>
+          <option value="original_title.desc">Name (Z-A)</option>
         </select>
       </form>
+    </div>
+    <div>
+      <button id="toggle-theme-btn">
+        <svg width="30px" height="30px">
+          <use
+            id="toggle-theme-image"
+            href="./images/icons.svg#icon-day-sunny"
+          ></use>
+        </svg>
+      </button>
     </div>
   </section>
 </header>

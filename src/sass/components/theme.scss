@@ -1,0 +1,40 @@
+body.dark {
+    background-color: var(--dark-body-theme);
+    color: #fff;
+}
+
+// body {
+//     background-color: var(--light-body-theme);
+// }
+
+#toggle-theme-btn {
+    position: fixed;
+    // position: absolute;
+    top: 150px;
+    right: 190px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 0 5px #c0c0c0;
+}
+
+#toggle-theme-btn:hover {
+    background: #dbdbdb;
+    box-shadow: 0 0 10px #c0c0c0;
+}
+
+#toggle-theme-btn img {
+    width: 25px;
+}
+
+#toggle-theme-btn:hover {
+    background: #dbdbdb;
+    box-shadow: 0 0 10px #c0c0c0;
+}
+
+#toggle-theme-btn img {
+    width: 25px;
+}

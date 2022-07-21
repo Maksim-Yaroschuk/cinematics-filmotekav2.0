@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, imgError} from './refs';
+import { list, form, warning, imgError, filterForm} from './refs';
 import { moviesDataUpdate } from './storage'
 
 if(form){
@@ -338,15 +338,16 @@ function search(e) {
   e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
-	if(query=='') {
+	if (query == '') {
 		paginationSection.classList.add('is-hidden')
 		warningShown();
 		form.reset();
-	} else {
-		warningUnShown();
-		form.reset();
-		paginationSection.classList.remove('is-hidden')
 	}
+	// } else {
+	// 	warningUnShown();
+	// 	form.reset();
+	// 	paginationSection.classList.remove('is-hidden')
+	// }
 	api.getSearchMovie(query, page).then((data) => {
 		moviesDataUpdate(data)
 		amountOfPages = data.total_pages
@@ -379,13 +380,15 @@ function search(e) {
 }
 
 function warningShown() {
-  warning.classList.remove('visually-hidden');
-  imgError.classList.remove('visually-hidden');
-  list.classList.add('visually-hidden');
+	warning.classList.remove('visually-hidden');
+	imgError.classList.remove('visually-hidden');
+	list.classList.add('visually-hidden');
+	filterForm.classList.add('visually-hidden');
 }
 
 function warningUnShown() {
-  warning.classList.add('visually-hidden');
-  imgError.classList.add('visually-hidden');
-  list.classList.remove('visually-hidden');
+	warning.classList.add('visually-hidden');
+	imgError.classList.add('visually-hidden');
+	list.classList.remove('visually-hidden');
+	filterForm.classList.remove('visually-hidden');
 }
