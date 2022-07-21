@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, imgError, filterForm} from './refs';
+import { list, form, warning, divError, filterForm} from './refs';
 import { moviesDataUpdate } from './storage'
 
 if(form){
@@ -381,14 +381,14 @@ function search(e) {
 
 function warningShown() {
 	warning.classList.remove('visually-hidden');
-	imgError.classList.remove('visually-hidden');
+	divError.classList.remove('visually-hidden');
 	list.classList.add('visually-hidden');
 	filterForm.classList.add('visually-hidden');
 }
 
 function warningUnShown() {
 	warning.classList.add('visually-hidden');
-	imgError.classList.add('visually-hidden');
+	divError.classList.add('visually-hidden');
 	list.classList.remove('visually-hidden');
 	filterForm.classList.remove('visually-hidden');
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { KEY } from './api';
+import { saveLs } from './storage';
 import { renderMarkup } from './renderMarkup';
 
 const refs = {
@@ -9,44 +10,41 @@ const refs = {
   yearForm: document.querySelector('#yearForm'),
 };
 
-if (refs.filterForm) {
+if (refs.genreForm) {
   refs.genreForm.addEventListener('input', eventGenre);
+}
+if (refs.yearForm) {
   refs.yearForm.addEventListener('input', eventYear);
+}
+if (refs.sortForm) {
   refs.sortForm.addEventListener('input', eventSort);
 }
-
 
 let query = '';
 let genre = '';
 let year = '';
 let sort = '';
-}
+
 //Выводит выбранный жанр
 function eventGenre(evn) {
   if (evn) {
     genre = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 //Выводит выбранный год
 function eventYear(evn) {
   if (evn) {
     year = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 //Выводит выбранный сорт
 function eventSort(evn) {
   if (evn) {
     sort = evn.target.value;
   }
-  return console.log(
-    getSearchForm(query, genre, year, sort).then(r => renderMarkup(r))
-  );
+  return getSearchForm(query, genre, year, sort).then(r => renderMarkup(r));
 }
 
 export const getSearchForm = async (
@@ -78,5 +76,7 @@ export const getSearchForm = async (
   let { data } = await axios.get(
     `${f.discover}/movie?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=1`
   );
+  saveLs('moviesData', data.results);
+
   return data;
 };

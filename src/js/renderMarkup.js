@@ -1,13 +1,11 @@
-import { getMovieGenres, IMG_BASE_URL, IMG_W500 } from './api';
+import { getMovieGenres, IMG_BASE_URL, IMG_W400 } from './api';
 
 import { list, lib } from './refs';
 import { saveLs } from './storage';
 async function getGenres() {
-
   const genres = await getMovieGenres().then(({ genres }) => genres);
   // console.log('genres', { genres });
   return { genres };
-
 }
 
 export function renderMarkup(data) {
@@ -55,13 +53,14 @@ export function createListMarkup(data) {
         }) => `<li class='poster-list__item' key='${id}'>
     <img
       class='poster-list__img'
-      src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
+      src='${IMG_BASE_URL}${IMG_W400}${poster_path}'
       alt='${original_title}'
+      width
       loading='lazy'
     />
     <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
     <div class='poster-list__wrap'>
-      <h3 class='poster-list__title'>${original_title}</h3>
+      <h2 class='poster-list__title'>${original_title}</h2>
       <div class='poster-list__info'>
         <p class='poster-list__text'>${genre_names}</p>
         <p class='poster-list__age'>| ${release_date}</p>
@@ -100,6 +99,7 @@ export function renderLibMarkup(data) {
       lib.innerHTML = markupLibList;
     }
   });
+  saveLs('moviesData', data.results);
 }
 
 // export function createLibMarkup(data) {
