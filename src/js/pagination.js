@@ -17,15 +17,20 @@ prevBtn.classList.add('is-hidden')}
 //prevBtn.classList.add('is-hidden')
 
 
-let page = 1
+let searchPage = 1
+let page = loadLs('page-pg')
 let amountOfPages = 1000
 let query = ''
 
-saveLs('page-pg', page)
+// saveLs('page-pg', 1)
 
 // let page = loadLs('page-pg')
 
-// console.log(loadLs('page-pg'))
+console.log(page)
+
+console.log(loadLs('page-pg'))
+
+// window.onbeforeunload = page = 1
 
 if(amountOfPages==1) {
 	paginationBar.innerHTML= `<li class="page active">1</li>`
@@ -47,12 +52,19 @@ if (nextBtn) {
 	paginationBar.addEventListener('click', onPageClick);
 }
 
-//nextBtn.addEventListener('click', onNextBtnClick)
-//prevBtn.addEventListener('click', onPrevBtnClick)
-//paginationBar.addEventListener('click', onPageClick)
 if(form){
 	form.addEventListener('submit', search);
 }
+
+api.getTrending(page).then((data) => {
+	window.scrollTo({
+		top: 100,
+		behavior: 'smooth'
+	});
+	console.log(data)
+		renderMarkup.renderMarkup(data)
+		moviesDataUpdate(data)
+	})
 
 function onPageClick(e) {
 	if(e.target.className == 'page') {
@@ -124,6 +136,8 @@ console.log(search)
 				moviesDataUpdate(data)
 			})
 	}
+	saveLs('page-pg', page)
+	console.log(loadLs('page-pg'))
 }
 
 function onPrevBtnClick() {
@@ -174,7 +188,7 @@ function onPrevBtnClick() {
 		}
 	}
 	if(query!='') {
-		api.getSearchMovie(query, page).then((data) => {
+		api.getSearchMovie(query, searchPage).then((data) => {
 			window.scrollTo({
 				top: 150,
 				behavior: 'smooth'
@@ -183,6 +197,7 @@ function onPrevBtnClick() {
 			moviesDataUpdate(data)
 			
 			console.log(data)
+			searchPage-=1
 		})
 	} else {
 		api.getTrending(page).then((data) => {
@@ -195,15 +210,20 @@ function onPrevBtnClick() {
 				moviesDataUpdate(data)
 			})
 	}
+	saveLs('page-pg', page)
+	console.log(loadLs('page-pg'))
 }
 
 function renderPagination(e) {
-	if(amountOfPages>1 && amountOfPages<6) {
-		paginationBar.children[page-1].classList.remove('active')
-		page = parseInt(e.target.textContent)
-		paginationBar.children[page-1].classList.add('active')
+	if(query!='') {
+	searchPage = parseInt(e.target.textContent)
 	} else {
 		page = parseInt(e.target.textContent)
+	}
+	if(amountOfPages>1 && amountOfPages<6) {
+		paginationBar.children[page-1].classList.remove('active')
+		paginationBar.children[page-1].classList.add('active')
+	} else {
 		if(page==1) {
 			paginationBar.innerHTML= `
 			<li class="page is-hidden">1</li>
@@ -300,7 +320,7 @@ function renderPagination(e) {
 	}
 
 	if(query!='') {
-		api.getSearchMovie(query, page).then((data) => {
+		api.getSearchMovie(query, searchPage).then((data) => {
 			window.scrollTo({
 				top: 100,
 				behavior: 'smooth'
@@ -322,6 +342,8 @@ function renderPagination(e) {
 			renderMarkup.renderMarkup(data)
 		})
 	}
+	saveLs('page-pg', page)
+	console.log(loadLs('page-pg'))
 }
 
 function clearPagination(amountOfPages) {
@@ -337,22 +359,22 @@ function clearPagination(amountOfPages) {
 }
 
 function search(e) {
-	page=1
+	searchPage=1
 	prevBtn.classList.add('is-hidden')
   e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
 	if (query == '') {
 		paginationSection.classList.add('is-hidden')
-		warningShown();
+		// warningShown();
 		form.reset();
 	}
-	// } else {
-	// 	warningUnShown();
-	// 	form.reset();
-	// 	paginationSection.classList.remove('is-hidden')
-	// }
-	api.getSearchMovie(query, page).then((data) => {
+	 else {
+		// warningUnShown();
+		form.reset();
+		paginationSection.classList.remove('is-hidden')
+	}
+	api.getSearchMovie(query, searchPage).then((data) => {
 		moviesDataUpdate(data)
 		amountOfPages = data.total_pages
 		clearPagination(amountOfPages)
@@ -370,29 +392,127 @@ function search(e) {
 			paginationBar.children[8].textContent = amountOfPages
 		}
 		if (data.results.length < 1 || query=='') {
-			warningShown();
+			// warningShown();
 			form.reset();
 			paginationSection.classList.add('is-hidden')
 		}  else {
-			warningUnShown();
+			// warningUnShown();
 			renderMarkup.renderMarkup(data);
 			form.reset();
 			paginationSection.classList.remove('is-hidden')
 		} 
 	})
-	page=1
 }
 
-function warningShown() {
-	warning.classList.remove('visually-hidden');
-	divError.classList.remove('visually-hidden');
-	list.classList.add('visually-hidden');
-	filterForm.classList.add('visually-hidden');
-}
+// function warningShown() {
+// 	warning.classList.remove('visually-hidden');
+// 	divError.classList.remove('visually-hidden');
+// 	list.classList.add('visually-hidden');
+// 	filterForm.classList.add('visually-hidden');
+// }
 
-function warningUnShown() {
-	warning.classList.add('visually-hidden');
-	divError.classList.add('visually-hidden');
-	list.classList.remove('visually-hidden');
-	filterForm.classList.remove('visually-hidden');
+// function warningUnShown() {
+// 	warning.classList.add('visually-hidden');
+// 	divError.classList.add('visually-hidden');
+// 	list.classList.remove('visually-hidden');
+// 	filterForm.classList.remove('visually-hidden');
+// }
+
+if(amountOfPages>1 && amountOfPages<6) {
+	paginationBar.children[page-1].classList.remove('active')
+	paginationBar.children[page-1].classList.add('active')
+} else {
+	if(page==1) {
+		paginationBar.innerHTML= `
+		<li class="page is-hidden">1</li>
+		<li class="dots is-hidden">...</li>
+		<li class="page active">1</li>
+		<li class="page">2</li>
+		<li class="page">3</li>
+		<li class="page">4</li>
+		<li class="page">5</li>
+		<li class="dots">...</li>
+		<li class="page">${amountOfPages}</li>`
+	} else if(page==2) {
+		paginationBar.innerHTML= `
+		<li class="page is-hidden">1</li>
+		<li class="dots is-hidden">...</li>
+		<li class="page">1</li>
+		<li class="page active">2</li>
+		<li class="page">3</li>
+		<li class="page">4</li>
+		<li class="page">5</li>
+		<li class="dots">...</li>
+		<li class="page">${amountOfPages}</li>`
+	} else if(page==3) {
+		paginationBar.innerHTML= `
+		<li class="page is-hidden">1</li>
+		<li class="dots is-hidden">...</li>
+		<li class="page">1</li>
+		<li class="page">2</li>
+		<li class="page active">3</li>
+		<li class="page">4</li>
+		<li class="page">5</li>
+		<li class="dots">...</li>
+		<li class="page">${amountOfPages}</li>`
+	} else if(page>3) {
+		if(page<=amountOfPages-2) {
+			paginationBar.innerHTML= `
+		<li class="page">1</li>
+		<li class="dots">...</li>
+		<li class="page">${page-2}</li>
+		<li class="page">${page-1}</li>
+		<li class="page active">${page}</li>
+		<li class="page">${page+1}</li>
+		<li class="page">${page+2}</li>
+		<li class="dots">...</li>
+		<li class="page">${amountOfPages}</li>`
+		} 
+		if(page>=amountOfPages-2) {
+			paginationBar.innerHTML= `
+		<li class="page">1</li>
+		<li class="dots">...</li>
+		<li class="page">${page-2}</li>
+		<li class="page">${page-1}</li>
+		<li class="page active">${page}</li>
+		<li class="page">${page+1}</li>
+		<li class="page">${page+2}</li>
+		<li class="dots is-hidden">...</li>
+		<li class="page is-hidden">${amountOfPages}</li>`
+		}
+		if(page==amountOfPages-1) {
+			paginationBar.innerHTML= `
+			<li class="page">1</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages-4}</li>
+			<li class="page">${amountOfPages-3}</li>
+			<li class="page">${amountOfPages-2}</li>
+			<li class="page active">${amountOfPages-1}</li>
+			<li class="page">${amountOfPages}</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page is-hidden">${amountOfPages}</li>`
+			}
+		}
+		if(page==amountOfPages) {
+			paginationBar.innerHTML= `
+			<li class="page">1</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages-4}</li>
+			<li class="page">${amountOfPages-3}</li>
+			<li class="page">${amountOfPages-2}</li>
+			<li class="page">${amountOfPages-1}</li>
+			<li class="page active">${amountOfPages}</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page is-hidden">${amountOfPages}</li>`
+		}
+}
+if(page==amountOfPages) {
+	nextBtn.classList.add('is-hidden')
+} else {
+	nextBtn.classList.remove('is-hidden')
+}
+if(page==1) {
+	prevBtn.classList.add('is-hidden')
+} else {
+	prevBtn.classList.remove('is-hidden')
 }
