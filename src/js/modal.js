@@ -144,8 +144,6 @@ const modalCloseBtn = `
 `
 
 const modalTeamList = document.createElement('ul');
-modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
-modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn)
 
 function onModalTeam(e) {
   e.preventDefault();
@@ -161,6 +159,7 @@ function onModalTeam(e) {
 function renderTeamModal() {
 	modalBackdrop.firstElementChild.innerHTML=''
 	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)
+	modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn)
 	team.map((member) => {
 		const markup = `<li>
 		<img src="${member.img}">
