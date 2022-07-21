@@ -59,7 +59,7 @@ export function createListMarkup(data) {
     />
     <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
     <div class='poster-list__wrap'>
-      <h3 class='poster-list__title'>${original_title}</h3>
+      <h2 class='poster-list__title'>${original_title}</h2>
       <div class='poster-list__info'>
         <p class='poster-list__text'>${genre_names}</p>
         <p class='poster-list__age'>| ${release_date}</p>
