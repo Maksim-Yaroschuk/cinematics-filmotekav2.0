@@ -165,18 +165,113 @@ if (form) {
   form.addEventListener('submit', search);
 }
 
-getSearchForm(page, query, genre, year, sort).then(data => {
-  window.scrollTo({
-    top: 100,
-    behavior: 'smooth',
-  });
-  console.log(data);
-  renderMarkup.renderMarkup(data);
-  moviesDataUpdate(data);
-  saveLs('total-pages', amountOfPages);
-});
-saveLs('page-pg', page);
-console.log(loadLs('page-pg'));
+if(location.pathname.split("/").slice(-1) == 'index.html') {
+	getSearchForm(page, query, genre, year, sort).then(data => {
+		renderMarkup.renderMarkup(data);
+		moviesDataUpdate(data);
+		saveLs('total-pages', amountOfPages);
+	});
+	saveLs('page-pg', page);
+	console.log(loadLs('page-pg'));
+	if (amountOfPages > 1 && amountOfPages < 6) {
+		paginationBar.children[page - 1].classList.remove('active');
+		paginationBar.children[page - 1].classList.add('active');
+	} else {
+		if (page == 1) {
+			paginationBar.innerHTML = `
+			<li class="page is-hidden">1</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page active">1</li>
+			<li class="page">2</li>
+			<li class="page">3</li>
+			<li class="page">4</li>
+			<li class="page">5</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages}</li>`;
+		} else if (page == 2) {
+			paginationBar.innerHTML = `
+			<li class="page is-hidden">1</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page">1</li>
+			<li class="page active">2</li>
+			<li class="page">3</li>
+			<li class="page">4</li>
+			<li class="page">5</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages}</li>`;
+		} else if (page == 3) {
+			paginationBar.innerHTML = `
+			<li class="page is-hidden">1</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page">1</li>
+			<li class="page">2</li>
+			<li class="page active">3</li>
+			<li class="page">4</li>
+			<li class="page">5</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages}</li>`;
+		} else if (page > 3) {
+			if (page <= amountOfPages - 2) {
+				paginationBar.innerHTML = `
+			<li class="page">1</li>
+			<li class="dots">...</li>
+			<li class="page">${page - 2}</li>
+			<li class="page">${page - 1}</li>
+			<li class="page active">${page}</li>
+			<li class="page">${page + 1}</li>
+			<li class="page">${page + 2}</li>
+			<li class="dots">...</li>
+			<li class="page">${amountOfPages}</li>`;
+			}
+			if (page >= amountOfPages - 2) {
+				paginationBar.innerHTML = `
+			<li class="page">1</li>
+			<li class="dots">...</li>
+			<li class="page">${page - 2}</li>
+			<li class="page">${page - 1}</li>
+			<li class="page active">${page}</li>
+			<li class="page">${page + 1}</li>
+			<li class="page">${page + 2}</li>
+			<li class="dots is-hidden">...</li>
+			<li class="page is-hidden">${amountOfPages}</li>`;
+			}
+			if (page == amountOfPages - 1) {
+				paginationBar.innerHTML = `
+				<li class="page">1</li>
+				<li class="dots">...</li>
+				<li class="page">${amountOfPages - 4}</li>
+				<li class="page">${amountOfPages - 3}</li>
+				<li class="page">${amountOfPages - 2}</li>
+				<li class="page active">${amountOfPages - 1}</li>
+				<li class="page">${amountOfPages}</li>
+				<li class="dots is-hidden">...</li>
+				<li class="page is-hidden">${amountOfPages}</li>`;
+			}
+		}
+		if (page == amountOfPages) {
+			paginationBar.innerHTML = `
+				<li class="page">1</li>
+				<li class="dots">...</li>
+				<li class="page">${amountOfPages - 4}</li>
+				<li class="page">${amountOfPages - 3}</li>
+				<li class="page">${amountOfPages - 2}</li>
+				<li class="page">${amountOfPages - 1}</li>
+				<li class="page active">${amountOfPages}</li>
+				<li class="dots is-hidden">...</li>
+				<li class="page is-hidden">${amountOfPages}</li>`;
+		}
+	}
+	if (page == amountOfPages) {
+		nextBtn.classList.add('is-hidden');
+	} else {
+		nextBtn.classList.remove('is-hidden');
+	}
+	if (page == 1) {
+		prevBtn.classList.add('is-hidden');
+	} else {
+		prevBtn.classList.remove('is-hidden');
+	}	
+}
 
 function onPageClick(e) {
   if (e.target.className == 'page') {
@@ -495,102 +590,3 @@ function search(e) {
 // 	list.classList.remove('visually-hidden');
 // 	filterForm.classList.remove('visually-hidden');
 // }
-
-if (amountOfPages > 1 && amountOfPages < 6) {
-  paginationBar.children[page - 1].classList.remove('active');
-  paginationBar.children[page - 1].classList.add('active');
-} else {
-  if (page == 1) {
-    paginationBar.innerHTML = `
-		<li class="page is-hidden">1</li>
-		<li class="dots is-hidden">...</li>
-		<li class="page active">1</li>
-		<li class="page">2</li>
-		<li class="page">3</li>
-		<li class="page">4</li>
-		<li class="page">5</li>
-		<li class="dots">...</li>
-		<li class="page">${amountOfPages}</li>`;
-  } else if (page == 2) {
-    paginationBar.innerHTML = `
-		<li class="page is-hidden">1</li>
-		<li class="dots is-hidden">...</li>
-		<li class="page">1</li>
-		<li class="page active">2</li>
-		<li class="page">3</li>
-		<li class="page">4</li>
-		<li class="page">5</li>
-		<li class="dots">...</li>
-		<li class="page">${amountOfPages}</li>`;
-  } else if (page == 3) {
-    paginationBar.innerHTML = `
-		<li class="page is-hidden">1</li>
-		<li class="dots is-hidden">...</li>
-		<li class="page">1</li>
-		<li class="page">2</li>
-		<li class="page active">3</li>
-		<li class="page">4</li>
-		<li class="page">5</li>
-		<li class="dots">...</li>
-		<li class="page">${amountOfPages}</li>`;
-  } else if (page > 3) {
-    if (page <= amountOfPages - 2) {
-      paginationBar.innerHTML = `
-		<li class="page">1</li>
-		<li class="dots">...</li>
-		<li class="page">${page - 2}</li>
-		<li class="page">${page - 1}</li>
-		<li class="page active">${page}</li>
-		<li class="page">${page + 1}</li>
-		<li class="page">${page + 2}</li>
-		<li class="dots">...</li>
-		<li class="page">${amountOfPages}</li>`;
-    }
-    if (page >= amountOfPages - 2) {
-      paginationBar.innerHTML = `
-		<li class="page">1</li>
-		<li class="dots">...</li>
-		<li class="page">${page - 2}</li>
-		<li class="page">${page - 1}</li>
-		<li class="page active">${page}</li>
-		<li class="page">${page + 1}</li>
-		<li class="page">${page + 2}</li>
-		<li class="dots is-hidden">...</li>
-		<li class="page is-hidden">${amountOfPages}</li>`;
-    }
-    if (page == amountOfPages - 1) {
-      paginationBar.innerHTML = `
-			<li class="page">1</li>
-			<li class="dots">...</li>
-			<li class="page">${amountOfPages - 4}</li>
-			<li class="page">${amountOfPages - 3}</li>
-			<li class="page">${amountOfPages - 2}</li>
-			<li class="page active">${amountOfPages - 1}</li>
-			<li class="page">${amountOfPages}</li>
-			<li class="dots is-hidden">...</li>
-			<li class="page is-hidden">${amountOfPages}</li>`;
-    }
-  }
-  if (page == amountOfPages) {
-    paginationBar.innerHTML = `
-			<li class="page">1</li>
-			<li class="dots">...</li>
-			<li class="page">${amountOfPages - 4}</li>
-			<li class="page">${amountOfPages - 3}</li>
-			<li class="page">${amountOfPages - 2}</li>
-			<li class="page">${amountOfPages - 1}</li>
-			<li class="page active">${amountOfPages}</li>
-			<li class="dots is-hidden">...</li>
-			<li class="page is-hidden">${amountOfPages}</li>`;
-  }
-}
-if (page == amountOfPages) {
-  nextBtn.classList.add('is-hidden');
-} else {
-  nextBtn.classList.remove('is-hidden');
-}
-if (page == 1) {
-  prevBtn.classList.add('is-hidden');
-} else {
-  prevBtn.classList.remove('is-hidden');
-}
