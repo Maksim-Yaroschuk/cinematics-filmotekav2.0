@@ -46,7 +46,11 @@ function onBntAddLibray() {
   const btnAddWatched = document.querySelector('.modal__add-watched');
   const btnAddQueue = document.querySelector('.modal__add-queue');
   const idMovie = Number(modalBackdrop.firstElementChild.dataset.id);
+  const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
 
+  if (dataWebLocation === 'library') {
+    setBtnLibrayLocalData(btnAddWatched, btnAddQueue);
+  }
   // фц проверяют есть ли в локале фильмы и ставять соответсвенный класс
   if (localStorage.getItem('Watched') !== null) {
     setStileBntWatched(idMovie, btnAddWatched);
@@ -113,11 +117,27 @@ function updataLibery(e, btn, list) {
   if (dataWebLocation === 'library') {
     lib.innerHTML = '';
     libMarkup(list);
-    btn.setAttribute('disabled', true);
-
+    const dataBtn = btn.dataset.liery;
+    if (dataBtn === 'true') {
+      btn.setAttribute('disabled', true);
+    } else {
+      return
+    }
   }
   return;
 }
+
+function setBtnLibrayLocalData(btnAddWatched, btnAddQueue) {
+  const btnLibWatch = document.querySelector('.btn--watched');
+
+  if (btnLibWatch.classList.contains('btn-orange')) {
+    btnAddWatched.dataset.liery = true;
+    btnAddQueue.dataset.liery = false;
+  } else {
+    btnAddWatched.dataset.liery = false;
+    btnAddQueue.dataset.liery = true;
+  }
+} 
 
 function openModal() {
   modalBackdrop.classList.add('modal-open');
@@ -190,27 +210,7 @@ function onModalTeam(e) {
 	modalBackdrop.firstElementChild.classList.remove('modal')
 }
 
-// function createTeamModal() {
-//   modalBackdrop.firstElementChild.innerHTML = modalTeamLayout;
-// }
-
 function renderTeamModal() {
-//  modalBackdrop.firstElementChild.innerHTML = '';
-//  modalBackdrop.firstElementChild.insertAdjacentElement(
-//    'beforeend',
-//    modalTeamList
-//  );
-//  modalTeamList.insertAdjacentHTML('beforeend', modalCloseBtn);
-//  team.map(member => {
-//    const markup = `<li>
-//		<img src="${member.img}">
-//		<p>${member.name}</p>
-//		<a href="${member.git}"><img src="./git.img"></a>
-//		</li>`;
-//    modalTeamList.insertAdjacentHTML('beforeend', markup);
-//  });
-//}
-
 	modalBackdrop.firstElementChild.innerHTML=''
 	modalTeamList.innerHTML=''
 	modalBackdrop.firstElementChild.insertAdjacentElement('beforeend', modalTeamList)

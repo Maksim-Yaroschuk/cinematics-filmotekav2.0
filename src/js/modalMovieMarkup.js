@@ -41,14 +41,20 @@ return `
   <ul class="info-card__list-parametrs">
     <li class="info-card__item info-card__item-paramter">Vote / Votes</li>
     <li class="info-card__item info-card__item-point">
-      <span>${vote_average.toFixed(1)}</span> <span>/</span> <span>${vote_count}</span>
+      <span>${vote_average.toFixed(
+        1
+      )}</span> <span>/</span> <span>${vote_count}</span>
     </li>
     <li class="info-card__item info-card__item-paramter">Popularity</li>
-    <li class="info-card__item info-card__item-point">${popularity.toFixed(1)}</li>
+    <li class="info-card__item info-card__item-point">${popularity.toFixed(
+      1
+    )}</li>
     <li class="info-card__item info-card__item-paramter">Original Title</li>
     <li class="info-card__item info-card__item-point">${original_title}</li>
     <li class="info-card__item info-card__item-paramter">Genre</li>
-    <li class="info-card__item info-card__item-point">${genresConverting(genre_ids)}</li>
+    <li class="info-card__item info-card__item-point">${genresConverting(
+      genre_ids
+    )}</li>
   </ul>
   
 </div>
@@ -60,14 +66,14 @@ return `
   </p>
 </div>
 <div class="modal__buttons">
-      <button type="button" class="modal__add-watched" data-watched='false'>add to watched</button>
-      <button type="button" class="modal__add-queue" data-queue='false'>add to queue</button>
+      <button type="button" class="modal__add-watched" data-watched='false' data-liery='false'>add to watched</button>
+      <button type="button" class="modal__add-queue" data-queue='false' data-liery='false'>add to queue</button>
       
     </div>
    <div class='trailerBtnWrap'> <button class="trailerBtn"></button></div>
   
     </div>
-    </div>`
+    </div>`;
 }
 
 const modalTeamLayout = `<button class="modal__btn-closs btn__closs-modal">
