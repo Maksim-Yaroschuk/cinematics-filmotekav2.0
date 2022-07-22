@@ -1,35 +1,21 @@
 const toggleThemeBtn = document.getElementById('toggle-theme-btn');
 const toggleThemeImage = document.getElementById('toggle-theme-image');
-const titleCard = document.querySelector('.poster-list__title');
-
-function setLightTheme() {
-   document.body.classList.remove('dark');
-   titleCard.classList.toggle('dark');
-   toggleThemeImage.href.baseVal = '..//images/sprite/SVG/moon-line.svg';
-   localStorage.theme = 'light';
-};
-
-function setDarkTheme() {
-   document.body.classList.add('dark');
-   titleCard.classList.add('dark');
-
-   toggleThemeImage.href.baseVal = '../images/sprite/SVG/day-sunny.svg';
-   localStorage.theme = 'dark';
-};
-
+// console.log(toggleThemeImage.href.baseVal)
 toggleThemeBtn.addEventListener('click', () => {
-    console.log(titleCard)
-   
    if (document.body.classList.contains('dark')) {
-      setLightTheme(); 
+      document.body.classList.remove('dark')
+      console.log('toggleThemeImage')
+      toggleThemeImage.href.baseVal = '../images/icons.svg#icon-moon-line';
+      localStorage.theme = 'light'
    } else {
-      setDarkTheme();
+      document.body.classList.add('dark')
+      toggleThemeImage.href.baseVal = '../images/icons.svg#icon-day-sunny';
+      localStorage.theme = 'dark'
+     
    }
-});
+})
 
 if (localStorage.theme === 'dark') {
-   setDarkTheme();
+   document.body.classList.add('dark')
+   toggleThemeImage.href.baseVal = '../images/icons.svg#icon-day-sunny';
 }
-
-
-
