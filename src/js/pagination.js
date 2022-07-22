@@ -8,6 +8,8 @@ if (form) {
   form.addEventListener('submit', search);
 }
 
+console.log(location.pathname.split("/").slice(-1))
+
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
 const paginationBar = document.querySelector('.pagination-btns');
