@@ -70,21 +70,25 @@ export const getSearchForm = async (
     genre: genre !== '' && genre !== 'start' ? `&with_genres=${genre}` : '',
     queryFetch: `&query=${query}`,
     sort: sort !== '' && sort !== 'start' ? `&sort_by=${sort}` : '',
-    discover: `/discover`,
+    discover: `/trending`,
+		week: `/week`, //Женя миньйон переделал так что если нету query, то по дефолту делался запрос на тренды недели
   };
   if (query === '') {
     f.queryFetch = '';
   }
   if (query !== '' && genre === '') {
     f.discover = '/search';
+		f.week ='' 
   }
-  if (query !== '' && genre !== '') {
+  if (query === '' && genre !== '') {
+		f.discover = '/discover'
+		f.week ='' 
   }
   if (query !== '') {
     f.trendingFetch = '';
   }
   let { data } = await axios.get(
-    `${f.discover}/movie?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=${page}`
+    `${f.discover}/movie${f.week}?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=${page}`
   );
   saveLs('moviesData', data.results);
 
