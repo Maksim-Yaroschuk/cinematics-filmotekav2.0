@@ -342,6 +342,23 @@
   background: grey;
 }
 
+.modal__add-watched[disabled='true'],
+.modal__add-queue[disabled='true'] {
+  cursor: auto;
+  background-color: #b4b4b4;
+  color: #838383;
+  border: none;
+  border-radius: 5px;
+  &:hover,
+  &:focus {
+    background-color: #b4b4b4;
+    color: #838383;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+  }
+}
+
 //Стили кнопки и плеера трейлера
 #ytplayer {
   width: 100%;
@@ -352,7 +369,6 @@
   @include mq(tablet) {
     width: 632px;
     height: 425px;
-
   }
   @include mq(desktop) {
     width: 782px;
@@ -380,14 +396,14 @@
     transform: translate(0, 0.25em);
     &::before {
       transform: translate3d(0, 0.5em, -1em);
-  }
-
-  &:active {
-    transform: translate3d(0, 1em, -1em);
-    &::before {
-      transform: translate3d(0, 0, -1em);
     }
-  }
+
+    &:active {
+      transform: translate3d(0, 1em, -1em);
+      &::before {
+        transform: translate3d(0, 0, -1em);
+      }
+    }
   }
 }
 .trailerBtnWrap {
