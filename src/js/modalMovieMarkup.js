@@ -50,6 +50,7 @@ return `
     <li class="info-card__item info-card__item-paramter">Genre</li>
     <li class="info-card__item info-card__item-point">${genresConverting(genre_ids)}</li>
   </ul>
+  
 </div>
 
 <div class="modal__about">
@@ -63,9 +64,8 @@ return `
       <button type="button" class="modal__add-queue" data-queue='false'>add to queue</button>
       
     </div>
-    <div> 
-    
-
+   <div class='trailerBtnWrap'> <button class="trailerBtn"></button></div>
+  
     </div>
     </div>`
 }

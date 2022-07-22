@@ -53,7 +53,10 @@ function createEmptyLibMarkup(data) {
 	</div>`
 }
 
-function libMarkup(selectLs) {
+
+export function libMarkup(selectLs) {
+
+
 	if (selectLs === 'Queue') {
 		btnQueue.classList.add('btn-orange');
 		btnWatched.classList.remove('btn-orange');
@@ -63,6 +66,7 @@ function libMarkup(selectLs) {
 	}
 	lib.classList.remove('list-empty');
 	lib.innerHTML = '';
+
 	let sel = selectLs + 'Data';
 	//console.log('sel', sel);
 	const lsList = loadLs(selectLs);
