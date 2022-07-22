@@ -4,12 +4,12 @@ import { list, lib } from './refs';
 import { saveLs } from './storage';
 async function getGenres() {
   const genres = await getMovieGenres().then(({ genres }) => genres);
-  // console.log('genres', { genres });
+
   return { genres };
 }
 
 export function renderMarkup(data) {
-  // console.log(data);
+
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
@@ -39,7 +39,6 @@ export function renderMarkup(data) {
 
 export function createListMarkup(data) {
   if (data) {
-    //console.log('dataCreate', data);
     return data
       .map(
         ({
@@ -73,7 +72,7 @@ export function createListMarkup(data) {
 }
 
 export function renderLibMarkup(data) {
-  // console.log(data);
+
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
@@ -101,38 +100,3 @@ export function renderLibMarkup(data) {
   });
   saveLs('moviesData', data.results);
 }
-
-// export function createLibMarkup(data) {
-//   console.log(data);
-//   if (data) {
-//     return data
-//       .map(
-//         ({
-//           original_title,
-//           poster_path,
-//           overview,
-//           vote_average,
-//           id,
-//           genre_names,
-//           release_date,
-//         }) => `<li class='poster-lib__item' key='${id}'>
-//     <img
-//       class='poster-lib__img'
-//       src='${IMG_BASE_URL}${IMG_W500}${poster_path}'
-//       alt='${original_title}'
-//       loading='lazy'
-//     />
-//     <span class='poster-lib__rate'>${vote_average.toFixed(1)}</span>
-//     <div class='poster-lib__wrap'>
-//       <h3 class='poster-lib__title'>${original_title}</h3>
-//       <div class='poster-lib__info'>
-//         <p class='poster-list__text'>${genre_names}</p>
-//         <p class='poster-lib__age'>| ${release_date}</p>
-//       </div>
-//     </div>
-//   </li>`
-//       )
-//       .join('');
-//   }
-// }
-////<p class='poster-lib__text'>${genre_names}</p>

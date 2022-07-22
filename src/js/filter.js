@@ -71,18 +71,18 @@ export const getSearchForm = async (
     queryFetch: `&query=${query}`,
     sort: sort !== '' && sort !== 'start' ? `&sort_by=${sort}` : '',
     discover: `/trending`,
-		week: `/week`, //Женя миньйон переделал так что если нету query, то по дефолту делался запрос на тренды недели
+    week: `/week`, //Женя миньйон переделал так что если нету query, то по дефолту делался запрос на тренды недели
   };
   if (query === '') {
     f.queryFetch = '';
   }
   if (query !== '' && genre === '') {
     f.discover = '/search';
-		f.week ='' 
+    f.week = '';
   }
   if (query === '' && genre !== '') {
-		f.discover = '/discover'
-		f.week ='' 
+    f.discover = '/discover';
+    f.week = '';
   }
   if (query !== '') {
     f.trendingFetch = '';

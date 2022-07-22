@@ -4,14 +4,14 @@
   background-image: url(/src/images/photo_2022-07-20_17-13-30-mobile.jpg);
   //background-image: url(/src/images/photo_2022-07-20_19-17-08-mob.jpg);
   @include mq(tablet) {
-   // background-image: url(/src/images/abstract-background-with-red-lines-tablet.jpg);
-   background-image: url(/src/images/photo_2022-07-20_17-13-30-tablet.jpg);
-   //background-image: url(/src/images/photo_2022-07-20_19-17-08-tab.jpg);
+    // background-image: url(/src/images/abstract-background-with-red-lines-tablet.jpg);
+    background-image: url(/src/images/photo_2022-07-20_17-13-30-tablet.jpg);
+    //background-image: url(/src/images/photo_2022-07-20_19-17-08-tab.jpg);
   }
   @include mq(desktop) {
     //background-image: url(/src/images/abstract-background-with-red-lines-desktop.jpg);
     background-image: url(/src/images/photo_2022-07-20_17-13-30-desktop.jpg);
-   //background-image: url(/src/images/photo_2022-07-20_19-17-08-desk.jpg);
+    //background-image: url(/src/images/photo_2022-07-20_19-17-08-desk.jpg);
     padding-bottom: 80px;
   }
   background-repeat: no-repeat;
@@ -76,7 +76,7 @@
   }
 }
 .header__icon_logo {
-  animation: animate360 3000ms cubic-bezier(.25, .1, .25, 1) infinite;
+  animation: animate360 3000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
 .header__name {
   display: none;
@@ -234,11 +234,11 @@
   &:hover {
     border: 1px solid var(--secondary-text-color);
   }
-  &:focus {
-    background-color: var(--secondary-text-color);
-    border: 1px solid var(--secondary-text-color);
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  }
+  //   &:focus {
+  //     background-color: var(--secondary-text-color);
+  //     border: 1px solid var(--secondary-text-color);
+  //     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  //   }
 }
 .button-text {
   font-weight: 500;
@@ -248,14 +248,15 @@
 }
 .filter_form {
   position: absolute;
+  font-size: 13px;
   right: 0%;
   bottom: -65%;
   @include mq(tablet) {
-    right: 27%;
+    right: 14.5%;
     bottom: -50%;
   }
   @include mq(desktop) {
-    right: 36%;
+    right: 28.5%;
     bottom: -50%;
   }
 }
@@ -279,4 +280,19 @@
 }
 .filter_form__select:not(:last-child) {
   margin-right: 10px;
+}
+
+.btn-orange {
+  background-color: var(--secondary-text-color);
+}
+
+.btnResetFilter {
+  margin-left: 40px;
+  border: 0px;
+  border-bottom: 1px solid var(--just-white);
+  color: var(--just-white);
+  border-radius: 0px;
+  outline: none;
+  background-color: inherit;
+  padding: 2px;
 }

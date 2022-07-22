@@ -19,8 +19,6 @@ export const getTrending = async (page = 1) => {
   return data;
 };
 
-// console.log(getTrending(2).then(r => console.log(r)));
-
 export const getSearchMovie = async (query, page) => {
   const { data } = await axios.get(
     `/search/movie?api_key=${KEY}&language=en-US&query=${query}&page=${page}`
@@ -29,18 +27,13 @@ export const getSearchMovie = async (query, page) => {
 };
 
 
-// console.log(getSearchMovie('cat', 1).then(r => console.log(r)));
-
 export const getMovieDetails = async id => {
   const { data } = await axios.get(`/movie/${id}?api_key=${KEY}`);
   return data;
 };
-
-// console.log(getMovieDetails(507086).then(r => console.log(r)));
 
 export const getMovieGenres = async () => {
   const { data } = await axios.get(`/genre/movie/list?api_key=${KEY}`);
   return data;
 };
 
-// console.log(getMovieGenres().then(r => console.log(r)));
