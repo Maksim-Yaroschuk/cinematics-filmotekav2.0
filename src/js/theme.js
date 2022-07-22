@@ -18,9 +18,6 @@ if (themeValue === 'light') {
 	moon.style.visibility = 'hidden';
 }
 
-//document.querySelector(themeValue).hidden = true;///visible, hidden и collapses.
-//themeImage.href.baseVal = 'light' ? './images/icons.svg#moon' : './images/icons.svg#sun';
-
 themeBtn.addEventListener('click', () => {
 	const val = loadLs('theme');
 	if (val === 'light') {
