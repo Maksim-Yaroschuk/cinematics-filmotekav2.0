@@ -248,7 +248,7 @@
 	}
 //placeholder	
 .list-empty{
-	margin: 5px;
+	margin: 25px auto;
 	position: relative;
 	width: auto;
 	height: 60vh;
@@ -265,7 +265,7 @@
 		padding: 3vw;
 		font-size: 1vw;
 		text-align: center;
-		max-width: 40em;
+		min-width: 270px;
 	}
 	&__title{
 		margin: 15px;
