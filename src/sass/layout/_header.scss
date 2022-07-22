@@ -1,11 +1,17 @@
 .header__seaction_home {
   background-color: #000000;
-  background-image: url(/src/images/abstract-background-with-red-lines-mobile.jpg);
+  //background-image: url(/src/images/abstract-background-with-red-lines-mobile.jpg);
+  background-image: url(/src/images/photo_2022-07-20_17-13-30-mobile.jpg);
+  //background-image: url(/src/images/photo_2022-07-20_19-17-08-mob.jpg);
   @include mq(tablet) {
-    background-image: url(/src/images/abstract-background-with-red-lines-tablet.jpg);
+   // background-image: url(/src/images/abstract-background-with-red-lines-tablet.jpg);
+   background-image: url(/src/images/photo_2022-07-20_17-13-30-tablet.jpg);
+   //background-image: url(/src/images/photo_2022-07-20_19-17-08-tab.jpg);
   }
   @include mq(desktop) {
-    background-image: url(/src/images/abstract-background-with-red-lines-desktop.jpg);
+    //background-image: url(/src/images/abstract-background-with-red-lines-desktop.jpg);
+    background-image: url(/src/images/photo_2022-07-20_17-13-30-desktop.jpg);
+   //background-image: url(/src/images/photo_2022-07-20_19-17-08-desk.jpg);
     padding-bottom: 80px;
   }
   background-repeat: no-repeat;
@@ -170,7 +176,7 @@
   background-color: transparent;
   border: none;
 }
-.header-message {
+/*.header-message {
   position: absolute;
   bottom: -55px;
   @include mq(desktop) {
@@ -180,7 +186,7 @@
   font-size: 14px;
   line-height: 16px;
   color: var(--primary-current-color);
-}
+}*/
 .header__list-button {
   display: flex;
   justify-content: space-between;
@@ -228,11 +234,11 @@
   &:hover {
     border: 1px solid var(--secondary-text-color);
   }
-  &:focus {
-    background-color: var(--secondary-text-color);
-    border: 1px solid var(--secondary-text-color);
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  }
+//   &:focus {
+//     background-color: var(--secondary-text-color);
+//     border: 1px solid var(--secondary-text-color);
+//     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+//   }
 }
 .button-text {
   font-weight: 500;
@@ -273,4 +279,8 @@
 }
 .filter_form__select:not(:last-child) {
   margin-right: 10px;
+}
+
+.btn-orange{
+	 background-color: var(--secondary-text-color);
 }

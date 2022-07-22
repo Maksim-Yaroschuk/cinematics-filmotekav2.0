@@ -1,9 +1,14 @@
 body.dark {
     background-color: var(--dark-body-theme);
-    color: #fff;
+
+    
 }
 
 #toggle-theme-btn {
+
+    position: fixed;
+    top: 190px;
+    right: 15px;
     position: absolute;
     top: 150px;
     right: 190px;
@@ -25,6 +30,25 @@ body.dark {
     width: 25px;
 }
 
+#toggle-theme-btn {
+    position: absolute;
+    top: 210px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 0 5px #c0c0c0;
+    cursor: pointer;
+    @include mq(desktop) {
+        top: 200px;
+        right: 32px;
+    }
+}
+
+
 #toggle-theme-btn:hover {
     background: #dbdbdb;
     box-shadow: 0 0 10px #c0c0c0;
@@ -34,10 +58,26 @@ body.dark {
     width: 25px;
 }
 
-// .poster-list__title {
+  // .poster-list__title {
 //     color: #000000;
 // }
 
 // .poster-list__title.dark {
 //     color: #dbdbdb;
-// }
+// } 
+
+
+
+.dark .poster-list__title {
+    color: bisque;
+  }
+  
+.dark .poster-list__text{
+    color: var(--primary-current-color);
+  }
+  
+.dark .poster-list__age {
+    color: var(--primary-current-color);
+  }
+
+

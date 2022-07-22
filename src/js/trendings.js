@@ -6,6 +6,5 @@ import { list } from './refs';
 getTrending(1).then((r) => {
 	renderMarkup(r),
 	//Сохранение результата запроса в  localStorage
-	//localStorage.setItem("moviesData", (JSON.stringify(r.results)))
 	saveLs("moviesData", r.results);
 });
