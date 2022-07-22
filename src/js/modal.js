@@ -1,4 +1,4 @@
-import { list, lib, modalBackdrop, btnOnModalTeam } from './refs';
+import { list, lib, modalBackdrop, btnOnModalTeam, movieModal} from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
  
@@ -158,6 +158,9 @@ function offModal() {
   document.removeEventListener('keydown', offModalForEscape);
   modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
   modalBackdrop.firstElementChild.dataset.id = '';
+
+  movieModal.innerHTML = ''
+  
 }
 
 // модалка команды

@@ -12,6 +12,7 @@ const refs = {
   libCatalog: document.querySelector('.poster-lib__item'),
   lib: document.querySelector('.poster-lib'),
 	logo: document.querySelector('.header__logo'),
+  movieModal: document.querySelector('.modal'),
 };
 
 export const {
@@ -23,6 +24,7 @@ export const {
   toTopBtn,
   divError,
   modalBackdrop,
+  movieModal,
   btnOnModalTeam,
   filterForm,
   libCatalog,
