@@ -232,4 +232,3 @@ function renderTeamModal() {
 		modalTeamList.insertAdjacentHTML('beforeend', markup)
 	})
 }
-
