@@ -3,14 +3,12 @@ const themeBtn = document.getElementById('toggle-theme-btn');
 const themeImage = document.getElementById('toggle-theme-image');
 const sun = document.querySelector('.sun');//.hidden = true;
 const moon = document.querySelector('.moon');//.hidden = true;
-console.log('themeImage', themeImage);
-console.log('sun', sun);
+
 const titleCard = document.querySelector('.poster-list__title');
 
 const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
 
 saveLs('theme', themeValue);
-console.log('themeValue', themeValue);
 document.body.classList.add(themeValue);
 if (themeValue === 'light') {
 	sun.style.visibility = 'hidden';

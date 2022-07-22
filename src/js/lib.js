@@ -15,8 +15,7 @@ if (btnWatched !== null) {
 
 	const indexWatched = loadLs('Watched');
 	const indexQueue = loadLs('Queue');
-	console.log('indexWatched ', indexWatched );
-	console.log('indexQueue', indexQueue);
+
 	if ((indexQueue || indexWatched) && indexQueue > indexWatched) {
 		document.addEventListener("DOMContentLoaded", () => {
 		libMarkup('Queue');
@@ -37,7 +36,7 @@ function funEmptyLib(libName) {
 		btnQueue.classList.remove('btn-orange');
 		btnWatched.classList.add('btn-orange');
 	}
-	console.log('libIndex',libIndex);
+
 	if (libIndex) {
 		lib.classList.add('list-empty');
 		const markupLibList = createEmptyLibMarkup(libName);
@@ -68,9 +67,9 @@ export function libMarkup(selectLs) {
 	lib.innerHTML = '';
 
 	let sel = selectLs + 'Data';
-	//console.log('sel', sel);
+
 	const lsList = loadLs(selectLs);
-	//console.log('lsList', lsList);
+	
 	if (!lsList || !lsList.length) {
 		funEmptyLib(selectLs);
 		return console.log('ваш список пуст!');
