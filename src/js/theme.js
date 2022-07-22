@@ -1,21 +1,35 @@
-const toggleThemeBtn = document.getElementById('toggle-theme-btn');
-const toggleThemeImage = document.getElementById('toggle-theme-image');
-// console.log(toggleThemeImage.href.baseVal)
-toggleThemeBtn.addEventListener('click', () => {
-   if (document.body.classList.contains('dark')) {
-      document.body.classList.remove('dark')
-      console.log('toggleThemeImage')
-      toggleThemeImage.href.baseVal = '../images/icons.svg#icon-moon-line';
-      localStorage.theme = 'light'
-   } else {
-      document.body.classList.add('dark')
-      toggleThemeImage.href.baseVal = '../images/icons.svg#icon-day-sunny';
-      localStorage.theme = 'dark'
-     
-   }
-})
+import { loadLs, saveLs } from './storage';
+const themeBtn = document.getElementById('toggle-theme-btn');
+const themeImage = document.getElementById('toggle-theme-image');
+const sun = document.querySelector('.sun');//.hidden = true;
+const moon = document.querySelector('.moon');//.hidden = true;
+console.log('themeImage', themeImage);
+console.log('sun', sun);
+const titleCard = document.querySelector('.poster-list__title');
 
-if (localStorage.theme === 'dark') {
-   document.body.classList.add('dark')
-   toggleThemeImage.href.baseVal = '../images/icons.svg#icon-day-sunny';
+const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
+
+saveLs('theme', themeValue);
+console.log('themeValue', themeValue);
+document.body.classList.add(themeValue);
+if (themeValue === 'light') {
+	sun.style.visibility = 'hidden';
+} else {
+	moon.style.visibility = 'hidden';
 }
+
+themeBtn.addEventListener('click', () => {
+	const val = loadLs('theme');
+	if (val === 'light') {
+		document.body.classList.add('dark');
+		moon.style.visibility = 'hidden';
+		sun.style.visibility = 'visible';
+		saveLs('theme', 'dark');
+	} else {
+		document.body.classList.remove('dark');
+		sun.style.visibility = 'hidden';
+		moon.style.visibility = 'visible';
+		saveLs('theme', 'light');
+	}
+});
+

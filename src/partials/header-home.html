@@ -38,8 +38,7 @@
           </ul>
         </nav>
       </div>
-
-      <form class="header__search-form" id="search-form">
+	<form class="header__search-form" id="search-form">
         <input
           class="header__input"
           type="text"
@@ -57,8 +56,7 @@
           Search result not successful. Enter the correct movie name
         </p> -->
       </form>
-
-      <form class="filter_form" id="filter-form">
+		<form class="filter_form" id="filter-form">
         <select class="filter_form__select" name="genreForm" id="genreForm">
           <option value="start">Genre</option>
           <option value="28">Action</option>
@@ -126,17 +124,16 @@
           reset
         </button>
       </form>
-    </div>
-    <div>
-      <button id="toggle-theme-btn">
-        <svg width="25px" height="25px">
-          <use
-            id="toggle-theme-image"
-            href="./images/icons.svg#icon-day-sunny"
-          ></use>
-        </svg>
-        <span class="visually-hidden">theme</span>
-      </button>
+		</div>
+		<div>
+			<!-- hidden -->
+		<button id="toggle-theme-btn">
+			<svg width="25px" height="25px">
+				<use class="moon" id="toggle-theme-image" href="./images/icons.svg#moon"></use>
+				<use class="sun" id="toggle-theme-image" href="./images/icons.svg#sun"></use>
+			</svg>
+			<span class="visually-hidden">theme</span>
+		</button>
     </div>
   </section>
 </header>

@@ -1,37 +1,39 @@
 body.dark {
     background-color: var(--dark-body-theme);
 }
-
-#toggle-theme-btn:hover {
-    box-shadow: 0 0 10px #c0c0c0;
+.header__seaction_library,
+.header__seaction_home{
+	position: relative;
 }
 
-#toggle-theme-btn img {
-    width: 25px;
-    background: #dbdbdb;
+#toggle-theme-image {
+	width: 25px;
+	height: 25px;
 }
 
 #toggle-theme-btn {
+	//width: 40px;
+	//height: 40px;
     position: absolute;
-    top: 155px;
-    right: 50px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50px;
+    top: 150px;
+    right: 1vw;
+    background-color:transparent;
+    border: 2px transparent solid;
+    padding: 1px 3px ;
+    border-radius: 20px;
     transition: 0.3s;
-    box-shadow: 0 0 5px #c0c0c0;
-    background: #dbdbdb;
+    //box-shadow: 0 0 5px #c0c0c0;
+   
     @include mq(desktop) {
-        top: 150px;
-        right: 130px;
+        //top: 100px;
+        right: 2vw;
     }
 }
 
 #toggle-theme-btn:hover {
-    background: #dbdbdb;
-    box-shadow: 0 0 10px #c0c0c0;
+    border: 1px var(--primary-current-color) solid;
+    box-shadow: -1 -1 1px #c0c0c0;
+cursor: pointer;
 }
 
 .dark .poster-list__title {
@@ -45,5 +47,3 @@ body.dark {
 .dark .poster-list__age {
     color: var(--primary-current-color);
   }
-
-
