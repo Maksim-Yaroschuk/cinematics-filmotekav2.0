@@ -30,3 +30,4 @@ themeBtn.addEventListener('click', () => {
 		saveLs('theme', 'light');
 	}
 });
+

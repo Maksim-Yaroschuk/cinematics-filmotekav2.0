@@ -11,6 +11,13 @@ const refs = {
   filterForm: document.querySelector('.filter_form'),
   libCatalog: document.querySelector('.poster-lib__item'),
   lib: document.querySelector('.poster-lib'),
+	logo: document.querySelector('.header__logo'),
+  movieModal: document.querySelector('.modal'),
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal-login]'),
+  formLogIn: document.querySelector('.modal_login__form'),
+  logOut: document.querySelector('#header-logOut'),
 };
 
 export const {
@@ -22,8 +29,15 @@ export const {
   toTopBtn,
   divError,
   modalBackdrop,
+  movieModal,
   btnOnModalTeam,
   filterForm,
   libCatalog,
   lib,
+  logo,
+  openModalBtn,
+  closeModalBtn,
+  modal,
+  formLogIn,
+  logOut,
 } = refs;

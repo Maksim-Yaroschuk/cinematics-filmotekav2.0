@@ -15,6 +15,12 @@
         <nav class="header__nav">
           <ul class="header__list">
             <li class="header__item">
+              <a class="header__link" id="header-logOut">LOG OUT</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" id="header-logIn" data-modal-open>LOG IN</a>
+            </li>
+            <li class="header__item">
               <a
                 class="header__link current-link"
                 href="./index.html"
@@ -28,11 +34,6 @@
                 href="./library.html"
                 id="header-myLibrary"
                 >MY LIBRARY</a
-              >
-            </li>
-            <li class="header__item">
-              <a class="header__link" id="header-myLibrary" data-modal-open
-                >LOG IN</a
               >
             </li>
           </ul>
@@ -120,6 +121,9 @@
           <option value="original_title.asc">Name (A-Z)</option>
           <option value="original_title.desc">Name (Z-A)</option>
         </select>
+        <button class="btnResetFilter" id="btnResetFilter" type="submit">
+          reset
+        </button>
       </form>
 		</div>
 		<div>
