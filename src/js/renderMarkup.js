@@ -9,7 +9,7 @@ async function getGenres() {
 }
 
 export function renderMarkup(data) {
-  // console.log(data);
+  console.log(data);
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
