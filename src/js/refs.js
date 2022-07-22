@@ -11,6 +11,7 @@ const refs = {
   filterForm: document.querySelector('.filter_form'),
   libCatalog: document.querySelector('.poster-lib__item'),
   lib: document.querySelector('.poster-lib'),
+	logo: document.querySelector('.header__logo'),
 };
 
 export const {
@@ -26,4 +27,5 @@ export const {
   filterForm,
   libCatalog,
   lib,
+	logo,
 } = refs;

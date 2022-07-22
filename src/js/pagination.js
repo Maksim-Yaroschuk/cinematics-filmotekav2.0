@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, divError, filterForm } from './refs';
+import { list, form, warning, divError, filterForm, logo} from './refs';
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
@@ -33,67 +33,113 @@ if (refs.sortForm) {
 if (prevBtn) {
   prevBtn.classList.add('is-hidden');
 }
-//prevBtn.classList.add('is-hidden')
+
+logo.addEventListener('click', onLogoClick)
+
+function onLogoClick() {
+	saveLs('page-pg', 1)
+	saveLs('genre-pg', '')
+	saveLs('year-pg', 1)
+	saveLs('total-pages', 1000)
+	saveLs('query-pg', '')
+	document.querySelector('#genreForm').classList.remove('is-hidden')
+}
+
+if(!loadLs('total-pages')) {
+	saveLs('total-pages', 1000)
+}
+if(!loadLs('page-pg')) {
+	saveLs('page-pg', 1)
+}
+
 
 let searchPage = 1;
 let page = loadLs('page-pg');
-let amountOfPages = 1000;
-let query = '';
-let genre = '';
-let year = '';
-let sort = '';
+let amountOfPages = loadLs('total-pages');
+let query = loadLs('query-pg');
+let genre = loadLs('genre-pg');;
+let year = loadLs('year-pg');;
+let sort = loadLs('sort-pg');;
 
 function eventGenre(evn) {
   if (evn) {
+		nextBtn.classList.remove('is-hidden')
     genre = evn.target.value;
+		page=1
+		saveLs('page-pg', page)
     console.log(genre);
-    return getSearchForm(page, query, genre, year, sort).then(r =>
-      renderMarkup.renderMarkup(r)
-    );
+		saveLs('genre-pg', genre)
+    return getSearchForm(page, query, genre, year, sort).then((data) => {
+      renderMarkup.renderMarkup(data)
+			if(data.total_pages>500) {
+				amountOfPages = 500
+			} else {
+				amountOfPages = data.total_pages
+			}
+			clearPagination(amountOfPages)
+			saveLs('total-pages', amountOfPages)
+		});
   }
+	
 }
 function eventYear(evn) {
   if (evn) {
+		page=1
+		saveLs('page-pg', page)
     year = evn.target.value;
     console.log(year);
-    return getSearchForm(page, query, genre, year, sort).then(r =>
-      renderMarkup.renderMarkup(r)
-    );
+		saveLs('year-pg', year)
+    return getSearchForm(page, query, genre, year, sort).then((data) => {
+      renderMarkup.renderMarkup(data)
+			if(data.total_pages>500) {
+				amountOfPages = 500
+			} else {
+				amountOfPages = data.total_pages
+				if (data.total_pages == 1) {
+					prevBtn.classList.add('is-hidden');
+					paginationBar.innerHTML = `<li class="page active">1</li>`;
+					nextBtn.classList.add('is-hidden');
+				} else if (amountOfPages > 1 && amountOfPages < 6) {
+					paginationBar.innerHTML = ``;
+					nextBtn.classList.remove('is-hidden')
+					for (let i = 1; i <= amountOfPages; i++) {
+						paginationBar.insertAdjacentHTML(
+							'beforeend',
+							`<li class="page">${i}</li>`
+						);
+						paginationBar.children[0].classList.add('active');
+					}
+				} else {
+					clearPagination(amountOfPages)
+					nextBtn.classList.remove('is-hidden');
+				}
+			}
+			console.log(data)
+			saveLs('total-pages', amountOfPages)
+		});
   }
 }
 function eventSort(evn) {
   if (evn) {
     sort = evn.target.value;
     console.log(sort);
-    return getSearchForm(page, query, genre, year, sort).then(r =>
-      renderMarkup.renderMarkup(r)
-    );
+		saveLs('sort-pg', sort)
+    return getSearchForm(page, query, genre, year, sort).then((data) => {
+      renderMarkup.renderMarkup(data)
+			if(data.total_pages>500) {
+				amountOfPages = 500
+			} else {
+				amountOfPages = data.total_pages
+			}
+			clearPagination(amountOfPages)
+			saveLs('total-pages', amountOfPages)
+		});
   }
 }
-// saveLs('page-pg', 1)
-
-// let page = loadLs('page-pg')
 
 console.log(page);
 
 console.log(loadLs('page-pg'));
-
-// window.onbeforeunload = page = 1
-
-if (amountOfPages == 1) {
-  paginationBar.innerHTML = `<li class="page active">1</li>`;
-  nextBtn.classList.add('is-hidden');
-} else if (amountOfPages > 1 && amountOfPages < 6) {
-  paginationBar.innerHTML = ``;
-  for (let i = 1; i <= amountOfPages; i++) {
-    paginationBar.insertAdjacentHTML('beforeend', `<li class="page">${i}</li>`);
-    paginationBar.children[0].classList.add('active');
-  }
-} else {
-  if (paginationBar) {
-    paginationBar.children[8].textContent = amountOfPages;
-  }
-}
 
 if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
@@ -105,15 +151,18 @@ if (form) {
   form.addEventListener('submit', search);
 }
 
-api.getTrending(page).then(data => {
-  window.scrollTo({
-    top: 100,
-    behavior: 'smooth',
-  });
-  console.log(data);
-  renderMarkup.renderMarkup(data);
-  moviesDataUpdate(data);
+getSearchForm(page, query, genre, year, sort).then(data => {
+	window.scrollTo({
+		top: 100,
+		behavior: 'smooth',
+	});
+	console.log(data);
+	renderMarkup.renderMarkup(data);
+	moviesDataUpdate(data);
+	saveLs('total-pages', amountOfPages)
 });
+saveLs('page-pg', page);
+console.log(loadLs('page-pg'));
 
 function onPageClick(e) {
   if (e.target.className == 'page') {
@@ -163,19 +212,6 @@ function onNextBtnClick() {
       paginationBar.children[6].classList.add('active');
     }
   }
-  // if (query !== '') {
-  //   getSearchForm(page);
-  //   api.getSearchMovie(query, page).then(data => {
-  //     window.scrollTo({
-  //       top: 100,
-  //       behavior: 'smooth',
-  //     });
-  //     renderMarkup.renderMarkup(data);
-  //     moviesDataUpdate(data);
-
-  //     console.log(data);
-  //   });
-  // } else {
   getSearchForm(page, query, genre, year, sort).then(data => {
     window.scrollTo({
       top: 100,
@@ -185,7 +221,6 @@ function onNextBtnClick() {
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
-  // }
   saveLs('page-pg', page);
   console.log(loadLs('page-pg'));
 }
@@ -237,39 +272,21 @@ function onPrevBtnClick() {
       paginationBar.children[6].classList.remove('active');
     }
   }
-  if (query != '') {
-    api.getSearchMovie(query, searchPage).then(data => {
-      window.scrollTo({
-        top: 150,
-        behavior: 'smooth',
-      });
-      renderMarkup.renderMarkup(data);
-      moviesDataUpdate(data);
-
-      console.log(data);
-      searchPage -= 1;
+  getSearchForm(page, query, genre, year, sort).then(data => {
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth',
     });
-  } else {
-    api.getTrending(page).then(data => {
-      window.scrollTo({
-        top: 150,
-        behavior: 'smooth',
-      });
-      console.log(data);
-      renderMarkup.renderMarkup(data);
-      moviesDataUpdate(data);
-    });
-  }
+    console.log(data);
+    renderMarkup.renderMarkup(data);
+    moviesDataUpdate(data);
+	});
   saveLs('page-pg', page);
   console.log(loadLs('page-pg'));
 }
 
 function renderPagination(e) {
-  if (query != '') {
-    searchPage = parseInt(e.target.textContent);
-  } else {
-    page = parseInt(e.target.textContent);
-  }
+	page = parseInt(e.target.textContent)
   if (amountOfPages > 1 && amountOfPages < 6) {
     paginationBar.children[page - 1].classList.remove('active');
     paginationBar.children[page - 1].classList.add('active');
@@ -369,34 +386,25 @@ function renderPagination(e) {
     prevBtn.classList.remove('is-hidden');
   }
 
-  if (query != '') {
-    api.getSearchMovie(query, searchPage).then(data => {
-      window.scrollTo({
-        top: 100,
-        behavior: 'smooth',
-      });
-      renderMarkup.renderMarkup(data);
-      moviesDataUpdate(data);
-
-      console.log(data);
+  getSearchForm(page, query, genre, year, sort).then(data => {
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth',
     });
-  } else {
-    api.getTrending(page).then(data => {
-      window.scrollTo({
-        top: 100,
-        behavior: 'smooth',
-      });
-      //Добавление данных о фильмах этой страницы в localStorage
-      moviesDataUpdate(data);
-      //
-      renderMarkup.renderMarkup(data);
-    });
-  }
+    console.log(data);
+    renderMarkup.renderMarkup(data);
+    moviesDataUpdate(data);
+  });
   saveLs('page-pg', page);
   console.log(loadLs('page-pg'));
 }
 
+// if(!paginationBar.lastElementChild.classList.contains('is-hidden')) {
+// 	window.onload = function() {paginationBar.lastElementChild.textContent = amountOfPages}
+// }
+
 function clearPagination(amountOfPages) {
+	prevBtn.classList.add('is-hidden')
   paginationBar.innerHTML = `	<li class="page is-hidden">1</li>
 	<li class="dots is-hidden">...</li>
 	<li class="page active">1</li>
@@ -409,11 +417,14 @@ function clearPagination(amountOfPages) {
 }
 
 function search(e) {
+	genre = ''
+	document.querySelector('#genreForm').classList.add('is-hidden')
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
   e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
+	saveLs('query-pg', query)
   if (query == '') {
     paginationSection.classList.add('is-hidden');
     // warningShown();
@@ -426,6 +437,7 @@ function search(e) {
   api.getSearchMovie(query, searchPage).then(data => {
     moviesDataUpdate(data);
     amountOfPages = data.total_pages;
+		saveLs('total-pages', amountOfPages)
     clearPagination(amountOfPages);
     if (amountOfPages === 1) {
       prevBtn.classList.add('is-hidden');
