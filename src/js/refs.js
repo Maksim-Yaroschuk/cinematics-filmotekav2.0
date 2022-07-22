@@ -13,6 +13,11 @@ const refs = {
   lib: document.querySelector('.poster-lib'),
 	logo: document.querySelector('.header__logo'),
   movieModal: document.querySelector('.modal'),
+  openModalBtn: document.querySelector('[data-modal-open]'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  modal: document.querySelector('[data-modal-login]'),
+  formLogIn: document.querySelector('.modal_login__form'),
+  logOut: document.querySelector('#header-logOut'),
 };
 
 export const {
@@ -29,5 +34,10 @@ export const {
   filterForm,
   libCatalog,
   lib,
-	logo,
+  logo,
+  openModalBtn,
+  closeModalBtn,
+  modal,
+  formLogIn,
+  logOut,
 } = refs;
