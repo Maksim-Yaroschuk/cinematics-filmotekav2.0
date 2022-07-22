@@ -35,7 +35,7 @@ function createModal(event) {
     // подключаем кнопки
     onBntAddLibray();
 
-    onBntAddLibray(selectedMovieId);
+    // onBntAddLibray(selectedMovieId);
     trailerBtnListener(selectedMovieId)
   }
 }
@@ -58,11 +58,10 @@ function onBntAddLibray() {
 
   // слушатели на клик
   btnAddWatched.addEventListener('click', e => {
-    // console.log(idMovie, 'A');
     // добавить в локал или убрать с локала
 
     addListLibrary(idMovie, 'Watched');
-    updataLibery(e, idMovie, 'Watched');
+    updataLibery(e, btnAddWatched, 'Watched');
 
     // еще раз проверить наличие в локал и изменить кнопку
     setStileBntWatched(idMovie, btnAddWatched);
@@ -71,6 +70,7 @@ function onBntAddLibray() {
   btnAddQueue.addEventListener('click', e => {
     // добавить в локал или убрать с локала
     addListLibrary(idMovie, 'Queue');
+    updataLibery(e, btnAddQueue, 'Queue');
     // еще раз проверить наличие в локал и изменить кнопку
     setStileBntQueue(idMovie, btnAddQueue);
   });
@@ -105,14 +105,16 @@ function setStileBntQueue(selectedMovieId, btnAddQueue) {
   }
 }
 
-function updataLibery(e, id, list) {
+function updataLibery(e, btn, list) {
   const dataWebLocation = e.target
     .closest('body')
     .getAttribute('data-weblocation');
 
   if (dataWebLocation === 'library') {
     lib.innerHTML = '';
-    libMarkup('Watched');
+    libMarkup(list);
+    btn.setAttribute('disabled', true);
+
   }
   return;
 }
