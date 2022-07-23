@@ -36,12 +36,12 @@
 }
 .header__seaction_library {
   background-color: #000000;
-  background-image: url(/src/images/abstract-background-with-red-lines-library-desktop.jpg);
+  background-image: url(/src/images/header/abstract-background-with-red-lines-library-desktop.jpg);
   @include mq(tablet) {
     background-image: url(/src/images/abstract-background-with-red-lines-library-tablet.jpg);
   }
   @include mq(desktop) {
-    background-image: url(/src/images/abstract-background-with-red-lines-library-desktop.jpg);
+    background-image: url(/src/images/header/abstract-background-with-red-lines-library-desktop.jpg);
     padding-bottom: 80px;
   }
   background-repeat: no-repeat;

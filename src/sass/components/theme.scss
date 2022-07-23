@@ -1,5 +1,6 @@
 body.dark {
     background-color: var(--dark-body-theme);
+	 --theme-btn: bisque;
 }
 
 body.light::-webkit-scrollbar {
@@ -40,7 +41,9 @@ body.dark::-webkit-scrollbar-thumb {
 }
 
 #toggle-theme-image {
-
+// color: bisque;
+fill: var(--theme-btn);
+stroke: #000 ;
 	width: 28px;
 	height: 28px;
 }
