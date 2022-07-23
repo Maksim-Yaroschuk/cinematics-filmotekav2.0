@@ -137,6 +137,7 @@ function eventSort(evn) {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
         amountOfPages = 500;
+				nextBtn.classList.remove('is-hidden')
       } else {
         amountOfPages = data.total_pages;
       }
