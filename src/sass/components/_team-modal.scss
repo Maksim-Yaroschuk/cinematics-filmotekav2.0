@@ -1,11 +1,12 @@
 .team-modal {
-	background-color: var(--background-modal);
+  background-color: var(--background-modal);
   width: 320px;
   padding: 48px 20px 0px;
   margin-bottom: 50px;
   position: relative;
   margin: auto;
-	@include mq(tablet) {
+  border-radius: 15px;
+  @include mq(tablet) {
     width: 700px;
   }
 
@@ -15,49 +16,59 @@
 }
 
 .team-modal__list {
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	// display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(11, 1fr);
-	// grid-column-gap: 25px;
-	// grid-row-gap: 20px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  // display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(11, 1fr);
+  // grid-column-gap: 25px;
+  // grid-row-gap: 20px;
 
+  @include mq(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
 
-@include mq(tablet) {
-	grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(4, 1fr);
-}
-
-@include mq(desktop) {
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	grid-column-gap: 0px;
-}
+  @include mq(desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+  }
 }
 
 .team-modal__item {
-	width: 200px;
-	margin-bottom: 20px;
+  width: 200px;
+  margin-bottom: 25px;
 }
 
 .team-modal__item div {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .team-modal__pic {
-	min-width: 100%;
-	border-radius: 50%;
+  min-width: 100%;
+  border-radius: 50%;
 }
 
 .team-modal__name {
-	text-align: center;
-	margin: 10px 0 15px 0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.team-modal__role {
+  text-align: center;
+  font-size: 16px;
 }
 
 .team-modal__link {
-	width: 30px;
+  width: 30px;
+}
+
+.team-modal__title {
+  font-size: 30px;
+  margin-bottom: 30px;
+  text-align: center;
 }

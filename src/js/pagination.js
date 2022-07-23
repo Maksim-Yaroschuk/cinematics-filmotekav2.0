@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, divError, filterForm, logo } from './refs';
+import { list, form, warning, divError, filterForm, logo, paginationBar} from './refs';
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
@@ -10,8 +10,6 @@ if (form) {
 
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
-const paginationBar = document.querySelector('.pagination-btns');
-
 const paginationSection = document.querySelector('.pagination-section');
 
 const refs = {
@@ -40,6 +38,7 @@ if (refs.btnReset) {
 };
 
 function submitResetFilter(evn) {
+	nextBtn.classList.remove('is-hidden')
   evn.preventDefault();
   refs.filterForm[0].options.selectedIndex = 0;
   refs.filterForm[1].options.selectedIndex = 0;
@@ -48,7 +47,9 @@ function submitResetFilter(evn) {
   year = '';
   sort = '';
 	page = 1;
-	amountOfPages = 1000;
+	if(query==='') {
+		amountOfPages = 1000;
+	}
 	saveLs('genre-pg', genre);
 	saveLs('year-pg', year);
 	saveLs('sort-pg', sort);
@@ -66,12 +67,18 @@ function submitResetFilter(evn) {
 logo.addEventListener('click', onLogoClick);
 
 function onLogoClick() {
+	amountOfPages = 1000;
   saveLs('page-pg', 1);
   saveLs('genre-pg', '');
-  saveLs('year-pg', 1);
-  saveLs('total-pages', 1000);
+  saveLs('year-pg', '');
+  saveLs('total-pages', amountOfPages);
   saveLs('query-pg', '');
-  document.querySelector('#genreForm').classList.remove('is-hidden');
+	saveLs('sort-pg', '');
+	getSearchForm(page, query, genre, year, sort).then(data => {
+		renderMarkup.renderMarkup(data);
+		moviesDataUpdate(data);
+		saveLs('total-pages', amountOfPages);
+	});
 }
 
 if (!loadLs('total-pages')) {
@@ -95,7 +102,6 @@ function eventGenre(evn) {
     genre = evn.target.value;
     page = 1;
     saveLs('page-pg', page);
-    console.log(genre);
     saveLs('genre-pg', genre);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
@@ -109,13 +115,48 @@ function eventGenre(evn) {
     });
   }
 }
+
 function eventYear(evn) {
   if (evn) {
     page = 1;
     saveLs('page-pg', page);
     year = evn.target.value;
-    console.log(year);
     saveLs('year-pg', year);
+    getSearchForm(page, query, genre, year, sort).then(data => {
+      renderMarkup.renderMarkup(data);
+      if (data.total_pages > 500) {
+        amountOfPages = 500;
+      } else {
+        amountOfPages = data.total_pages;
+      }
+      clearPagination(amountOfPages);
+      saveLs('total-pages', amountOfPages);
+			if (amountOfPages === 1) {
+				prevBtn.classList.add('is-hidden');
+				paginationBar.innerHTML = `<li class="page active">1</li>`;
+				nextBtn.classList.add('is-hidden');
+			} else if (amountOfPages > 1 && amountOfPages < 6) {
+				paginationBar.innerHTML = ``;
+				nextBtn.classList.remove('is-hidden');
+				for (let i = 1; i <= amountOfPages; i++) {
+					paginationBar.insertAdjacentHTML(
+						'beforeend',
+						`<li class="page">${i}</li>`
+					);
+					paginationBar.children[0].classList.add('active');
+				}
+			} else {
+				paginationBar.children[8].textContent = amountOfPages;
+			}
+    });
+  }
+}
+function eventSort(evn) {
+  if (evn) {
+    page = 1;
+    saveLs('page-pg', page);
+    sort = evn.target.value;
+    saveLs('sort-pg', sort);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
@@ -128,28 +169,6 @@ function eventYear(evn) {
     });
   }
 }
-function eventSort(evn) {
-  if (evn) {
-    sort = evn.target.value;
-    console.log(sort);
-    saveLs('sort-pg', sort);
-    return getSearchForm(page, query, genre, year, sort).then(data => {
-      renderMarkup.renderMarkup(data);
-      if (data.total_pages > 500) {
-        amountOfPages = 500;
-				nextBtn.classList.remove('is-hidden')
-      } else {
-        amountOfPages = data.total_pages;
-      }
-      clearPagination(amountOfPages);
-      saveLs('total-pages', amountOfPages);
-    });
-  }
-}
-
-console.log(page);
-
-console.log(loadLs('page-pg'));
 
 if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
@@ -157,18 +176,17 @@ if (nextBtn) {
   paginationBar.addEventListener('click', onPageClick);
 }
 
-if (form) {
-  form.addEventListener('submit', search);
-}
-
 if(location.pathname.split("/").slice(-1) == 'index.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
 		renderMarkup.renderMarkup(data);
 		moviesDataUpdate(data);
 		saveLs('total-pages', amountOfPages);
+		if(query) {
+			document.querySelector('#genreForm').classList.add('is-hidden');
+			document.querySelector('#sortForm').classList.add('is-hidden');
+		}
 	});
 	saveLs('page-pg', page);
-	console.log(loadLs('page-pg'));
 	if (amountOfPages > 1 && amountOfPages < 6) {
 		paginationBar.children[page - 1].classList.remove('active');
 		paginationBar.children[page - 1].classList.add('active');
@@ -276,7 +294,6 @@ function onPageClick(e) {
 }
 
 function onNextBtnClick() {
-  console.log(search);
   if (page == amountOfPages - 1) {
     nextBtn.classList.add('is-hidden');
   }
@@ -322,12 +339,10 @@ function onNextBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function onPrevBtnClick() {
@@ -382,12 +397,10 @@ function onPrevBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function renderPagination(e) {
@@ -496,12 +509,10 @@ function renderPagination(e) {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 // if(!paginationBar.lastElementChild.classList.contains('is-hidden')) {
@@ -521,21 +532,23 @@ function clearPagination(amountOfPages) {
 	<li class="page">${amountOfPages}</li>`;
 }
 
+
 function search(e) {
+  e.preventDefault();
   genre = '';
-  document.querySelector('#genreForm').classList.add('is-hidden');
+	document.querySelector('#genreForm').classList.add('is-hidden');
+	document.querySelector('#sortForm').classList.add('is-hidden');
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
-  e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
   saveLs('query-pg', query);
   if (query == '') {
     paginationSection.classList.add('is-hidden');
-    // warningShown();
+    warningShown();
     form.reset();
   } else {
-    // warningUnShown();
+    warningUnShown();
     form.reset();
     paginationSection.classList.remove('is-hidden');
   }
@@ -561,11 +574,13 @@ function search(e) {
       paginationBar.children[8].textContent = amountOfPages;
     }
     if (data.results.length < 1 || query === '') {
-      // warningShown();
+      warningShown();
       form.reset();
       paginationSection.classList.add('is-hidden');
+			query='';
+			saveLs('query-pg', query)
     } else {
-      // warningUnShown();
+      warningUnShown();
       renderMarkup.renderMarkup(data);
       form.reset();
       paginationSection.classList.remove('is-hidden');
@@ -573,16 +588,17 @@ function search(e) {
   });
 }
 
-// function warningShown() {
-// 	warning.classList.remove('visually-hidden');
-// 	divError.classList.remove('visually-hidden');
-// 	list.classList.add('visually-hidden');
-// 	filterForm.classList.add('visually-hidden');
-// }
+function warningShown() {
+	// warning.classList.remove('visually-hidden');
+	divError.classList.remove('visually-hidden');
+	list.classList.add('visually-hidden');
+	filterForm.classList.add('visually-hidden');
+}
 
-// function warningUnShown() {
-// 	warning.classList.add('visually-hidden');
-// 	divError.classList.add('visually-hidden');
-// 	list.classList.remove('visually-hidden');
-// 	filterForm.classList.remove('visually-hidden');
-// }
+function warningUnShown() {
+	// warning.classList.add('visually-hidden');
+	divError.classList.add('visually-hidden');
+	list.classList.remove('visually-hidden');
+	filterForm.classList.remove('visually-hidden');
+}
+

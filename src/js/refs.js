@@ -3,7 +3,7 @@ const refs = {
   catalog: document.querySelector('.poster-list__item'),
   list: document.querySelector('.poster-list'),
   form: document.querySelector('.header__search-form'),
-  warning: document.querySelector('.header-message'),
+  // warning: document.querySelector('.header-message'),
   toTopBtn: document.querySelector('.btn-to-top'),
   divError: document.querySelector('.to_main__div'),
   modalBackdrop: document.querySelector('.modal-backdrop'),
@@ -18,6 +18,7 @@ const refs = {
   modal: document.querySelector('[data-modal-login]'),
   formLogIn: document.querySelector('.modal_login__form'),
   logOut: document.querySelector('#header-logOut'),
+	paginationBar: document.querySelector('.pagination-btns'),
 };
 
 export const {
@@ -40,4 +41,5 @@ export const {
   modal,
   formLogIn,
   logOut,
+	paginationBar,
 } = refs;

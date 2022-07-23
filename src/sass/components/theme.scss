@@ -47,71 +47,67 @@ stroke: #000 ;
 	width: 28px;
 	height: 28px;
 }
-.text_theme-btn{
-	
-	position: absolute;
-	top: 15px;
-	right: 1%;
-	transform: translate(80%, -50%);
 
-	// color: bisque;
-	color: #fff;
-	width: 100px;
-	@include mq(tablet) {
-		top: 40px;
-	right: 50%;
-	transform: translate(50%, -50%);
-	}
-  @include mq(desktop) {
-		top: 45px;
-		right: -5px;
-	}
+.text_theme-btn{
+	position: absolute;
+	top: 35px;
+	right: -5px;
+	color: var(--light-body-theme);
 }
 
 #toggle-theme-btn {
 	width: 80px;
 	height: 10px;
     position: absolute;
-    top: 200px;
-    right: 55%;
-	 //width: 1rem;
-	 transform: translate(50%, 50%);
+
+    top: 50px;
+    right: 2vw;
+
     background-color:transparent;
     border: 2px transparent solid;
    // padding: 1px 3px ;
     //border-radius: 20px;
     //transition: 0.3s;
     //box-shadow: 0 0 5px #c0c0c0;
-	 @include mq(tablet) {
-		top: 170px;
-    	right: 50%;
-	 	//width: 1rem;
-	 	transform: translate(50%, 50%);
-	 }
-   @include mq(desktop) {
-		position: absolute;
-		top: 120px;
-		right: 6vw;
-		width: 20px;
-		background-color:transparent;
-		border: 2px transparent solid;
-	}
+
+   
+    @include mq(desktop) {
+        right: 2vw;
+    }
+    @include mq(tablet) {
+
+      top: 80px;
+      right: 2vw;
+    }
+
+
 }
 
 #toggle-theme-btn:hover {
-    //border: 1px var(--primary-current-color) solid;
-    //box-shadow: -1 -1 1px #af5252;
+    // border: 1px var(--primary-current-color) solid;
+    // box-shadow: -1 -1 1px #af5252;
 cursor: pointer;
 }
 
+
+
+.dark .header__name {
+  color: var(--bisquit-color);
+};
+
+.dark .header__link {
+  color: var(--bisquit-color);
+};
+
 .dark .poster-list__title {
-    color: bisque;
-  }
+    color: var(--bisquit-color);
+};
+
+.dark .text_theme-btn {
+  color: var(--bisquit-color);
+}
   
-.dark .poster-list__text{
-    color: var(--primary-current-color);
-  }
-  
-.dark .poster-list__age {
-    color: var(--primary-current-color);
-  }
+// .dark .poster-list__text , .dark .poster-list__age {
+//     color: var(--primary-current-color);
+// };
+
