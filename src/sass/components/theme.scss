@@ -50,7 +50,8 @@ body.dark::-webkit-scrollbar-thumb {
 	top: 40px;
 	right: 50%;
 	transform: translate(50%, -50%);
-	color: bisque;
+	// color: bisque;
+	color: #ffffff;
 	width: 80px;
 	@include mq(desktop) {
 		top: 45px;
