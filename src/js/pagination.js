@@ -524,6 +524,7 @@ function clearPagination(amountOfPages) {
 
 function search(e) {
   genre = '';
+	document.querySelector('#genreForm').classList.add('is-hidden');
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
   e.preventDefault();
