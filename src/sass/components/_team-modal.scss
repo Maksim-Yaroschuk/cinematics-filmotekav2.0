@@ -40,7 +40,7 @@ grid-template-rows: repeat(4, 1fr);
 
 .team-modal__item {
 	width: 200px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 
 .team-modal__item div {
@@ -55,9 +55,20 @@ justify-content: center;
 
 .team-modal__name {
 	text-align: center;
-	margin: 10px 0 15px 0;
+	margin-top: 10px;
+}
+
+.team-modal__role {
+	text-align: center;
+	font-size: 16px;
 }
 
 .team-modal__link {
 	width: 30px;
+}
+
+.team-modal__title {
+	font-size: 30px;
+	margin-bottom: 30px;
+	text-align: center;
 }
