@@ -122,26 +122,8 @@ function eventYear(evn) {
         amountOfPages = 500;
       } else {
         amountOfPages = data.total_pages;
-        if (data.total_pages == 1) {
-          prevBtn.classList.add('is-hidden');
-          paginationBar.innerHTML = `<li class="page active">1</li>`;
-          nextBtn.classList.add('is-hidden');
-        } else if (amountOfPages > 1 && amountOfPages < 6) {
-          paginationBar.innerHTML = ``;
-          nextBtn.classList.remove('is-hidden');
-          for (let i = 1; i <= amountOfPages; i++) {
-            paginationBar.insertAdjacentHTML(
-              'beforeend',
-              `<li class="page">${i}</li>`
-            );
-            paginationBar.children[0].classList.add('active');
-          }
-        } else {
-          clearPagination(amountOfPages);
-          nextBtn.classList.remove('is-hidden');
-        }
       }
-      console.log(data);
+      clearPagination(amountOfPages);
       saveLs('total-pages', amountOfPages);
     });
   }
