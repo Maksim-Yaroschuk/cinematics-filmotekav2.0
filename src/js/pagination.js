@@ -40,6 +40,7 @@ if (refs.btnReset) {
 };
 
 function submitResetFilter(evn) {
+	nextBtn.classList.remove('is-hidden')
   evn.preventDefault();
   refs.filterForm[0].options.selectedIndex = 0;
   refs.filterForm[1].options.selectedIndex = 0;
