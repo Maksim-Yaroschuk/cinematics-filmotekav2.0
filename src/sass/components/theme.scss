@@ -1,6 +1,39 @@
 body.dark {
     background-color: var(--dark-body-theme);
 }
+
+body.light::-webkit-scrollbar {
+  width: 20;
+}
+body.light::-webkit-scrollbar-track {
+  background: var(--light-body-theme);
+	margin-top: 20px;
+	margin-bottom: 100px;
+	border-radius: 10px;
+	opacity: 0;
+}
+body.light::-webkit-scrollbar-thumb {
+  background: grey;
+	border-radius: 10px;
+	border: 5px solid var(--light-body-theme);
+}
+
+body.dark::-webkit-scrollbar {
+  width: 20;
+}
+body.dark::-webkit-scrollbar-track {
+  background: var(--dark-body-theme);
+	margin-top: 20px;
+	margin-bottom: 100px;
+	border-radius: 10px;
+	opacity: 0;
+}
+body.dark::-webkit-scrollbar-thumb {
+  background: bisque;
+	border-radius: 10px;
+	border: 5px solid var(--dark-body-theme);
+}
+
 .header__seaction_library,
 .header__seaction_home{
 	position: relative;
