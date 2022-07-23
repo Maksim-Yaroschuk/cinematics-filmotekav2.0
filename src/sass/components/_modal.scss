@@ -8,7 +8,7 @@
   pointer-events: none;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -21,7 +21,7 @@
   padding-top: 20px;
   padding-bottom: 38px;
   padding: 20px 10px 38px;
-  overflow: auto;
+  overflow: overlay;
   width: 100%;
   height: 100%;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -137,6 +137,18 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
+}
+
+.modal.dark::-webkit-scrollbar {
+  width: 12px;
+}
+.modal.dark::-webkit-scrollbar-track {
+  background: #0000008f;
+	opacity: 50%;
+}
+.modal.dark::-webkit-scrollbar-thumb {
+  background: bisque;
+	border-radius: 8px;
 }
 
 .info-card__list-parametrs {
@@ -330,16 +342,6 @@
     margin-right: 14px;
     width: 136px;
   }
-}
-
-::-webkit-scrollbar {
-  width: 15px;
-}
-::-webkit-scrollbar-track {
-  background: #dddddd;
-}
-::-webkit-scrollbar-thumb {
-  background: grey;
 }
 
 .modal__add-watched[disabled='true'],

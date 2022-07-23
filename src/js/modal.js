@@ -142,6 +142,7 @@ function setBtnLibrayLocalData(btnAddWatched, btnAddQueue) {
 function openModal() {
   modalBackdrop.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
+	document.body.classList.add('modal-open')
 
   setCloseOptionModal();
 }
@@ -174,7 +175,8 @@ function offModal() {
 	modalBackdrop.firstElementChild.classList.remove('team-modal')
 	modalBackdrop.firstElementChild.classList.add('modal')
   modalBackdrop.classList.remove('modal-open');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = 'overlay';
+	document.body.classList.remove('modal-open')
   document.removeEventListener('keydown', offModalForEscape);
   modalBackdrop.removeEventListener('keydown', offModalForClickBeackdrop);
   modalBackdrop.firstElementChild.dataset.id = '';

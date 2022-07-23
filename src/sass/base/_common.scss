@@ -19,6 +19,8 @@ a {
   color: inherit;
 }
 body {
+	overflow: overlay;
+	scrollbar-gutter: stable both-edges;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -35,6 +37,23 @@ body {
   background-color: var(--light-body-theme);
 }
 
+body.modal-open {
+	::-webkit-scrollbar {
+		width: 20;
+	}
+	::-webkit-scrollbar-track {
+		background-color: #00000000;
+		margin-block: 10px;
+		border-radius: 10px;
+	
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: var(--light-body-theme);
+		border-radius: 10px;
+		border: 5px solid var(--backdrop-mobail-modal);
+	}
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -46,12 +65,17 @@ li {
 }
 
 //Скрол
-::-webkit-scrollbar {
-  width: 15px;
-}
-::-webkit-scrollbar-track {
-  background: #dddddd;
-}
-::-webkit-scrollbar-thumb {
-  background: grey;
-}
+// ::-webkit-scrollbar {
+//   width: 20;
+// }
+// ::-webkit-scrollbar-track {
+//   background: var(--light-body-theme);
+// 	margin-block: 10px;
+// 	border-radius: 10px;
+// 	opacity: 0;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background: grey;
+// 	border-radius: 10px;
+// 	border: 5px solid var(--light-body-theme);
+// }

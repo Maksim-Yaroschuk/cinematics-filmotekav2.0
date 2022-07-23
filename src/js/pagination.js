@@ -6,7 +6,7 @@ import { getSearchForm } from './filter';
 
 if (form) {
   form.addEventListener('submit', search);
-}
+};
 
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
@@ -15,6 +15,7 @@ const paginationBar = document.querySelector('.pagination-btns');
 const paginationSection = document.querySelector('.pagination-section');
 
 const refs = {
+	filterForm: document.querySelector('#filter-form'),
   sortForm: document.querySelector('#sortForm'),
   genreForm: document.querySelector('#genreForm'),
   yearForm: document.querySelector('#yearForm'),
@@ -23,31 +24,43 @@ const refs = {
 
 if (refs.genreForm) {
   refs.genreForm.addEventListener('input', eventGenre);
-}
+};
 if (refs.yearForm) {
   refs.yearForm.addEventListener('input', eventYear);
-}
+};
 if (refs.sortForm) {
   refs.sortForm.addEventListener('input', eventSort);
-}
+};
 
 if (prevBtn) {
   prevBtn.classList.add('is-hidden');
-}
+};
 if (refs.btnReset) {
   refs.btnReset.addEventListener('click', submitResetFilter);
-  console.log(refs.btnReset);
-}
+};
 
 function submitResetFilter(evn) {
-  evn.preventDefoult();
-  console.log(refs.btnReset);
+  evn.preventDefault();
+  refs.filterForm[0].options.selectedIndex = 0;
+  refs.filterForm[1].options.selectedIndex = 0;
+  refs.filterForm[2].options.selectedIndex = 0;
   genre = '';
   year = '';
   sort = '';
-  // console.log(genre);
-  // console.log(year);
-  // console.log(sort);
+	page = 1;
+	amountOfPages = 1000;
+	saveLs('genre-pg', genre);
+	saveLs('year-pg', year);
+	saveLs('sort-pg', sort);
+	saveLs('page-pg', page);
+	saveLs('total-pages', amountOfPages);
+  getSearchForm(page, query, genre, year, sort).then(data => {
+		renderMarkup.renderMarkup(data);
+		moviesDataUpdate(data);
+		saveLs('total-pages', amountOfPages);
+	});
+	saveLs('page-pg', page);
+	clearPagination(amountOfPages)
 }
 
 logo.addEventListener('click', onLogoClick);
@@ -84,7 +97,7 @@ function eventGenre(evn) {
     saveLs('page-pg', page);
     console.log(genre);
     saveLs('genre-pg', genre);
-    return getSearchForm(page, query, genre, year, sort).then(data => {
+    getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
         amountOfPages = 500;
@@ -103,32 +116,14 @@ function eventYear(evn) {
     year = evn.target.value;
     console.log(year);
     saveLs('year-pg', year);
-    return getSearchForm(page, query, genre, year, sort).then(data => {
+    getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
         amountOfPages = 500;
       } else {
         amountOfPages = data.total_pages;
-        if (data.total_pages == 1) {
-          prevBtn.classList.add('is-hidden');
-          paginationBar.innerHTML = `<li class="page active">1</li>`;
-          nextBtn.classList.add('is-hidden');
-        } else if (amountOfPages > 1 && amountOfPages < 6) {
-          paginationBar.innerHTML = ``;
-          nextBtn.classList.remove('is-hidden');
-          for (let i = 1; i <= amountOfPages; i++) {
-            paginationBar.insertAdjacentHTML(
-              'beforeend',
-              `<li class="page">${i}</li>`
-            );
-            paginationBar.children[0].classList.add('active');
-          }
-        } else {
-          clearPagination(amountOfPages);
-          nextBtn.classList.remove('is-hidden');
-        }
       }
-      console.log(data);
+      clearPagination(amountOfPages);
       saveLs('total-pages', amountOfPages);
     });
   }
@@ -142,6 +137,7 @@ function eventSort(evn) {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
         amountOfPages = 500;
+				nextBtn.classList.remove('is-hidden')
       } else {
         amountOfPages = data.total_pages;
       }

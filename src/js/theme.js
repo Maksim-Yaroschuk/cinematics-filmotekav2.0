@@ -15,11 +15,13 @@ themeBtn.addEventListener('click', () => {
 	const val = loadLs('theme');
 	if (val === 'light') {
 		document.body.classList.add('dark');
+		document.querySelector('.modal').classList.add('dark')
 		moon.style.visibility = 'hidden';
 		sun.style.visibility = 'visible';
 		saveLs('theme', 'dark');
 	} else {
 		document.body.classList.remove('dark');
+		document.querySelector('.modal').classList.remove('dark')
 		sun.style.visibility = 'hidden';
 		moon.style.visibility = 'visible';
 		saveLs('theme', 'light');
