@@ -40,32 +40,39 @@ body.dark::-webkit-scrollbar-thumb {
 }
 
 #toggle-theme-image {
-	width: 25px;
-	height: 25px;
+
+	width: 28px;
+	height: 28px;
+}
+.text_theme-btn{
+	//width: 25px;
+	position: absolute;
+	top: 35px;
+	right: -5px;
+	color: bisque;
 }
 
 #toggle-theme-btn {
 	//width: 40px;
 	//height: 40px;
     position: absolute;
-    top: 150px;
+    top: 120px;
     right: 1vw;
     background-color:transparent;
     border: 2px transparent solid;
-    padding: 1px 3px ;
-    border-radius: 20px;
-    transition: 0.3s;
+   // padding: 1px 3px ;
+    //border-radius: 20px;
+    //transition: 0.3s;
     //box-shadow: 0 0 5px #c0c0c0;
    
     @include mq(desktop) {
-        //top: 100px;
         right: 2vw;
     }
 }
 
 #toggle-theme-btn:hover {
-    border: 1px var(--primary-current-color) solid;
-    box-shadow: -1 -1 1px #c0c0c0;
+    //border: 1px var(--primary-current-color) solid;
+    //box-shadow: -1 -1 1px #af5252;
 cursor: pointer;
 }
 

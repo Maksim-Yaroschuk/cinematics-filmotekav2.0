@@ -1,13 +1,9 @@
 import { loadLs, saveLs } from './storage';
 const themeBtn = document.getElementById('toggle-theme-btn');
-const themeImage = document.getElementById('toggle-theme-image');
-const sun = document.querySelector('.sun');//.hidden = true;
-const moon = document.querySelector('.moon');//.hidden = true;
-
-const titleCard = document.querySelector('.poster-list__title');
+const sun = document.querySelector('.sun');
+const moon = document.querySelector('.moon');
 
 const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
-
 saveLs('theme', themeValue);
 document.body.classList.add(themeValue);
 if (themeValue === 'light') {
@@ -15,7 +11,6 @@ if (themeValue === 'light') {
 } else {
 	moon.style.visibility = 'hidden';
 }
-
 themeBtn.addEventListener('click', () => {
 	const val = loadLs('theme');
 	if (val === 'light') {
@@ -32,4 +27,3 @@ themeBtn.addEventListener('click', () => {
 		saveLs('theme', 'light');
 	}
 });
-
