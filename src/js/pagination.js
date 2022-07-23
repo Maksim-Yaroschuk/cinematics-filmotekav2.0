@@ -40,6 +40,7 @@ if (refs.btnReset) {
 };
 
 function submitResetFilter(evn) {
+	console.log('abc')
 	nextBtn.classList.remove('is-hidden')
   evn.preventDefault();
   refs.filterForm[0].options.selectedIndex = 0;
@@ -49,7 +50,9 @@ function submitResetFilter(evn) {
   year = '';
   sort = '';
 	page = 1;
-	amountOfPages = 1000;
+	if(query==='') {
+		amountOfPages = 1000;
+	}
 	saveLs('genre-pg', genre);
 	saveLs('year-pg', year);
 	saveLs('sort-pg', sort);
@@ -67,12 +70,18 @@ function submitResetFilter(evn) {
 logo.addEventListener('click', onLogoClick);
 
 function onLogoClick() {
+	amountOfPages = 1000;
   saveLs('page-pg', 1);
   saveLs('genre-pg', '');
-  saveLs('year-pg', 1);
-  saveLs('total-pages', 1000);
+  saveLs('year-pg', '');
+  saveLs('total-pages', amountOfPages);
   saveLs('query-pg', '');
-  document.querySelector('#genreForm').classList.remove('is-hidden');
+	saveLs('sort-pg', '');
+	getSearchForm(page, query, genre, year, sort).then(data => {
+		renderMarkup.renderMarkup(data);
+		moviesDataUpdate(data);
+		saveLs('total-pages', amountOfPages);
+	});
 }
 
 if (!loadLs('total-pages')) {
@@ -110,6 +119,7 @@ function eventGenre(evn) {
     });
   }
 }
+
 function eventYear(evn) {
   if (evn) {
     page = 1;
@@ -126,19 +136,36 @@ function eventYear(evn) {
       }
       clearPagination(amountOfPages);
       saveLs('total-pages', amountOfPages);
+			if (amountOfPages === 1) {
+				prevBtn.classList.add('is-hidden');
+				paginationBar.innerHTML = `<li class="page active">1</li>`;
+				nextBtn.classList.add('is-hidden');
+			} else if (amountOfPages > 1 && amountOfPages < 6) {
+				paginationBar.innerHTML = ``;
+				nextBtn.classList.remove('is-hidden');
+				for (let i = 1; i <= amountOfPages; i++) {
+					paginationBar.insertAdjacentHTML(
+						'beforeend',
+						`<li class="page">${i}</li>`
+					);
+					paginationBar.children[0].classList.add('active');
+				}
+			} else {
+				paginationBar.children[8].textContent = amountOfPages;
+			}
     });
   }
 }
 function eventSort(evn) {
   if (evn) {
+    page = 1;
+    saveLs('page-pg', page);
     sort = evn.target.value;
-    console.log(sort);
     saveLs('sort-pg', sort);
-    return getSearchForm(page, query, genre, year, sort).then(data => {
+    getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
       if (data.total_pages > 500) {
         amountOfPages = 500;
-				nextBtn.classList.remove('is-hidden')
       } else {
         amountOfPages = data.total_pages;
       }
@@ -158,18 +185,17 @@ if (nextBtn) {
   paginationBar.addEventListener('click', onPageClick);
 }
 
-if (form) {
-  form.addEventListener('submit', search);
-}
-
 if(location.pathname.split("/").slice(-1) == 'index.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
 		renderMarkup.renderMarkup(data);
 		moviesDataUpdate(data);
 		saveLs('total-pages', amountOfPages);
+		if(query) {
+			document.querySelector('#genreForm').classList.add('is-hidden');
+			document.querySelector('#sortForm').classList.add('is-hidden');
+		}
 	});
 	saveLs('page-pg', page);
-	console.log(loadLs('page-pg'));
 	if (amountOfPages > 1 && amountOfPages < 6) {
 		paginationBar.children[page - 1].classList.remove('active');
 		paginationBar.children[page - 1].classList.add('active');
@@ -277,7 +303,6 @@ function onPageClick(e) {
 }
 
 function onNextBtnClick() {
-  console.log(search);
   if (page == amountOfPages - 1) {
     nextBtn.classList.add('is-hidden');
   }
@@ -522,12 +547,14 @@ function clearPagination(amountOfPages) {
 	<li class="page">${amountOfPages}</li>`;
 }
 
+
 function search(e) {
+  e.preventDefault();
   genre = '';
 	document.querySelector('#genreForm').classList.add('is-hidden');
+	document.querySelector('#sortForm').classList.add('is-hidden');
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
-  e.preventDefault();
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
   saveLs('query-pg', query);
@@ -587,3 +614,4 @@ function warningUnShown() {
 	list.classList.remove('visually-hidden');
 	filterForm.classList.remove('visually-hidden');
 }
+
