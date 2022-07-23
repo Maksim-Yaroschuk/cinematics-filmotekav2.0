@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, divError, filterForm, logo } from './refs';
+import { list, form, warning, divError, filterForm, logo, paginationBar} from './refs';
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
@@ -10,8 +10,6 @@ if (form) {
 
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
-const paginationBar = document.querySelector('.pagination-btns');
-
 const paginationSection = document.querySelector('.pagination-section');
 
 const refs = {
@@ -40,7 +38,6 @@ if (refs.btnReset) {
 };
 
 function submitResetFilter(evn) {
-	console.log('abc')
 	nextBtn.classList.remove('is-hidden')
   evn.preventDefault();
   refs.filterForm[0].options.selectedIndex = 0;
@@ -105,7 +102,6 @@ function eventGenre(evn) {
     genre = evn.target.value;
     page = 1;
     saveLs('page-pg', page);
-    console.log(genre);
     saveLs('genre-pg', genre);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
@@ -125,7 +121,6 @@ function eventYear(evn) {
     page = 1;
     saveLs('page-pg', page);
     year = evn.target.value;
-    console.log(year);
     saveLs('year-pg', year);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
@@ -174,10 +169,6 @@ function eventSort(evn) {
     });
   }
 }
-
-console.log(page);
-
-console.log(loadLs('page-pg'));
 
 if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
@@ -348,12 +339,10 @@ function onNextBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function onPrevBtnClick() {
@@ -408,12 +397,10 @@ function onPrevBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function renderPagination(e) {
@@ -522,12 +509,10 @@ function renderPagination(e) {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 // if(!paginationBar.lastElementChild.classList.contains('is-hidden')) {
@@ -592,6 +577,8 @@ function search(e) {
       warningShown();
       form.reset();
       paginationSection.classList.add('is-hidden');
+			query='';
+			saveLs('query-pg', query)
     } else {
       warningUnShown();
       renderMarkup.renderMarkup(data);
