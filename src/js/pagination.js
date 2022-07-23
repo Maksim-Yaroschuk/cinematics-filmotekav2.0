@@ -1,6 +1,6 @@
 import * as api from './api';
 import * as renderMarkup from './renderMarkup';
-import { list, form, warning, divError, filterForm, logo } from './refs';
+import { list, form, warning, divError, filterForm, logo, paginationBar} from './refs';
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
@@ -10,7 +10,6 @@ if (form) {
 
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
-const paginationBar = document.querySelector('.pagination-btns');
 
 const paginationSection = document.querySelector('.pagination-section');
 
@@ -592,6 +591,8 @@ function search(e) {
       warningShown();
       form.reset();
       paginationSection.classList.add('is-hidden');
+			query='';
+			saveLs('query-pg', query)
     } else {
       warningUnShown();
       renderMarkup.renderMarkup(data);

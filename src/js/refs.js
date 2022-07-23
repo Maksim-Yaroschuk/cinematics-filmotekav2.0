@@ -18,6 +18,7 @@ const refs = {
   modal: document.querySelector('[data-modal-login]'),
   formLogIn: document.querySelector('.modal_login__form'),
   logOut: document.querySelector('#header-logOut'),
+	paginationBar: document.querySelector('.pagination-btns'),
 };
 
 export const {
@@ -40,4 +41,5 @@ export const {
   modal,
   formLogIn,
   logOut,
+	paginationBar,
 } = refs;
