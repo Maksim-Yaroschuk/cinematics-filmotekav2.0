@@ -45,29 +45,54 @@ body.dark::-webkit-scrollbar-thumb {
 	height: 28px;
 }
 .text_theme-btn{
-	//width: 25px;
+	
 	position: absolute;
-	top: 35px;
-	right: -5px;
-	color: bisque;
+	top: 15px;
+	right: 1%;
+	transform: translate(80%, -50%);
+
+	// color: bisque;
+	color: #fff;
+	width: 100px;
+	@include mq(tablet) {
+		top: 40px;
+	right: 50%;
+	transform: translate(50%, -50%);
+	}
+  @include mq(desktop) {
+		top: 45px;
+		right: -5px;
+	}
 }
 
 #toggle-theme-btn {
-	//width: 40px;
-	//height: 40px;
+	width: 80px;
+	height: 10px;
     position: absolute;
-    top: 120px;
-    right: 1vw;
+    top: 200px;
+    right: 55%;
+	 //width: 1rem;
+	 transform: translate(50%, 50%);
     background-color:transparent;
     border: 2px transparent solid;
    // padding: 1px 3px ;
     //border-radius: 20px;
     //transition: 0.3s;
     //box-shadow: 0 0 5px #c0c0c0;
-   
-    @include mq(desktop) {
-        right: 2vw;
-    }
+	 @include mq(tablet) {
+		top: 170px;
+    	right: 50%;
+	 	//width: 1rem;
+	 	transform: translate(50%, 50%);
+	 }
+   @include mq(desktop) {
+		position: absolute;
+		top: 120px;
+		right: 6vw;
+		width: 20px;
+		background-color:transparent;
+		border: 2px transparent solid;
+	}
 }
 
 #toggle-theme-btn:hover {
