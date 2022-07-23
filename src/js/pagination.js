@@ -523,7 +523,6 @@ function clearPagination(amountOfPages) {
 
 function search(e) {
   genre = '';
-  document.querySelector('#genreForm').classList.add('is-hidden');
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
   e.preventDefault();
@@ -532,10 +531,10 @@ function search(e) {
   saveLs('query-pg', query);
   if (query == '') {
     paginationSection.classList.add('is-hidden');
-    // warningShown();
+    warningShown();
     form.reset();
   } else {
-    // warningUnShown();
+    warningUnShown();
     form.reset();
     paginationSection.classList.remove('is-hidden');
   }
@@ -561,11 +560,11 @@ function search(e) {
       paginationBar.children[8].textContent = amountOfPages;
     }
     if (data.results.length < 1 || query === '') {
-      // warningShown();
+      warningShown();
       form.reset();
       paginationSection.classList.add('is-hidden');
     } else {
-      // warningUnShown();
+      warningUnShown();
       renderMarkup.renderMarkup(data);
       form.reset();
       paginationSection.classList.remove('is-hidden');
@@ -573,16 +572,16 @@ function search(e) {
   });
 }
 
-// function warningShown() {
-// 	warning.classList.remove('visually-hidden');
-// 	divError.classList.remove('visually-hidden');
-// 	list.classList.add('visually-hidden');
-// 	filterForm.classList.add('visually-hidden');
-// }
+function warningShown() {
+	// warning.classList.remove('visually-hidden');
+	divError.classList.remove('visually-hidden');
+	list.classList.add('visually-hidden');
+	filterForm.classList.add('visually-hidden');
+}
 
-// function warningUnShown() {
-// 	warning.classList.add('visually-hidden');
-// 	divError.classList.add('visually-hidden');
-// 	list.classList.remove('visually-hidden');
-// 	filterForm.classList.remove('visually-hidden');
-// }
+function warningUnShown() {
+	// warning.classList.add('visually-hidden');
+	divError.classList.add('visually-hidden');
+	list.classList.remove('visually-hidden');
+	filterForm.classList.remove('visually-hidden');
+}

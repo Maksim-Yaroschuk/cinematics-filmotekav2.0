@@ -45,25 +45,30 @@ body.dark::-webkit-scrollbar-thumb {
 	height: 28px;
 }
 .text_theme-btn{
-	//width: 25px;
+	
 	position: absolute;
+
 	top: 35px;
 	right: -5px;
 	color: var(--bisquit-color);
+
 }
 
 #toggle-theme-btn {
-	//width: 40px;
-	//height: 40px;
+	width: 80px;
+	height: 10px;
     position: absolute;
+
     top: 50px;
     right: 2vw;
+
     background-color:transparent;
     border: 2px transparent solid;
    // padding: 1px 3px ;
     //border-radius: 20px;
     //transition: 0.3s;
     //box-shadow: 0 0 5px #c0c0c0;
+
    
     @include mq(desktop) {
         right: 2vw;
@@ -73,6 +78,7 @@ body.dark::-webkit-scrollbar-thumb {
       top: 80px;
       right: 2vw;
     }
+
 
 }
 
