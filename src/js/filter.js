@@ -84,8 +84,9 @@ export const getSearchForm = async (
     f.discover = '/discover';
     f.week = '';
   }
-  if (query !== '') {
-    f.trendingFetch = '';
+  if (query === '' && year !== '') {
+    f.discover = '/discover';
+    f.week = '';
   }
   let { data } = await axios.get(
     `${f.discover}/movie${f.week}?api_key=${KEY}${f.genre}${f.year}${f.sort}&language=en-US${f.queryFetch}&page=${page}`
