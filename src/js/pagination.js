@@ -10,7 +10,6 @@ if (form) {
 
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
-
 const paginationSection = document.querySelector('.pagination-section');
 
 const refs = {
