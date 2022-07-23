@@ -21,7 +21,8 @@
   margin-right: auto;
   margin-left: auto;
   padding-top: 40px;
-  padding-bottom: 92px;
+  //padding-bottom: 92px; //
+  padding-bottom: 112px;
   text-align: center;
 }
 .header__seaction_library {
@@ -138,7 +139,8 @@
   justify-content: center;
   padding-top: 54px;
   @include mq(tablet) {
-    padding-top: 40px;
+	//padding-top: 40px;
+   padding-top: 30px;
   }
 }
 .header__input {
