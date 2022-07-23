@@ -22,6 +22,7 @@ body.light::-webkit-scrollbar-thumb {
 body.dark::-webkit-scrollbar {
   width: 20;
 }
+
 body.dark::-webkit-scrollbar-track {
   background: var(--dark-body-theme);
 	margin-top: 20px;
@@ -29,6 +30,7 @@ body.dark::-webkit-scrollbar-track {
 	border-radius: 10px;
 	opacity: 0;
 }
+
 body.dark::-webkit-scrollbar-thumb {
   background: bisque;
 	border-radius: 10px;
@@ -40,23 +42,21 @@ body.dark::-webkit-scrollbar-thumb {
 	position: relative;
 }
 
+// .toggle-theme-text{
+// 	position: absolute;
+// 	width: 180px;
+// 	top:8px;
+// 	right: -70px;
+// 	color: var(--light-body-theme);
+// 	font-size: 12px;
+// 	@include mq(desktop) {
+// 		width: 180px;
+//       top: 35px;
+// 		right: -5px;
+//    }
+// }
 
-
-.toggle-theme-text{
-	position: absolute;
-	width: 180px;
-	top:8px;
-	right: -70px;
-	color: var(--light-body-theme);
-	font-size: 12px;
-	@include mq(desktop) {
-		width: 180px;
-      top: 35px;
-		right: -5px;
-   }
-}
-
-#toggle-theme{
+.toggle-theme{
 	&-btn {
 		width: 180px;
 		height: 5px;
