@@ -48,6 +48,7 @@ body.dark::-webkit-scrollbar-thumb {
 	top:8px;
 	right: -70px;
 	color: var(--light-body-theme);
+	font-size: 12px;
 	@include mq(desktop) {
 		width: 180px;
       top: 35px;
@@ -78,7 +79,7 @@ body.dark::-webkit-scrollbar-thumb {
 			width: 180px;
 		height: 5px;
 			top: 100px;
-			right: 100px;
+			right: 110px;
 		}
 
 	}
