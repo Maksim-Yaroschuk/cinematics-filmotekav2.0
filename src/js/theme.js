@@ -33,3 +33,8 @@ themeBtn.addEventListener('click', () => {
 		}
 	}
 });
+
+if(location.pathname.split("/").slice(-1) == 'index.html') {
+	if(loadLs('theme') === 'dark')
+	document.querySelector('.pagination-section').classList.add('dark')
+}
