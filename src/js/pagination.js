@@ -64,7 +64,9 @@ function submitResetFilter(evn) {
 	clearPagination(amountOfPages)
 }
 
-logo.addEventListener('click', onLogoClick);
+if (logo) {
+  logo.addEventListener('click', onLogoClick);
+}
 
 function onLogoClick() {
 	amountOfPages = 1000;
