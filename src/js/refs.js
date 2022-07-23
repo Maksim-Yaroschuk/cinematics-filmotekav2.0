@@ -3,7 +3,7 @@ const refs = {
   catalog: document.querySelector('.poster-list__item'),
   list: document.querySelector('.poster-list'),
   form: document.querySelector('.header__search-form'),
-  warning: document.querySelector('.header-message'),
+  // warning: document.querySelector('.header-message'),
   toTopBtn: document.querySelector('.btn-to-top'),
   divError: document.querySelector('.to_main__div'),
   modalBackdrop: document.querySelector('.modal-backdrop'),
