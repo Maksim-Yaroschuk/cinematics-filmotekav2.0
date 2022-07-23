@@ -49,15 +49,15 @@ body.dark::-webkit-scrollbar-thumb {
 	position: absolute;
 	top: 35px;
 	right: -5px;
-	color: bisque;
+	color: var(--bisquit-color);
 }
 
 #toggle-theme-btn {
 	//width: 40px;
 	//height: 40px;
     position: absolute;
-    top: 120px;
-    right: 1vw;
+    top: 50px;
+    right: 2vw;
     background-color:transparent;
     border: 2px transparent solid;
    // padding: 1px 3px ;
@@ -68,22 +68,35 @@ body.dark::-webkit-scrollbar-thumb {
     @include mq(desktop) {
         right: 2vw;
     }
+    @include mq(tablet) {
+
+      top: 80px;
+      right: 2vw;
+    }
+
 }
 
 #toggle-theme-btn:hover {
-    //border: 1px var(--primary-current-color) solid;
-    //box-shadow: -1 -1 1px #af5252;
+    // border: 1px var(--primary-current-color) solid;
+    // box-shadow: -1 -1 1px #af5252;
 cursor: pointer;
 }
 
+
+
+.dark .header__name {
+  color: var(--bisquit-color);
+};
+
+.dark .header__link {
+  color: var(--bisquit-color);
+};
+
 .dark .poster-list__title {
-    color: bisque;
-  }
+    color: var(--bisquit-color);
+};
   
-.dark .poster-list__text{
-    color: var(--primary-current-color);
-  }
-  
-.dark .poster-list__age {
-    color: var(--primary-current-color);
-  }
+// .dark .poster-list__text , .dark .poster-list__age {
+//     color: var(--primary-current-color);
+// };
+
