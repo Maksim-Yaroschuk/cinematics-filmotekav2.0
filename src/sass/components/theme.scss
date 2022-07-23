@@ -42,20 +42,6 @@ body.dark::-webkit-scrollbar-thumb {
 	position: relative;
 }
 
-// .toggle-theme-text{
-// 	position: absolute;
-// 	width: 180px;
-// 	top:8px;
-// 	right: -70px;
-// 	color: var(--light-body-theme);
-// 	font-size: 12px;
-// 	@include mq(desktop) {
-// 		width: 180px;
-//       top: 35px;
-// 		right: -5px;
-//    }
-// }
-
 .toggle-theme{
 	&-btn {
 		width: 180px;
@@ -68,7 +54,7 @@ body.dark::-webkit-scrollbar-thumb {
 		background-color:transparent;
 		border: 2px transparent solid;
 		&:hover {
-		cursor: pointer;
+			cursor: pointer;
 		}
 		@include mq(tablet) {
 			top: 175px;
@@ -88,11 +74,13 @@ body.dark::-webkit-scrollbar-thumb {
 		width: 180px;
 		top:8px;
 		right: -70px;
+		font-size: 10px;
 		color: var(--light-body-theme, #ffffff);
 		@include mq(desktop) {
 			width: 180px;
 			top: 35px;
 			right: -5px;
+			
 		}
 	}
 	&-image {
