@@ -39,7 +39,6 @@ if (refs.btnReset) {
 };
 
 function submitResetFilter(evn) {
-	console.log('abc')
 	nextBtn.classList.remove('is-hidden')
   evn.preventDefault();
   refs.filterForm[0].options.selectedIndex = 0;
@@ -104,7 +103,6 @@ function eventGenre(evn) {
     genre = evn.target.value;
     page = 1;
     saveLs('page-pg', page);
-    console.log(genre);
     saveLs('genre-pg', genre);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
@@ -124,7 +122,6 @@ function eventYear(evn) {
     page = 1;
     saveLs('page-pg', page);
     year = evn.target.value;
-    console.log(year);
     saveLs('year-pg', year);
     getSearchForm(page, query, genre, year, sort).then(data => {
       renderMarkup.renderMarkup(data);
@@ -173,10 +170,6 @@ function eventSort(evn) {
     });
   }
 }
-
-console.log(page);
-
-console.log(loadLs('page-pg'));
 
 if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
@@ -347,12 +340,10 @@ function onNextBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function onPrevBtnClick() {
@@ -407,12 +398,10 @@ function onPrevBtnClick() {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 function renderPagination(e) {
@@ -521,12 +510,10 @@ function renderPagination(e) {
       top: 100,
       behavior: 'smooth',
     });
-    console.log(data);
     renderMarkup.renderMarkup(data);
     moviesDataUpdate(data);
   });
   saveLs('page-pg', page);
-  console.log(loadLs('page-pg'));
 }
 
 // if(!paginationBar.lastElementChild.classList.contains('is-hidden')) {
