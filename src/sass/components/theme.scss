@@ -44,14 +44,12 @@ body.dark::-webkit-scrollbar-thumb {
 	width: 28px;
 	height: 28px;
 }
-.text_theme-btn{
-	
-	position: absolute;
 
+.text_theme-btn{
+	position: absolute;
 	top: 35px;
 	right: -5px;
-	color: var(--bisquit-color);
-
+	color: var(--light-body-theme);
 }
 
 #toggle-theme-btn {
@@ -101,6 +99,10 @@ cursor: pointer;
 .dark .poster-list__title {
     color: var(--bisquit-color);
 };
+
+.dark .text_theme-btn {
+  color: var(--bisquit-color);
+}
   
 // .dark .poster-list__text , .dark .poster-list__age {
 //     color: var(--primary-current-color);
