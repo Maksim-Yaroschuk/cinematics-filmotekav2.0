@@ -15,8 +15,8 @@ if (btnWatched !== null) {
 
 	const indexWatched = loadLs('Watched') ? loadLs('Watched') : [];
 	const indexQueue = loadLs('Queue') ?loadLs('Queue') : [];
-	console.log('indexWatched', indexWatched);
-	console.log('if', (indexQueue || indexWatched) && indexQueue > indexWatched);
+	//console.log('indexWatched', indexWatched);
+	//console.log('if', (indexQueue || indexWatched) && indexQueue > indexWatched);
 	if ((indexQueue || indexWatched) && indexQueue > indexWatched) {
 
 		document.addEventListener("DOMContentLoaded", () => {
