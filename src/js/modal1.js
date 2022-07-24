@@ -16,7 +16,9 @@ if (list) {
 if (lib) {
   lib.addEventListener('click', createModal);
 }
-btnOnModalTeam.addEventListener('click', onModalTeam);
+if (btnOnModalTeam) {
+  btnOnModalTeam.addEventListener('click', onModalTeam);
+}
 
 function createModal(event) {
   const selectedMovie = event.target.closest('li');
