@@ -13,8 +13,8 @@ if (btnWatched !== null) {
 	  libMarkup('Queue');
 	});
 
-	const indexWatched = loadLs('Watched');
-	const indexQueue = loadLs('Queue');
+	const indexWatched = loadLs('Watched') ? loadLs('Watched') : [];
+	const indexQueue = loadLs('Queue') ?loadLs('Queue') : [];
 
 	if ((indexQueue || indexWatched) && indexQueue > indexWatched) {
 		document.addEventListener("DOMContentLoaded", () => {
