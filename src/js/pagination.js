@@ -11,7 +11,6 @@ if (form) {
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
 const paginationSection = document.querySelector('.pagination-section');
-const toMainBtn = document.querySelector('.to_main__link');
 
 const refs = {
 	filterForm: document.querySelector('#filter-form'),
@@ -20,13 +19,6 @@ const refs = {
   yearForm: document.querySelector('#yearForm'),
   btnReset: document.querySelector('#btnResetFilter'),
 };
-
-if (toMainBtn) {
-	toMainBtn.addEventListener('click', (e) => {
-		page = 1
-		saveLs('page-pg', page)
-	} )
-}
 
 if (refs.genreForm) {
   refs.genreForm.addEventListener('input', eventGenre);
@@ -72,9 +64,7 @@ function submitResetFilter(evn) {
 	clearPagination(amountOfPages)
 }
 
-if (logo) {
-  logo.addEventListener('click', onLogoClick);
-}
+logo.addEventListener('click', onLogoClick);
 
 function onLogoClick() {
 	amountOfPages = 1000;
