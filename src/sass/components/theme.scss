@@ -1,6 +1,5 @@
 body.dark {
     background-color: var(--dark-body-theme);
-	 --theme-btn: bisque;
 }
 
 body.light::-webkit-scrollbar {
@@ -22,7 +21,6 @@ body.light::-webkit-scrollbar-thumb {
 body.dark::-webkit-scrollbar {
   width: 20;
 }
-
 body.dark::-webkit-scrollbar-track {
   background: var(--dark-body-theme);
 	margin-top: 20px;
@@ -30,7 +28,6 @@ body.dark::-webkit-scrollbar-track {
 	border-radius: 10px;
 	opacity: 0;
 }
-
 body.dark::-webkit-scrollbar-thumb {
   background: bisque;
 	border-radius: 10px;
@@ -42,54 +39,54 @@ body.dark::-webkit-scrollbar-thumb {
 	position: relative;
 }
 
-.toggle-theme{
-	&-btn {
-		width: 180px;
-		height: 5px;
-		position: absolute;
-		top: 205px;
-		right: 60%;
-		transform: translate(50%, 0);
+#toggle-theme-image {
 
-		background-color:transparent;
-		border: 2px transparent solid;
-		&:hover {
-			cursor: pointer;
-		}
-		@include mq(tablet) {
-			top: 175px;
-		right: 55%;
-		transform: translate(50%, 0);
-		}
-		@include mq(desktop) {
-			width: 180px;
-		height: 5px;
-			top: 110px;
-			right: 110px;
-		}
-
-	}
-	&-text{
-		position: absolute;
-		width: 180px;
-		top:8px;
-		right: -70px;
-		font-size: 10px;
-		color: var(--light-body-theme, #ffffff);
-		@include mq(desktop) {
-			width: 180px;
-			top: 35px;
-			right: -5px;
-			
-		}
-	}
-	&-image {
-		fill: var(--theme-btn);
-		stroke: #000 ;
-		width: 28px;
-		height: 28px;
-	}
+	width: 28px;
+	height: 28px;
 }
+
+.text_theme-btn{
+	position: absolute;
+	top: 35px;
+	right: -5px;
+	color: var(--light-body-theme);
+}
+
+#toggle-theme-btn {
+	width: 80px;
+	height: 10px;
+    position: absolute;
+
+    top: 50px;
+    right: 2vw;
+
+    background-color:transparent;
+    border: 2px transparent solid;
+   // padding: 1px 3px ;
+    //border-radius: 20px;
+    //transition: 0.3s;
+    //box-shadow: 0 0 5px #c0c0c0;
+
+   
+    @include mq(desktop) {
+        right: 2vw;
+    }
+    @include mq(tablet) {
+
+      top: 80px;
+      right: 2vw;
+    }
+
+
+}
+
+#toggle-theme-btn:hover {
+    // border: 1px var(--primary-current-color) solid;
+    // box-shadow: -1 -1 1px #af5252;
+cursor: pointer;
+}
+
+
 
 .dark .header__name {
   color: var(--bisquit-color);
@@ -103,7 +100,7 @@ body.dark::-webkit-scrollbar-thumb {
     color: var(--bisquit-color);
 };
 
-.dark .toggle-theme-text {
+.dark .text_theme-btn {
   color: var(--bisquit-color);
 }
   
