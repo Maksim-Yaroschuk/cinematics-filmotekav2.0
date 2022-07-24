@@ -29,6 +29,7 @@ function createModal(event) {
     renderModalContent(movieData);
     openModal();
 
+    setThemOnModal();
 
     // записываем айди в модалку
     modalBackdrop.firstElementChild.dataset.id = movieData.id;
@@ -249,3 +250,16 @@ function renderTeamModal() {
 		modalTeamList.insertAdjacentHTML('beforeend', markup)
 	})
 }
+
+function setThemOnModal() {
+  const bodyClassThem = document
+    .querySelector('body')
+    .classList.contains('dark');
+
+  if (bodyClassThem) {
+    modalBackdrop.firstElementChild.classList.add('modal-dark');
+  } else {
+    modalBackdrop.firstElementChild.classList.remove('modal-dark');
+  }
+}
+
