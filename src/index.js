@@ -3,10 +3,9 @@
 // import './js/log-in';
 
 import './js/api';
-// import './js/modal1';
+import './js/modal';
 import './js/trendings';
 import './js/storage';
-import './js/search';
 import './js/pagination';
 // import './js/spiner';
 import './js/scroll';

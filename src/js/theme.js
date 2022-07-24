@@ -4,10 +4,9 @@ const sun = document.querySelector('.sun');
 const moon = document.querySelector('.moon');
 
 
-const themeValue = 'light';
-// const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
+const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
 saveLs('theme', themeValue);
-// document.body.classList.add(themeValue);
+document.body.classList.add(themeValue);
 if (themeValue === 'light') {
 	sun.style.visibility = 'hidden';
 } else {
