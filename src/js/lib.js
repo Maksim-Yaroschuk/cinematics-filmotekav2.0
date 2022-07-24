@@ -76,6 +76,18 @@ export function libMarkup(selectLs) {
 		funEmptyLib(selectLs);
 		return console.log('ваш список пуст!');
 	}
-  let data = { results: loadLs(sel) };
-  renderLibMarkup(data);
+	let data = { results: loadLs(sel) };
+
+	// console.log(data.results)
+
+	// let newData = { results: [] };
+	// // if (data.length !== 0) {
+	// for (let dat of data.results) {
+	// 	if (dat !== null || 0) {
+	// 		console.log(dat)
+	// 		newData.results.push(dat)
+	// 	}
+	// 		}
+		renderLibMarkup(data);
+	// }
 }

@@ -1,3 +1,5 @@
+import { getMovieDetails } from "./api"; 
+
 const saveLs = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
@@ -24,28 +26,24 @@ const removeLs = key => {
   }
 };
 
-///localStorage.clear();
-const moviesData = loadLs('moviesData');
-// console.log('moviesData', moviesData);
-const WatchedData = loadLs('WatchedData');
-// console.log('WatchedData', WatchedData);
-const QueueData = loadLs('QueueData');
-// console.log('QueueData', QueueData);
-const Watched = loadLs('Watched');
-// console.log('Watched', Watched);
-const Queue = loadLs('Queue');
-// console.log('Queue', Queue);
+// Функція яку ми правили!!!
 
-function addListLibrary(id, select) {
+async function addListLibrary(id, select) {
   const sel = select + 'Data';
-  const moviesData = loadLs('moviesData');
-  const movieData = moviesData.find(movie => movie.id === id);
+
+  const movData = await getMovieDetails(id)
+
+  console.log(movData)
+
+  // const moviesData = loadLs('moviesData');
+  // const movieData = moviesData.find(movie => movie.id === id);
   const libArr = loadLs(select) ? loadLs(select) : [];
-  const libData = loadLs(sel) ? loadLs(sel) : [];
+  const libData = { results: loadLs(sel) ?loadLs(sel): [] }
+  console.log(libData)
   const index = libArr.indexOf(id);
   if (index < 0) {
     libArr.push(id);
-    libData.push(movieData);
+    libData.results.push(movData);
   } else {
     libArr.splice(index, 1);
     //const libData = loadLs(sel);
