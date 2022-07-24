@@ -3,7 +3,9 @@ const themeBtn = document.getElementById('toggle-theme-btn');
 const sun = document.querySelector('.sun');
 const moon = document.querySelector('.moon');
 
-const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
+
+const themeValue = 'light';
+// const themeValue = loadLs('theme') ? loadLs('theme') : 'light';
 saveLs('theme', themeValue);
 // document.body.classList.add(themeValue);
 if (themeValue === 'light') {
