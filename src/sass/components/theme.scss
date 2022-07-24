@@ -104,7 +104,23 @@ cursor: pointer;
   color: var(--bisquit-color);
 }
   
-// .dark .poster-list__text , .dark .poster-list__age {
-//     color: var(--primary-current-color);
-// };
+.dark .filter_form__select {
+  border-bottom: 1px solid var(--bisquit-color);
+	color: var(--bisquit-color);
+}
+  
+.dark .btnResetFilter {
+	color: var(--bisquit-color);
+}
 
+.dark .header__input::placeholder {
+  color: var(--bisquit-color);
+}
+
+.dark .header__input {
+  border-bottom: 0.5px solid var(--bisquit-color);
+}
+
+.dark .header__icon_logo {
+  stroke: var(--primary-current-color)
+}
