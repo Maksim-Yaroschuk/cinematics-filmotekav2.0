@@ -275,7 +275,12 @@
 		color: #ffffff;
 	}
 }
-
+.btn-to-top--dark {
+	background-color: var(--bisquit-color);
+	&:hover {
+		color: var(--bisquit-color);
+	}
+}
 .blink{
 	animation: blink 1s linear infinite;
 }

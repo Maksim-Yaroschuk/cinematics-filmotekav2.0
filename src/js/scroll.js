@@ -5,6 +5,7 @@ if(toTopBtn)
 toTopBtn.addEventListener('click', onToTopBtn);
 
 function onScroll() {
+    setThemOnButtonToTop();
     const scrolled = window.pageYOffset;
     const coords = document.documentElement.clientHeight;
     if (scrolled > coords) {
@@ -22,3 +23,13 @@ function onToTopBtn() {
 
 onScroll();
 onToTopBtn();
+
+function setThemOnButtonToTop() {
+    const bodyClassThemChoosed2 = document.querySelector('body').classList.contains('dark');
+    const buttonToTop = document.querySelector('.btn-to-top');
+    if (bodyClassThemChoosed2) {
+        buttonToTop.classList.add('btn-to-top--dark');
+    } else {
+        buttonToTop.classList.remove('btn-to-top--dark');
+    };
+};

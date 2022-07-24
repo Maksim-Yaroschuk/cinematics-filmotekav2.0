@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, set, ref, onValue, update, remove } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { openModalBtn, formLogIn, logOut } from './refs';
+import { headerLogIn, headerLogOut, formLogIn, formTitleSignIn, formTitleSignUp, formWrapName, formWrapCheckbox, formCheckbox, buttonRegister, buttonConfirm, signUp, signUpLink, signIn, signInLink, logOut } from './refs';
 import { toggleModal } from './modal-log-in';
 
 const firebaseConfig = {
@@ -18,67 +18,93 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth();
+let user;
 
-formLogIn.addEventListener('submit', onLogin);
+if (formLogIn) {
+    formLogIn.addEventListener('submit', onLogin);
+};
+
+if (formCheckbox) {
+    formCheckbox.onchange = function () {
+        if (this.checked) {
+            buttonRegister.classList.remove('disabled_for_signUp')
+            buttonRegister.removeAttribute('disabled')
+        } else {
+            buttonRegister.classList.add('disabled_for_signUp')
+            buttonRegister.setAttribute('disabled', 'disabled')
+        }
+    };
+};
+
+if (signUp) {
+    signUpLink.addEventListener('click', goToSignUp);
+};
+if (signIn) {
+    signInLink.addEventListener('click', goToSignIn);
+};
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
         const uid = user.uid;
-        console.log(user);
-        openModalBtn.classList.add('visually-hidden')
+        console.log(uid);
+        onUserLogIn();
     } else {
         // User is signed out
-        openModalBtn.classList.remove('visually-hidden')
-    }
+        onUserLogOut();
+    };
 });
 
 function onRegister(event) { 
-    event.preventDefault()
+    event.preventDefault();
+    const username = document.querySelector('#name_1').value;
     const email = document.querySelector('#email_1').value;
     const password = document.querySelector('#password').value;
     if (validateEmail(email) === false || validatePassword(password) === false) {
         alert('Email or Password is Outta Line!');
         return;
-    }
+    };
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // console.log(userCredential);
+            // Registered;
             const user = userCredential.user
-        set(ref(database, 'users/' + user.uid), {
-            // username: username,
-            email: email
-        })
+            set(ref(database, 'users/' + user.uid), {
+                username: username,
+                email: email
+            })
             toggleModal();
+            formLogIn.reset();
             alert('User Created');
         })
-    .catch(function (error) {
-        const errorCode = error.code
-        const errorMessage = error.message
-        alert(errorMessage)
-    })
-}
+        .catch(function (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+    user = auth.currentUser;
+};
 
 function onLogin(event) { 
-    event.preventDefault()
+    event.preventDefault();
     const email = document.querySelector('#email_1').value;
     const password = document.querySelector('#password').value;
     if (validateEmail(email) === false || validatePassword(password) === false) {
         alert('Email or Password is Outta Line!');
         return;
-    }
+    };
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // console.log(userCredential);
-            // Signed in 
+            // Signed in;
             const user = userCredential.user;
             const dt = new Date();
             update(ref(database, 'users/' + user.uid), {
                 last_login: dt,
-                body: dt
-            })
+            });
             toggleModal();
-            openModalBtn.classList.add('visually-hidden')
+            formLogIn.reset();
+            onUserLogIn();
             alert('User loged in');
         })
         .catch((error) => {
@@ -86,20 +112,62 @@ function onLogin(event) {
             const errorMessage = error.message;
             alert(errorMessage);
         });
-    const user = auth.currentUser;
+    user = auth.currentUser;
+};
+
+if (logOut) {
+    logOut.addEventListener('click', (e) => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            alert('User loged out');
+        })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+};
+
+function goToSignUp() {
+    formTitleSignIn.classList.add('visually-hidden');
+    formTitleSignUp.classList.remove('visually-hidden');
+    formWrapName.classList.remove('visually-hidden');
+    formWrapCheckbox.classList.remove('visually-hidden');
+    buttonConfirm.classList.add('visually-hidden');
+    buttonRegister.classList.remove('visually-hidden');
+    signUp.classList.add('visually-hidden');
+    signIn.classList.remove('visually-hidden');
+    formLogIn.addEventListener('submit', onRegister);
+    formLogIn.removeEventListener('submit', onLogin);
 }
 
-logOut.addEventListener('click',(e)=>{
-    signOut(auth).then(() => {
-    // Sign-out successful.
-    alert('User loged out');
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-    });
-});
+function goToSignIn() {
+    formTitleSignIn.classList.remove('visually-hidden');
+    formTitleSignUp.classList.add('visually-hidden');
+    formWrapName.classList.add('visually-hidden');
+    formWrapCheckbox.classList.add('visually-hidden');
+    buttonConfirm.classList.remove('visually-hidden');
+    buttonRegister.classList.add('visually-hidden');
+    signUp.classList.remove('visually-hidden');
+    signIn.classList.add('visually-hidden');
+    formLogIn.addEventListener('submit', onLogin);
+    formLogIn.removeEventListener('submit', onRegister);
+}
+
+function onUserLogIn() {
+    if (headerLogIn && headerLogOut) {
+        headerLogIn.classList.add('visually-hidden');
+        headerLogOut.classList.remove('visually-hidden');
+    };
+};
+
+function onUserLogOut() {
+    if (headerLogIn && headerLogOut) {
+        headerLogIn.classList.remove('visually-hidden');
+        headerLogOut.classList.add('visually-hidden');
+    };
+};
 
 function validateEmail(email) {
     expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -107,8 +175,8 @@ function validateEmail(email) {
         return true;
     } else {
         return false;
-    }
-}
+    };
+};
 
 function validatePassword(password) {
     if (password.length < 6) {
