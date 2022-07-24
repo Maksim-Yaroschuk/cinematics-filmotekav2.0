@@ -118,12 +118,12 @@ function updataLibery(e, btn, list) {
   if (dataWebLocation === 'library') {
     lib.innerHTML = '';
     libMarkup(list);
-    const dataBtn = btn.dataset.liery;
-    if (dataBtn === 'true') {
+    // const dataBtn = btn.dataset.liery;
+    // if (dataBtn === 'true') {
       btn.setAttribute('disabled', true);
-    } else {
-      return
-    }
+    // } else {
+      // return
+    // }
   }
   return;
 }
