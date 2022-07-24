@@ -1,5 +1,6 @@
 body.dark {
     background-color: var(--dark-body-theme);
+	 --sun-color: bisque;
 }
 
 body.light::-webkit-scrollbar {
@@ -40,53 +41,49 @@ body.dark::-webkit-scrollbar-thumb {
 }
 
 #toggle-theme-image {
-
-	width: 28px;
-	height: 28px;
+	fill: var(--sun-color,#ffffff);
+	width: 22px;
+	height: 22px;
 }
 
 .text_theme-btn{
 	position: absolute;
-	top: 35px;
-	right: -5px;
-	color: var(--light-body-theme);
+	width: 180px;
+	top:8px;
+	right: -70px;
+	font-size: 10px;
+	color: var(--light-body-theme, #ffffff);
+	@include mq(desktop) {
+		width: 180px;
+		top: 35px;
+		right: -5px;
+	}
 }
 
 #toggle-theme-btn {
-	width: 80px;
-	height: 10px;
-    position: absolute;
-
-    top: 50px;
-    right: 2vw;
-
-    background-color:transparent;
-    border: 2px transparent solid;
-   // padding: 1px 3px ;
-    //border-radius: 20px;
-    //transition: 0.3s;
-    //box-shadow: 0 0 5px #c0c0c0;
-
-   
-    @include mq(desktop) {
-        right: 2vw;
-    }
-    @include mq(tablet) {
-
-      top: 80px;
-      right: 2vw;
-    }
-
-
+	width: 180px;
+	height: 5px;
+	position: absolute;
+	top: 205px;
+	right: 60%;
+	transform: translate(50%, 0);
+	background-color:transparent;
+	border: 2px transparent solid;
+	&:hover {
+		cursor: pointer;
+	}
+	@include mq(tablet) {
+		top: 175px;
+		right: 55%;
+		transform: translate(50%, 0);
+	}
+	@include mq(desktop) {
+		width: 180px;
+		height: 5px;
+		top: 110px;
+		right: 110px;
+	}
 }
-
-#toggle-theme-btn:hover {
-    // border: 1px var(--primary-current-color) solid;
-    // box-shadow: -1 -1 1px #af5252;
-cursor: pointer;
-}
-
-
 
 .dark .header__name {
   color: var(--bisquit-color);
