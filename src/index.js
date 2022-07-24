@@ -3,7 +3,7 @@
 // import './js/log-in';
 
 import './js/api';
-import './js/modal';
+import './js/modal1';
 import './js/trendings';
 import './js/storage';
 import './js/search';
