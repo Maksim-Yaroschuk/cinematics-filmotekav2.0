@@ -87,7 +87,8 @@
 	margin-bottom: 4px;
 }
 .modal_login__input {
-	width: 220px;
+	position: relative;
+	width: 240px;
 	padding-top: 11px;
 	padding-bottom: 11px;
 	padding-left: 30px;
@@ -162,10 +163,10 @@
 	background-image: url(/src/images/kisspng-checkbox-computer-icons-check-mark-text-box-button-kdm-validador-google-pl-5c6cb828869a35.1684763015506289045513.png);
 	background-repeat: no-repeat;
 	background-size: cover;
-	flex-grow: 1;
 	border: none;
-	@include mq(mobile-only) {
-		width: 25px;
+	width: 20px;
+	@include mq(tablet) {
+		width: 18px;
 		height: 17px;
 	}
 }
@@ -179,6 +180,10 @@
 	line-height: calc(14 / 12);
 	letter-spacing: 0.03em;
 	color: #757575;
+	@include mq(tablet) {
+		font-size: 12px;
+		line-height: calc(20 / 12);
+	}
 	@include mq(desktop) {
 		font-size: 14px;
 		line-height: calc(24 / 14);
@@ -194,9 +199,23 @@
 	margin-right: 8px;
 }
 .modal_login__link {
+	display: block;
 	margin-left: 3px;
 	color: var(--secondary-text-color);
 	text-decoration: underline;
+}
+.modal_login__button_show_password {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	&:hover {
+		fill: var(--secondary-text-color);
+	}
 }
 .modal_login__button_confirm,
 .modal_login__button_register {

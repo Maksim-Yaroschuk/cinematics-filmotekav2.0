@@ -28,11 +28,19 @@
                 <svg width="17" height="17" class="modal_login__icon">
                     <use href="./images/sprite/symbol-defs.svg#icon-key"></use>
                 </svg>
+                <button type="button" class="modal_login__button_show_password" id="button_show_password">
+                    <svg width="18" height="18" id="icon_show_password">
+                        <use href="./images/sprite/symbol-defs.svg#icon-eye"></use>
+                    </svg>
+                    <svg width="18" height="18" class="visually-hidden" id="icon_un_show_password">
+                        <use href="./images/sprite/symbol-defs.svg#icon-eye-blocked"></use>
+                    </svg>
+                </button>
             </div>
             <div class="modal_login__wrap_checkbox visually-hidden">
                 <input type="checkbox" name="checkbox" id="checkbox" class="modal_login__checkbox visually-hidden">
-                <label for="checkbox" class="modal_login__text">I agree with the newsletter and accept <a href=""
-                        class="modal_login__link">Terms of the contract</a></label>
+                <label for="checkbox" class="modal_login__text">I agree with newsletter and accept <a href=""
+                        class="modal_login__link">Terms of contract</a></label>
             </div>
             <button type="submit" class="modal_login__button_register visually-hidden disabled_for_signUp" disabled>Register</button>
             <button type="submit" class="modal_login__button_confirm">Confirm</button>

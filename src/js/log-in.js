@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, set, ref, onValue, update, remove } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { headerLogIn, headerLogOut, formLogIn, formTitleSignIn, formTitleSignUp, formWrapName, formWrapCheckbox, formCheckbox, buttonRegister, buttonConfirm, signUp, signUpLink, signIn, signInLink, logOut } from './refs';
-import { toggleModal } from './modal-log-in';
+import { closeModalLogIn } from './modal-log-in';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBvthHJrzRgqu2gApiW7YLJNyTKg7lQF2A",
@@ -73,7 +73,7 @@ function onRegister(event) {
                 username: username,
                 email: email
             })
-            toggleModal();
+            closeModalLogIn();
             formLogIn.reset();
             alert('User Created');
         })
@@ -102,7 +102,7 @@ function onLogin(event) {
             update(ref(database, 'users/' + user.uid), {
                 last_login: dt,
             });
-            toggleModal();
+            closeModalLogIn();
             formLogIn.reset();
             onUserLogIn();
             alert('User loged in');

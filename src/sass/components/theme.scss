@@ -85,6 +85,10 @@ body.dark::-webkit-scrollbar-thumb {
 	}
 }
 
+.dark .header__icon_logo {
+	stroke: var(--primary-current-color)
+}
+
 .dark .header__name {
   color: var(--bisquit-color);
 };
@@ -92,6 +96,18 @@ body.dark::-webkit-scrollbar-thumb {
 .dark .header__link {
   color: var(--bisquit-color);
 };
+
+.dark .header__input::placeholder {
+	color: var(--bisquit-color);
+}
+
+.dark .header__input {
+	border-bottom: 0.5px solid var(--bisquit-color);
+}
+
+.dark .header__search-icon {
+	stroke: var(--bisquit-color);
+}
 
 .dark .poster-list__title {
     color: var(--bisquit-color);
@@ -107,17 +123,6 @@ body.dark::-webkit-scrollbar-thumb {
 }
   
 .dark .btnResetFilter {
+	border-bottom: 1px solid var(--bisquit-color);
 	color: var(--bisquit-color);
-}
-
-.dark .header__input::placeholder {
-  color: var(--bisquit-color);
-}
-
-.dark .header__input {
-  border-bottom: 0.5px solid var(--bisquit-color);
-}
-
-.dark .header__icon_logo {
-  stroke: var(--primary-current-color)
 }
