@@ -1,7 +1,7 @@
 import { saveLS, loadLS, removeLS } from './js/storage';
 
 import './js/modal-log-in';
-// import './js/log-in';
+import './js/log-in';
 
 import './js/api';
 import './js/modal';

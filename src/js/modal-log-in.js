@@ -10,8 +10,19 @@ import { openModalBtn, closeModalBtn, modal } from './refs';
   if(openModalBtn) { 
   openModalBtn.addEventListener("click", toggleModal);
   closeModalBtn.addEventListener("click", toggleModal);
-}
+};
 export function toggleModal() {
+    setThemOnModalLogIn();
     modal.classList.toggle("is-hidden");
-  }
+};
 // })();
+
+function setThemOnModalLogIn() {
+  const bodyClassThemChoosed = document.querySelector('body').classList.contains('dark');
+  const modalDiv = document.querySelector('.modal_login');
+  if (bodyClassThemChoosed) {
+    modalDiv.classList.add('modal_login--dark');
+  } else {
+    modalDiv.classList.remove('modal_login--dark');
+  };
+};

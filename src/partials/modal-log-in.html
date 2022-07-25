@@ -6,7 +6,15 @@
             </svg>
         </button>
         <form class="modal_login__form">
-            <p class="modal_login__title">Sign in</p>
+            <p class="modal_login__title_signIn">Sign in</p>
+            <p class="modal_login__title_signUp visually-hidden">Sign up</p>
+            <div class="modal_login__wrap_name visually-hidden">
+                <label for="name" class="modal_login__label">Name</label>
+                <input type="text" name="name" id="name_1" class="modal_login__input" placeholder=" ">
+                <svg width="18" height="18" class="modal_login__icon">
+                    <use href="./images/sprite/symbol-defs.svg#icon-person-black-18dp-1"></use>
+                </svg>
+            </div>
             <div class="modal_login__wrap_email">
                 <label for="email_1" class="modal_login__label">E-mail</label>
                 <input type="email" name="email" id="email_1" class="modal_login__input" placeholder=" ">
@@ -21,61 +29,21 @@
                     <use href="./images/sprite/symbol-defs.svg#icon-key"></use>
                 </svg>
             </div>
-            <!-- <div class="modal_login__wrap_checkbox">
+            <div class="modal_login__wrap_checkbox visually-hidden">
                 <input type="checkbox" name="checkbox" id="checkbox" class="modal_login__checkbox visually-hidden">
                 <label for="checkbox" class="modal_login__text">I agree with the newsletter and accept <a href=""
                         class="modal_login__link">Terms of the contract</a></label>
-            </div> -->
+            </div>
+            <button type="submit" class="modal_login__button_register visually-hidden disabled_for_signUp" disabled>Register</button>
             <button type="submit" class="modal_login__button_confirm">Confirm</button>
-            <div class="signup-now">
-                <p class="signup-now__text">Not a member?</p> <button type="submit" class="signup-now__button">Sign up
-                    Now</button>
+            <div class="signUp_now">
+                <p class="signUp_now__text">Not a member?</p> <a class="signUp_now__link">Sign up
+                    Now</a>
+            </div>
+            <div class="signIn_now visually-hidden">
+                <p class="signIn_now__text">Already a member?</p> <a class="signIn_now__link">Sign in
+                    Now</a>
             </div>
         </form>
     </div>
 </div>
-
-<!-- <div class="backdrop is-hidden" data-modal>
-    <div class="modal">
-        <button type="button" class="modal__button" data-modal-close>
-            <svg class="modal__icon" width="18" height="18">
-                <use href="./images/icons.svg#icon-close-black-18dp-2-1"></use>
-            </svg>
-        </button>
-        <form class="form_modal">
-            <p class="form_modal__title">Оставьте свои данные, мы вам перезвоним</p>
-            <div class="form_modal__wrap_name">
-                <label for="name" class="form_modal__label">Имя</label>
-                <input type="text" name="name" id="name" class="form_modal__input" placeholder=" ">
-                <svg width="18" height="18" class="form_modal__icon">
-                    <use href="./images/icons.svg#icon-person-black-18dp-1"></use>
-                </svg>
-            </div>
-            <div class="form_modal__wrap_tel">
-                <label for="tel" class="form_modal__label">Телефон</label>
-                <input type="tel" name="tel" id="tel" class="form_modal__input" placeholder=" ">
-                <svg width="18" height="18" class="form_modal__icon">
-                    <use href="./images/icons.svg#icon-phone-black-18dp-1"></use>
-                </svg>
-            </div>
-            <div class="form_modal__wrap_email">
-                <label for="email_1" class="form_modal__label">Почта</label>
-                <input type="email" name="email" id="email_1" class="form_modal__input" placeholder=" ">
-                <svg width="18" height="18" class="form_modal__icon">
-                    <use href="./images/icons.svg#icon-email-black-18dp-1"></use>
-                </svg>
-            </div>
-            <div class="form_modal__wrap_textarea">
-                <label for="textarea" class="form_modal__label">Комментарий</label>
-                <textarea name="textarea" id="textarea" class="form_modal__textarea"
-                    placeholder="Введите текст"></textarea>
-            </div>
-            <div class="form_modal__wrap_checkbox">
-                <input type="checkbox" name="checkbox" id="checkbox" class="form_modal__checkbox visually-hidden">
-                <label for="checkbox" class="form_modal__text">Соглашаюсь с рассылкой и принимаю <a href=""
-                        class="form_modal__link">Условия договора</a></label>
-            </div>
-            <button type="submit" class="form_modal__button button">Отправить</button>
-        </form>
-    </div>
-</div> -->

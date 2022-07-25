@@ -4,7 +4,7 @@
 @import './base/common';
 @import './utils/mixins';
 @import './utils/variables';
-
+@import './components/theme.scss';
 @import './layout/header';
 @import './base/container';
 @import './base/section';
@@ -14,8 +14,6 @@
 @import './components/team-modal';
 @import './layout/catalog';
 @import './layout/footer';
-
-@import './components/theme.scss';
 @import './components/spiner.scss';
 @import './components/backdrop'; // @import './partials/catalog';
 
