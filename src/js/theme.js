@@ -15,7 +15,6 @@ themeBtn.addEventListener('click', () => {
 	const val = loadLs('theme');
 	if (val === 'light') {
 		document.body.classList.add('dark');
-		document.querySelector('.pagination-section').classList.add('dark')
 		if(location.pathname.split("/").slice(-1) != 'library.html') {
 			document.querySelector('.pagination-section').classList.add('dark')
 		}
