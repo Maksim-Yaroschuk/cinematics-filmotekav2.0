@@ -1,5 +1,4 @@
 import { getMovieGenres, IMG_BASE_URL, IMG_W400 } from './api';
-
 import { list, lib } from './refs';
 import { saveLs } from './storage';
 async function getGenres() {
@@ -7,9 +6,16 @@ async function getGenres() {
 
   return { genres };
 }
-
+//-------------------------------
+export function renderLibMarkup(data) {
+    const markupLibList = createListMarkup(data.results);
+    if (lib) {
+      lib.innerHTML = markupLibList;
+    }
+  saveLs('moviesData', data.results);
+}
+//------------------------------------
 export function renderMarkup(data) {
-
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
@@ -71,32 +77,3 @@ export function createListMarkup(data) {
   }
 }
 
-export function renderLibMarkup(data) {
-
-  getGenres().then(({ genres }) => {
-    //Добавление списка жанров в localStorage
-    saveLs('genresList', genres);
-    if (data.results) {
-      data.results.forEach(film => {
-        const { genre_ids, release_date } = film;
-        genres.forEach(({ name, id }) => {
-          if (genre_ids.includes(id)) {
-            if (genre_ids.length > 2) {
-              genre_ids.splice(2, genre_ids.length - 1, 'Other');
-            }
-            genre_ids.splice(genre_ids.indexOf(id), 1, name);
-          }
-          film.genre_names = genre_ids.join(', ');
-          if (film.release_date) {
-            film.release_date = release_date.slice(0, 4);
-          }
-        });
-      });
-    }
-    const markupLibList = createListMarkup(data.results);
-    if (lib) {
-      lib.innerHTML = markupLibList;
-    }
-  });
-  saveLs('moviesData', data.results);
-}
