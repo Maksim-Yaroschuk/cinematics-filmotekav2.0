@@ -15,8 +15,6 @@ if (btnWatched !== null) {
 
 	const indexWatched = loadLs('Watched') ? loadLs('Watched') : [];
 	const indexQueue = loadLs('Queue') ?loadLs('Queue') : [];
-	//console.log('indexWatched', indexWatched);
-	//console.log('if', (indexQueue || indexWatched) && indexQueue > indexWatched);
 	if ((indexQueue || indexWatched) && indexQueue > indexWatched) {
 
 		document.addEventListener("DOMContentLoaded", () => {
@@ -53,11 +51,7 @@ function createEmptyLibMarkup(data) {
 			<p class='blink' >to add a movie to the ${data} list, click the corresponding button in the poster window</p>
 	</div>`
 }
-
-
 export function libMarkup(selectLs) {
-
-
 	if (selectLs === 'Queue') {
 		btnQueue.classList.add('btn-orange');
 		btnWatched.classList.remove('btn-orange');
