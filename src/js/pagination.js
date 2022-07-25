@@ -4,8 +4,6 @@ import { list, form, warning, divError, filterForm, logo, paginationBar} from '.
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
-console.log(132)
-
 if (form) {
   form.addEventListener('submit', search);
 };
@@ -185,8 +183,6 @@ if (nextBtn) {
   prevBtn.addEventListener('click', onPrevBtnClick);
   paginationBar.addEventListener('click', onPageClick);
 }	
-
-console.log(213)
 
 if(location.pathname.split("/").slice(-1) !== 'library.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
