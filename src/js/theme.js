@@ -15,8 +15,7 @@ themeBtn.addEventListener('click', () => {
 	const val = loadLs('theme');
 	if (val === 'light') {
 		document.body.classList.add('dark');
-		document.querySelector('.pagination-section').classList.add('dark')
-		if(location.pathname.split("/").slice(-1) !== 'library.html') {
+		if(location.pathname.split("/").slice(-1) != 'library.html') {
 			document.querySelector('.pagination-section').classList.add('dark')
 		}
 		document.querySelector('.modal').classList.add('dark')
@@ -25,7 +24,7 @@ themeBtn.addEventListener('click', () => {
 		saveLs('theme', 'dark');
 	} else {
 		document.body.classList.remove('dark');
-		if(location.pathname.split("/").slice(-1) !== 'library.html') {
+		if(location.pathname.split("/").slice(-1) != 'library.html') {
 			document.querySelector('.pagination-section').classList.remove('dark')
 		}
 		document.querySelector('.modal').classList.remove('dark')
@@ -35,7 +34,7 @@ themeBtn.addEventListener('click', () => {
 	}
 });
 
-if(location.pathname.split("/").slice(-1) !== 'library.html') {
+if(location.pathname.split("/").slice(-1) != 'library.html') {
 	if(loadLs('theme') === 'dark')
 	document.querySelector('.pagination-section').classList.add('dark')
 }
