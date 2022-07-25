@@ -4,6 +4,8 @@ import { list, form, warning, divError, filterForm, logo, paginationBar} from '.
 import { loadLs, moviesDataUpdate, saveLs } from './storage';
 import { getSearchForm } from './filter';
 
+console.log(132)
+
 if (form) {
   form.addEventListener('submit', search);
 };
