@@ -57,6 +57,8 @@ function submitResetFilter(evn) {
 	page = 1;
 	if(query==='') {
 		amountOfPages = 1000;
+	} else {
+		amountOfPages = loadLs('total-pages')
 	}
 	saveLs('genre-pg', genre);
 	saveLs('year-pg', year);
@@ -138,7 +140,9 @@ function eventYear(evn) {
         amountOfPages = data.total_pages;
       }
       clearPagination(amountOfPages);
-      saveLs('total-pages', amountOfPages);
+			if(query=='') {
+				saveLs('total-pages', amountOfPages);
+			}
 			if (amountOfPages === 1) {
 				prevBtn.classList.add('is-hidden');
 				paginationBar.innerHTML = `<li class="page active">1</li>`;
@@ -182,7 +186,8 @@ if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
   prevBtn.addEventListener('click', onPrevBtnClick);
   paginationBar.addEventListener('click', onPageClick);
-}	
+}
+
 
 if(location.pathname.split("/").slice(-1) != 'library.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
@@ -540,7 +545,6 @@ function clearPagination(amountOfPages) {
 	<li class="page">${amountOfPages}</li>`;
 }
 
-
 function search(e) {
   e.preventDefault();
   genre = '';
@@ -548,6 +552,7 @@ function search(e) {
 	document.querySelector('#sortForm').classList.add('is-hidden');
   searchPage = 1;
   prevBtn.classList.add('is-hidden');
+	nextBtn.classList.remove('is-hidden')
   const { searchMovie } = e.currentTarget;
   query = searchMovie.value.toLowerCase().trim();
   saveLs('query-pg', query);
