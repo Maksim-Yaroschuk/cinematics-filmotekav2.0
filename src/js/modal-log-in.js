@@ -1,4 +1,4 @@
-import { openModalBtn, closeModalBtn, modal } from './refs';
+import { openModalBtn, closeModalBtn, modal, backdropLogIn, inputPassword, buttonShowPassword, iconForShowPassword, iconForUnShowPassword } from './refs';
 
 // (() => {
   //const refsLogIn = {
@@ -7,15 +7,53 @@ import { openModalBtn, closeModalBtn, modal } from './refs';
     // modal: document.querySelector("[data-modal-login]"),
 	//};
 	
-  if(openModalBtn) { 
-  openModalBtn.addEventListener("click", toggleModal);
-  closeModalBtn.addEventListener("click", toggleModal);
+if (openModalBtn) { 
+  openModalBtn.addEventListener("click", openModalLogIn);
+  closeModalBtn.addEventListener("click", closeModalLogIn);
 };
-export function toggleModal() {
-    setThemOnModalLogIn();
-    modal.classList.toggle("is-hidden");
+
+function openModalLogIn() {
+  setThemOnModalLogIn();
+  document.body.style.overflow = 'hidden';
+  buttonShowPassword.addEventListener("click", showPassword);
+  modal.classList.remove("is-hidden");
+  backdropLogIn.addEventListener('click', offModalLogInForClickBeackdrop);
+  document.addEventListener('keydown', offModalLogInForEscape);
 };
-// })();
+
+export function closeModalLogIn() {
+  document.body.style.overflow = 'overlay';
+  buttonShowPassword.removeEventListener("click", showPassword);
+  modal.classList.add("is-hidden");
+  backdropLogIn.removeEventListener('click', offModalLogInForClickBeackdrop);
+  document.removeEventListener('keydown', offModalLogInForEscape);
+};
+
+function offModalLogInForClickBeackdrop(event) {
+  if (event.target === backdropLogIn) {
+    closeModalLogIn();
+  }
+}
+
+function offModalLogInForEscape(event) {
+  if (event.key === 'Escape') {
+    closeModalLogIn();
+  }
+}
+
+function showPassword() {
+  if (inputPassword.getAttribute('type') === 'password') {
+    inputPassword.removeAttribute('type');
+    inputPassword.setAttribute('type', 'text');
+    iconForShowPassword.classList.add('visually-hidden');
+    iconForUnShowPassword.classList.remove('visually-hidden');
+  } else {
+    inputPassword.removeAttribute('type');
+    inputPassword.setAttribute('type', 'password');
+    iconForShowPassword.classList.remove('visually-hidden');
+    iconForUnShowPassword.classList.add('visually-hidden');
+  };
+};
 
 function setThemOnModalLogIn() {
   const bodyClassThemChoosed = document.querySelector('body').classList.contains('dark');

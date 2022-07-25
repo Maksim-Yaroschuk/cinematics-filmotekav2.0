@@ -172,7 +172,6 @@
   justify-content: center;
   padding-top: 54px;
   @include mq(tablet) {
-	//padding-top: 40px;
   padding-top: 30px;
   }
 }
@@ -211,6 +210,15 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
+}
+.header__search-icon {
+  fill: transparent;
+  stroke: var(--just-white);
+  stroke-width: 4px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+      transform: scale(1.2) rotate(40deg);
+    }
 }
 /*.header-message {
   position: absolute;
