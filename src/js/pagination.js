@@ -184,7 +184,7 @@ if (nextBtn) {
   paginationBar.addEventListener('click', onPageClick);
 }	
 
-if(location.pathname.split("/").slice(-1) !== 'library.html') {
+if(location.pathname.split("/").slice(-1) != 'library.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
 		renderMarkup.renderMarkup(data);
 		moviesDataUpdate(data);
