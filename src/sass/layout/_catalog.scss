@@ -5,7 +5,7 @@
   border-radius: inherit;
   height: 402px;
   @include mq(tablet-only) {
-    height: 455px;
+    height: 600px;
   }
   @include mq(desktop) {
     height: 600px;
@@ -55,7 +55,7 @@
   height: 443px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   @include mq(tablet-only) {
-    height: 495px;
+    height: 530px;
   }
   @include mq(desktop) {
     height: 634px;
