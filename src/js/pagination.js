@@ -182,9 +182,11 @@ if (nextBtn) {
   nextBtn.addEventListener('click', onNextBtnClick);
   prevBtn.addEventListener('click', onPrevBtnClick);
   paginationBar.addEventListener('click', onPageClick);
-}
+}	
 
-if(location.pathname.split("/").slice(-1) == 'index.html') {
+console.log(213)
+
+if(location.pathname.split("/").slice(-1) !== 'library.html') {
 	getSearchForm(page, query, genre, year, sort).then(data => {
 		renderMarkup.renderMarkup(data);
 		moviesDataUpdate(data);
