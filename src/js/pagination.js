@@ -76,24 +76,21 @@ function submitResetFilter(evn) {
 	clearPagination(amountOfPages)
 }
 
-
 logo.addEventListener('click', onLogoClick);
 
-function onLogoClick() {
-	spinner.classList.remove('done');
+function onLogoClick(e) {
 	amountOfPages = 1000;
-  saveLs('page-pg', 1);
-  saveLs('genre-pg', '');
-  saveLs('year-pg', '');
+	page=1;
+	genre='';
+	year='';
+	query='';
+	sort='';
+  saveLs('page-pg', page);
+  saveLs('genre-pg', genre);
+  saveLs('year-pg', year);
   saveLs('total-pages', amountOfPages);
-  saveLs('query-pg', '');
-	saveLs('sort-pg', '');
-	getSearchForm(page, query, genre, year, sort).then(data => {
-		renderMarkup.renderMarkup(data);
-		moviesDataUpdate(data);
-		saveLs('total-pages', amountOfPages);
-		spinner.classList.add('done');
-	});
+  saveLs('query-pg', query);
+	saveLs('sort-pg', sort);
 }
 
 if (!loadLs('total-pages')) {
@@ -172,6 +169,7 @@ function eventYear(evn) {
     });
   }
 }
+
 function eventSort(evn) {
   if (evn) {
 		spinner.classList.remove('done');
@@ -199,6 +197,20 @@ if (nextBtn) {
   paginationBar.addEventListener('click', onPageClick);
 }
 
+if(location.pathname.split("/").slice(-1) == 'library.html') {
+	amountOfPages = 1000;
+	page=1;
+	genre='';
+	year='';
+	query='';
+	sort='';
+  saveLs('page-pg', page);
+  saveLs('genre-pg', genre);
+  saveLs('year-pg', year);
+  saveLs('total-pages', amountOfPages);
+  saveLs('query-pg', query);
+	saveLs('sort-pg', sort);
+}
 
 if(location.pathname.split("/").slice(-1) != 'library.html') {
 	spinner.classList.remove('done');
