@@ -1,4 +1,4 @@
-import { list, lib, modalBackdrop, btnOnModalTeam, movieModal} from './refs';
+import { list, lib, modalBackdrop, btnOnModalTeam, movieModal, toTopBtn} from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
  
@@ -144,7 +144,7 @@ function openModal() {
   modalBackdrop.classList.add('modal-open');
   document.body.style.overflow = 'hidden';
 	document.body.classList.add('modal-open')
-
+  toTopBtn.classList.remove('btn-to-top--visible');
   setCloseOptionModal();
 }
 
@@ -183,7 +183,7 @@ function offModal() {
   modalBackdrop.firstElementChild.dataset.id = '';
 
   movieModal.innerHTML = ''
-  
+  toTopBtn.classList.add('btn-to-top--visible');
 }
 
 // модалка команды

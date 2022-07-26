@@ -170,7 +170,7 @@ function onUserLogOut() {
 };
 
 function validateEmail(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/;
+    const expression = /^[^@]+@\w+(\.\w+)+\w$/;
     if (expression.test(email) === true) {
         return true;
     } else {
