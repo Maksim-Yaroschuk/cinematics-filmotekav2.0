@@ -580,6 +580,7 @@ function search(e) {
     paginationSection.classList.add('is-hidden');
     warningShown();
     form.reset();
+		spinner.classList.add('done');
   } else {
     warningUnShown();
     form.reset();
@@ -613,6 +614,7 @@ function search(e) {
       paginationSection.classList.add('is-hidden');
 			query='';
 			saveLs('query-pg', query)
+			spinner.classList.add('done');
     } else {
       warningUnShown();
       renderMarkup.renderMarkup(data);
