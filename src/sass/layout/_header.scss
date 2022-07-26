@@ -39,15 +39,18 @@
   background-image: url(/src/images/abstract-background-with-red-lines-library-desktop.jpg);
   @include mq(tablet) {
     background-image: url(/src/images/abstract-background-with-red-lines-library-tablet.jpg);
+    max-height: 236px;
   }
   @include mq(desktop) {
     background-image: url(/src/images/abstract-background-with-red-lines-library-desktop.jpg);
+    max-height: 204px;
     padding-bottom: 80px;
   }
   background-repeat: no-repeat;
   background-size: cover;
   flex-grow: 1;
   max-width: 1280px;
+  max-height: 249px;
   margin-right: auto;
   margin-left: auto;
   padding-top: 40px;
@@ -109,7 +112,7 @@
   align-items: center;
   margin-right: 10px;
     @include mq(tablet) {
-      margin-right: 40px;
+      margin-right: 30px;
     }
 }
 .header__item {
@@ -165,6 +168,7 @@
 .header__nav_icon {
   fill: currentColor;
   margin-right: 5px;
+  padding-bottom: 0.5px;
 }
 .header__search-form {
   position: relative;
@@ -293,7 +297,7 @@
 .filter_form {
   position: absolute;
   font-size: 13px;
-  right: 0%;
+  right: 8%;
   bottom: -65%;
   @include mq(tablet) {
     right: 14.5%;
@@ -308,7 +312,6 @@
   @include mq(mobile-only) {
     &:last-child {
       margin-top: 10px;
-      margin-right: 10px;
     }
   }
   border: 0px;
@@ -325,11 +328,9 @@
 .filter_form__select:not(:last-child) {
   margin-right: 10px;
 }
-
 .btn-orange {
   background-color: var(--secondary-text-color);
 }
-
 .btnResetFilter {
   margin-left: 40px;
   border: 0px;
