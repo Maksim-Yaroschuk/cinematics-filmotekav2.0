@@ -8,7 +8,7 @@ import { libMarkup } from './lib';
 
 import team from './team-info';
 import { trailerBtnListener } from './trailer';
-
+const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
 
 const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
 const btnLibWatch = document.querySelector('.btn--watched');
@@ -38,10 +38,19 @@ function createModal(event) {
   const selectedMovie = event.target.closest('li');
   //Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
   if (selectedMovie) {
+    let moviesData = JSON.parse(localStorage.getItem('moviesData'));
+    if (dataWebLocation === 'library') {
+      const watchedData = JSON.parse(localStorage.getItem('WatchedData'));
+      const queueData = JSON.parse(localStorage.getItem('QueueData'));
+      moviesData = [...watchedData, ...queueData]
+    }
     //Получение данных о фильме в модалку
     const selectedMovieId = Number(selectedMovie.getAttribute('key'));
+<<<<<<< Updated upstream
 
     // const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+=======
+>>>>>>> Stashed changes
     const movieData = moviesData.find(movie => movie.id === selectedMovieId);
     renderModalContent(movieData);
     openModal();
@@ -64,7 +73,11 @@ function onBntAddLibray() {
   const btnAddWatched = document.querySelector('.modal__add-watched');
   const btnAddQueue = document.querySelector('.modal__add-queue');
   const idMovie = Number(modalBackdrop.firstElementChild.dataset.id);
+<<<<<<< Updated upstream
   // const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
+=======
+
+>>>>>>> Stashed changes
 
   if (dataWebLocation === 'library') {
     setBtnLibrayLocalData(btnAddWatched, btnAddQueue);
