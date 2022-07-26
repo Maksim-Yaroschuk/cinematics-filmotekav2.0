@@ -37,6 +37,7 @@ const refs = {
   signInLink: document.querySelector('.signIn_now__link'),
   logOut: document.querySelector('#header-logOut'),
 	paginationBar: document.querySelector('.pagination-btns'),
+	spinner: document.querySelector('.preloader'),
 };
 
 export const {
@@ -78,4 +79,5 @@ export const {
   signInLink,
   logOut,
 	paginationBar,
+	spinner,
 } = refs;

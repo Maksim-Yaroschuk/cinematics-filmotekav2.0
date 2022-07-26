@@ -39,7 +39,7 @@
 
   @include mq(tablet) {
     max-width: 704px;
-    padding: 40px 72px 40px 36px;
+    padding: 20px;
     display: grid;
     grid-template-columns: 264px 1fr;
     grid-column-gap: 68px;
@@ -47,7 +47,7 @@
 
   @include mq(desktop) {
     max-width: 806px;
-    padding: 40px 12px;
+    padding: 20px 20px;
     display: grid;
     grid-template-columns: 375px 1fr;
     grid-column-gap: 16px;
@@ -75,12 +75,15 @@
   position: relative;
 
   @include mq(tablet) {
-    width: 264px;
+    width: 300px;
+		height: 450px;
+		margin-top: 20px;
   }
   @include mq(desktop) {
-    width: 375px;
-    height: 478px;
-    object-fit: cover;
+    width: 360px;
+    height: 550px;
+		margin-top: 0px;
+    // object-fit: cover;
   }
 }
 
@@ -97,6 +100,10 @@
     height: 100%;
     object-fit: fill;
   }
+}
+
+.modal_movi-info {
+	margin-top: 30px
 }
 
 .modal__title {
@@ -212,7 +219,7 @@
 
 .modal__buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   @include mq(desktop) {
     justify-content: normal;
     padding-left: 8px;
@@ -370,11 +377,11 @@
   border-radius: 4px;
 
   @include mq(tablet) {
-    width: 632px;
-    height: 425px;
+    width: 664px;
+    height: 370px;
   }
   @include mq(desktop) {
-    width: 782px;
+    width: 767px;
     height: 425px;
     margin-top: 16px;
   }
