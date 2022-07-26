@@ -9,7 +9,6 @@ async function getGenres() {
 }
 
 export function renderMarkup(data) {
-
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
@@ -72,7 +71,6 @@ export function createListMarkup(data) {
 }
 
 export function renderLibMarkup(data) {
-
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
     saveLs('genresList', genres);
@@ -98,5 +96,5 @@ export function renderLibMarkup(data) {
       lib.innerHTML = markupLibList;
     }
   });
-  saveLs('moviesData', data.results);
+  //saveLs('moviesData', data.results);
 }
