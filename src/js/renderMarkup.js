@@ -48,23 +48,27 @@ export function createListMarkup(data) {
           id,
           genre_names,
           release_date,
-        }) => `<li class='poster-list__item' key='${id}'>
-    <img
-      class='poster-list__img'
-      src='${IMG_BASE_URL}${IMG_W400}${poster_path}'
-      alt='${original_title}'
-      width
-      loading='lazy'
-    />
-    <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
-    <div class='poster-list__wrap'>
-      <h2 class='poster-list__title'>${original_title}</h2>
-      <div class='poster-list__info'>
-        <p class='poster-list__text'>${genre_names}</p>
-        <p class='poster-list__age'>| ${release_date}</p>
-      </div>
-    </div>
-  </li>`
+        }) => {
+          let posterPath = ``
+          if(poster_path){posterPath=`${IMG_BASE_URL}${IMG_W400}/${poster_path}`}
+          else{posterPath='https://i.ibb.co/GPMFHG6/keep-calm-poster-not-found-1.png'}
+          return `<li class='poster-list__item' key='${id}'>
+            <img
+              class='poster-list__img'
+              src='${posterPath}'
+              alt='${original_title}'
+              width
+              loading='lazy'
+            />
+            <span class='poster-list__rate'>${vote_average.toFixed(1)}</span>
+            <div class='poster-list__wrap'>
+              <h2 class='poster-list__title'>${original_title}</h2>
+              <div class='poster-list__info'>
+                <p class='poster-list__text'>${genre_names}</p>
+                <p class='poster-list__age'>| ${release_date}</p>
+              </div>
+            </div>
+          </li>`}
       )
       .join('');
   }
