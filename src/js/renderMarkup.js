@@ -8,6 +8,8 @@ async function getGenres() {
   return { genres };
 }
 
+let moviesData;
+
 export function renderMarkup(data) {
   getGenres().then(({ genres }) => {
     //Добавление списка жанров в localStorage
@@ -34,6 +36,7 @@ export function renderMarkup(data) {
       list.innerHTML = markupList;
     }
   });
+  // moviesData = JSON.parse(localStorage.getItem('moviesData'));
 }
 
 export function createListMarkup(data) {
@@ -98,3 +101,5 @@ export function renderLibMarkup(data) {
   });
   //saveLs('moviesData', data.results);
 }
+
+// export { moviesData }

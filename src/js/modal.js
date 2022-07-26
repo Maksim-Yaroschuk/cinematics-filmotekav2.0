@@ -1,7 +1,7 @@
 import { list, lib, modalBackdrop, btnOnModalTeam, movieModal, toTopBtn} from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
 import { addListLibrary, funAddQueue } from './storage';
- 
+// import { moviesData } from './renderMarkup'; 
 import { libMarkup } from './lib';
 
 
@@ -9,6 +9,11 @@ import { libMarkup } from './lib';
 import team from './team-info';
 import { trailerBtnListener } from './trailer';
 
+
+const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
+const btnLibWatch = document.querySelector('.btn--watched');
+// const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
+// let moviesData = JSON.parse(localStorage.getItem('moviesData'));
 
 if (list) {
   list.addEventListener('click', createModal);
@@ -19,12 +24,24 @@ if (lib) {
 btnOnModalTeam.addEventListener('click', onModalTeam);
 
 function createModal(event) {
+      if (dataWebLocation === 'library') {
+
+      if (btnLibWatch.classList.contains('btn-orange')) {
+        moviesData = JSON.parse(localStorage.getItem('WatchedData'));
+        console.log(moviesData);
+      } else {
+        moviesData = JSON.parse(localStorage.getItem('QueueData'));
+        console.log(moviesData);
+      }
+    }
+
   const selectedMovie = event.target.closest('li');
   //Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
   if (selectedMovie) {
     //Получение данных о фильме в модалку
     const selectedMovieId = Number(selectedMovie.getAttribute('key'));
-    const moviesData = JSON.parse(localStorage.getItem('moviesData'));
+
+    // const moviesData = JSON.parse(localStorage.getItem('moviesData'));
     const movieData = moviesData.find(movie => movie.id === selectedMovieId);
     renderModalContent(movieData);
     openModal();
@@ -47,7 +64,7 @@ function onBntAddLibray() {
   const btnAddWatched = document.querySelector('.modal__add-watched');
   const btnAddQueue = document.querySelector('.modal__add-queue');
   const idMovie = Number(modalBackdrop.firstElementChild.dataset.id);
-  const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
+  // const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
 
   if (dataWebLocation === 'library') {
     setBtnLibrayLocalData(btnAddWatched, btnAddQueue);
@@ -129,7 +146,7 @@ function updataLibery(e, btn, list) {
 }
 
 function setBtnLibrayLocalData(btnAddWatched, btnAddQueue) {
-  const btnLibWatch = document.querySelector('.btn--watched');
+  // const btnLibWatch = document.querySelector('.btn--watched');
 
   if (btnLibWatch.classList.contains('btn-orange')) {
     btnAddWatched.dataset.liery = true;
@@ -262,4 +279,6 @@ function setThemOnModal() {
     modalBackdrop.firstElementChild.classList.remove('modal-dark');
   }
 }
+
+// export { moviesData };
 
