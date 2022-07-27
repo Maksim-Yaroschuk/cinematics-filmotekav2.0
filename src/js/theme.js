@@ -11,7 +11,8 @@ if (themeValue === 'light') {
 } else {
 	moon.style.visibility = 'hidden';
 }
-themeBtn.addEventListener('click', () => {
+themeBtn.addEventListener('click', (e) => {
+	e.preventDefault()
 	const val = loadLs('theme');
 	if (val === 'light') {
 		document.body.classList.add('dark');
