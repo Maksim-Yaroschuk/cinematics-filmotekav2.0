@@ -142,6 +142,7 @@ function updataLibery(e, btn, list) {
     lib.innerHTML = '';
     libMarkup(list);
     btn.setAttribute('disabled', true);
+
   }
   return;
 }
