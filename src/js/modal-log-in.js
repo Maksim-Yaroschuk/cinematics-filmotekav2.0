@@ -1,12 +1,7 @@
-import { openModalBtn, closeModalBtn, modal, backdropLogIn, inputPassword, buttonShowPassword, iconForShowPassword, iconForUnShowPassword } from './refs';
+import { openModalBtn, closeModalBtn, modal, backdropLogIn, modalDivLogIn, formLogIn, buttonRegister, inputPassword, buttonShowPassword, iconForShowPassword, iconForUnShowPassword } from './refs';
+import { goToSignIn } from './log-in';
+import { chooseThemeForNotiflix } from './notiflix';
 
-// (() => {
-  //const refsLogIn = {
-    // openModalBtn: document.querySelector("[data-modal-open]"),
-    // closeModalBtn: document.querySelector("[data-modal-close]"),
-    // modal: document.querySelector("[data-modal-login]"),
-	//};
-	
 if (openModalBtn) { 
   openModalBtn.addEventListener("click", openModalLogIn);
   closeModalBtn.addEventListener("click", closeModalLogIn);
@@ -14,6 +9,7 @@ if (openModalBtn) {
 
 function openModalLogIn() {
   setThemOnModalLogIn();
+  chooseThemeForNotiflix();
   document.body.style.overflow = 'hidden';
   buttonShowPassword.addEventListener("click", showPassword);
   modal.classList.remove("is-hidden");
@@ -22,6 +18,10 @@ function openModalLogIn() {
 };
 
 export function closeModalLogIn() {
+  formLogIn.reset();
+  buttonRegister.classList.add('disabled_for_signUp');
+  buttonRegister.setAttribute('disabled', 'disabled');
+  goToSignIn();
   document.body.style.overflow = 'overlay';
   buttonShowPassword.removeEventListener("click", showPassword);
   modal.classList.add("is-hidden");
@@ -56,11 +56,9 @@ function showPassword() {
 };
 
 function setThemOnModalLogIn() {
-  const bodyClassThemChoosed = document.querySelector('body').classList.contains('dark');
-  const modalDiv = document.querySelector('.modal_login');
-  if (bodyClassThemChoosed) {
-    modalDiv.classList.add('modal_login--dark');
+  if (document.querySelector('body').classList.contains('dark')) {
+    modalDivLogIn.classList.add('modal_login--dark');
   } else {
-    modalDiv.classList.remove('modal_login--dark');
+    modalDivLogIn.classList.remove('modal_login--dark');
   };
 };

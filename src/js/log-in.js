@@ -1,8 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, set, ref, onValue, update, remove } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { headerLogIn, headerLogOut, formLogIn, formTitleSignIn, formTitleSignUp, formWrapName, formWrapCheckbox, formCheckbox, buttonRegister, buttonConfirm, signUp, signUpLink, signIn, signInLink, logOut } from './refs';
+import { headerLogIn, headerLogOut, headerMyLibrary, formLogIn, formTitleSignIn, formTitleSignUp, formWrapName, formWrapCheckbox, formCheckbox, buttonRegister, buttonConfirm, signUp, signUpLink, signIn, signInLink, logOut } from './refs';
 import { closeModalLogIn } from './modal-log-in';
+import Notiflix from 'notiflix';
+import { chooseThemeForNotiflix } from './notiflix';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBvthHJrzRgqu2gApiW7YLJNyTKg7lQF2A",
@@ -17,12 +19,26 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const auth = getAuth();
+export const auth = getAuth();
 let user;
+
+headerMyLibrary.addEventListener('click', checkLogInForMyLibrary);
+
+function checkLogInForMyLibrary() {
+    chooseThemeForNotiflix();
+    if (auth.currentUser === null) {
+        headerMyLibrary.removeAttribute('href');
+        Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
+    } else {
+        headerMyLibrary.setAttribute('href', '/library.html');
+    };
+};
 
 if (formLogIn) {
     formLogIn.addEventListener('submit', onLogin);
 };
+
+// location.href = 'library.html';
 
 if (formCheckbox) {
     formCheckbox.onchange = function () {
@@ -46,8 +62,9 @@ if (signIn) {
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in
+        // console.log(auth.currentUser);
         const uid = user.uid;
-        console.log(uid);
+        // console.log(uid);
         onUserLogIn();
     } else {
         // User is signed out
@@ -61,7 +78,7 @@ function onRegister(event) {
     const email = document.querySelector('#email_1').value;
     const password = document.querySelector('#password').value;
     if (validateEmail(email) === false || validatePassword(password) === false) {
-        alert('Email or Password is Outta Line!');
+        Notiflix.Report.info('Wow dude', 'Email or Password is Outta Line 🙈', 'Agree');
         return;
     };
     createUserWithEmailAndPassword(auth, email, password)
@@ -75,12 +92,13 @@ function onRegister(event) {
             })
             closeModalLogIn();
             formLogIn.reset();
-            alert('User Created');
+            Notiflix.Report.success('Nice!', 'Welcome to Filmoteka! Relax and enjoy your movies 🦥', 'Thanks!');
         })
-        .catch(function (error) {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
+        .catch((error) => {
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            // alert(errorMessage);
+            Notiflix.Report.warning('Wait a second', 'User with such email already exists, unless you want to steal it 👀', 'Oops');
         });
     user = auth.currentUser;
 };
@@ -90,7 +108,7 @@ function onLogin(event) {
     const email = document.querySelector('#email_1').value;
     const password = document.querySelector('#password').value;
     if (validateEmail(email) === false || validatePassword(password) === false) {
-        alert('Email or Password is Outta Line!');
+        Notiflix.Report.info('Wow dude', 'Email or Password is Outta Line 🙈', 'Agree');
         return;
     };
     signInWithEmailAndPassword(auth, email, password)
@@ -105,26 +123,37 @@ function onLogin(event) {
             closeModalLogIn();
             formLogIn.reset();
             onUserLogIn();
-            alert('User loged in');
+            Notiflix.Report.success('Hello there!', 'Welcome back to Filmoteka! Already know which movie wanna see? 🦥', 'Nice to be Home!');
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
+            // const errorCode = error.code;
+            // const errorMessage = error.message;
+            // alert(errorMessage);
+            Notiflix.Report.warning('Hmm', 'Something wrong with your reqwest, please try again 🙊', 'No problem');
         });
     user = auth.currentUser;
 };
 
 if (logOut) {
     logOut.addEventListener('click', (e) => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            alert('User loged out');
-        })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
+        chooseThemeForNotiflix();
+        Notiflix.Confirm.show('Exit confirmation',
+            'We hope you had a good time! 💃 🕺 Confirm exit?',
+            'Yeap, time to go 👋',
+            'Maybe I should stay 👌',
+            function okCb() {
+                signOut(auth)
+                    .catch((error) => {
+                        // const errorCode = error.code;
+                        // const errorMessage = error.message;
+                        // alert(errorMessage);
+                        Notiflix.Report.warning('Hah', 'Did you think you would escape so easily? Have one more try 😁', 'Dammit');
+                    });;
+                // Sign-out successful.
+                Notiflix.Report.success('If your say so...', 'May the Force be with you! 🌌', 'I`m still on Light Side!')
+            },
+            function cancelCb() {
+                Notiflix.Report.success('Great!', 'Glad to hear that, let`s keep chilling 💃 🕺', 'That`s right!')
             });
     });
 };
@@ -142,7 +171,7 @@ function goToSignUp() {
     formLogIn.removeEventListener('submit', onLogin);
 }
 
-function goToSignIn() {
+export function goToSignIn() {
     formTitleSignIn.classList.remove('visually-hidden');
     formTitleSignUp.classList.add('visually-hidden');
     formWrapName.classList.add('visually-hidden');
