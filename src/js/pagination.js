@@ -559,10 +559,6 @@ function renderPagination(e) {
   saveLs('page-pg', page);
 }
 
-// if(!paginationBar.lastElementChild.classList.contains('is-hidden')) {
-// 	window.onload = function() {paginationBar.lastElementChild.textContent = amountOfPages}
-// }
-
 function clearPagination(amountOfPages) {
   prevBtn.classList.add('is-hidden');
   paginationBar.innerHTML = `	<li class="page is-hidden">1</li>
@@ -637,14 +633,12 @@ function search(e) {
 }
 
 function warningShown() {
-	// warning.classList.remove('visually-hidden');
 	divError.classList.remove('visually-hidden');
 	list.classList.add('visually-hidden');
 	filterForm.classList.add('visually-hidden');
 }
 
 function warningUnShown() {
-	// warning.classList.add('visually-hidden');
 	divError.classList.add('visually-hidden');
 	list.classList.remove('visually-hidden');
 	filterForm.classList.remove('visually-hidden');

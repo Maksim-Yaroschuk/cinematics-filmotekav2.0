@@ -6,6 +6,7 @@ body.dark {
 body.light::-webkit-scrollbar {
   width: 20;
 }
+
 body.light::-webkit-scrollbar-track {
   background: var(--light-body-theme);
 	margin-top: 20px;
@@ -13,6 +14,7 @@ body.light::-webkit-scrollbar-track {
 	border-radius: 10px;
 	opacity: 0;
 }
+
 body.light::-webkit-scrollbar-thumb {
   background: grey;
 	border-radius: 10px;
@@ -22,6 +24,7 @@ body.light::-webkit-scrollbar-thumb {
 body.dark::-webkit-scrollbar {
   width: 20;
 }
+
 body.dark::-webkit-scrollbar-track {
   background: var(--dark-body-theme);
 	margin-top: 20px;
@@ -29,6 +32,7 @@ body.dark::-webkit-scrollbar-track {
 	border-radius: 10px;
 	opacity: 0;
 }
+
 body.dark::-webkit-scrollbar-thumb {
   background: bisque;
 	border-radius: 10px;
@@ -76,11 +80,13 @@ body.dark::-webkit-scrollbar-thumb {
 	&:hover {
 		cursor: pointer;
 	}
+
 	@include mq(tablet) {
 		top: 44px;
 		right: 260px;
 		transform: translate(50%, 0);
 	}
+	
 	@include mq(desktop) {
 		width: 180px;
 		height: 5px;

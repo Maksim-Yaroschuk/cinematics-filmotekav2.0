@@ -24,8 +24,6 @@ export const movieTrailer = async keyId => {
 // функция на экспорт. Принимает ключ(id фильма как 'key' в 'li')
 // при запросе записывается в movie
 
-// movieTrailer(507086);
-
 export async function trailerMarkup(event)  {
   const movieId = Number(event.target.getAttribute('key'))
   const trailerBtn = document.querySelector('.trailerBtn')
@@ -44,9 +42,6 @@ export async function trailerMarkup(event)  {
           }
     })
 }
-
-
-
 
 export function trailerBtnListener (key) {
   const trailerBtn = document.querySelector('.trailerBtn')

@@ -32,7 +32,6 @@
 
 .modal__close {
   cursor: pointer;
-  // background-color: rgb(70, 63, 63);
   top: 8px;
   right: 8px;
   position: absolute;
@@ -44,12 +43,10 @@
 }
 
 .modal__close-button {
-  // fill: #ff6b08;
   fill: currentColor;
 }
 
 .modal__close-button:hover {
-  // fill: #ff6b08;
   fill: var(--acent-modal-hover);
 }
 
