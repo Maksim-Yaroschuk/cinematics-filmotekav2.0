@@ -50,7 +50,6 @@ function createModal(event) {
     // подключаем кнопки
     onBntAddLibray();
 
-    // onBntAddLibray(selectedMovieId);
     trailerBtnListener(selectedMovieId)
   }
 }
@@ -142,18 +141,13 @@ function updataLibery(e, btn, list) {
   if (dataWebLocation === 'library') {
     lib.innerHTML = '';
     libMarkup(list);
-    // const dataBtn = btn.dataset.liery;
-    // if (dataBtn === 'true') {
-      // btn.setAttribute('disabled', true);
-    // } else {
-      // return
-    // }
+    btn.setAttribute('disabled', true);
+
   }
   return;
 }
 
 function setBtnLibrayLocalData(btnAddWatched, btnAddQueue) {
-  // const btnLibWatch = document.querySelector('.btn--watched');
 
   if (btnLibWatch.classList.contains('btn-orange')) {
     btnAddWatched.dataset.liery = true;
@@ -290,6 +284,4 @@ function setThemOnModal() {
     modalBackdrop.firstElementChild.classList.remove('modal-dark');
   }
 }
-
-// export { moviesData };
 

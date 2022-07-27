@@ -40,6 +40,7 @@
 	border-radius: 5px;
 	transform: none;
 }
+
 .page-btn{
 	cursor: pointer;
 	padding: 12px;
@@ -48,15 +49,19 @@
 	background-color: rgba(247, 247, 247, 1);
 	margin-left: 10px;
 }
+
 .page-btn:hover {
 	background-color: rgb(230, 230, 230);
 }
+
 .is-hidden {
 	display: none;
 }
+
 .arrow {
 	width: 16px;
 }
+
 .arrow.next {
 	transform: rotate(180deg);
 }

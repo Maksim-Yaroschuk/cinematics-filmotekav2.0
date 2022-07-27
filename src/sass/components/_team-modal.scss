@@ -20,11 +20,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  // display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(11, 1fr);
-  // grid-column-gap: 25px;
-  // grid-row-gap: 20px;
 
   @include mq(tablet) {
     grid-template-columns: repeat(3, 1fr);

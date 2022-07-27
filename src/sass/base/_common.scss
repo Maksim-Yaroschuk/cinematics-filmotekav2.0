@@ -26,13 +26,6 @@ body {
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
-  // background-image: url();
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-attachment: fixed;
-  // flex-grow: 1;
-  // overflow: hidden;
-  // background-color: #000000;
   color: var(--primary-text-color);
   background-color: var(--light-body-theme);
 }
@@ -63,19 +56,3 @@ img {
 li {
   list-style: none;
 }
-
-//Скрол
-// ::-webkit-scrollbar {
-//   width: 20;
-// }
-// ::-webkit-scrollbar-track {
-//   background: var(--light-body-theme);
-// 	margin-block: 10px;
-// 	border-radius: 10px;
-// 	opacity: 0;
-// }
-// ::-webkit-scrollbar-thumb {
-//   background: grey;
-// 	border-radius: 10px;
-// 	border: 5px solid var(--light-body-theme);
-// }

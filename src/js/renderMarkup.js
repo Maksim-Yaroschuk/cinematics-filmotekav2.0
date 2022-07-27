@@ -102,7 +102,4 @@ export function renderLibMarkup(data) {
       lib.innerHTML = markupLibList;
     }
   });
-  //saveLs('moviesData', data.results);
 }
-
-// export { moviesData }
