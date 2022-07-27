@@ -141,7 +141,7 @@ function updataLibery(e, btn, list) {
   if (dataWebLocation === 'library') {
     lib.innerHTML = '';
     libMarkup(list);
-    btn.setAttribute('disabled', true);
+    // btn.setAttribute('disabled', true);
 
   }
   return;
