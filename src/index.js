@@ -7,7 +7,6 @@ import './js/modal';
 import './js/trendings';
 import './js/storage';
 import './js/pagination';
-import './js/spiner';
 import './js/scroll';
 import './js/filter';
 import './js/lib';

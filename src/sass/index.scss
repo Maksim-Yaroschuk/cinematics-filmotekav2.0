@@ -7,7 +7,6 @@
 @import './components/theme.scss';
 @import './layout/header';
 @import './base/container';
-@import './base/section';
 @import './components/pagination';
 @import './components/modal';
 @import './components/modal-log-in';
@@ -15,6 +14,4 @@
 @import './layout/catalog';
 @import './layout/footer';
 @import './components/spiner.scss';
-@import './components/backdrop'; // @import './partials/catalog';
-
-// @import './example';
+@import './components/backdrop';

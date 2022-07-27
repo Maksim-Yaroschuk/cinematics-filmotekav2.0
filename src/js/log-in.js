@@ -225,31 +225,3 @@ function validateField(field) {
         return true;
     };
 };
-
-// // get data
-// getData.addEventListener('click', (e) => {
-//     const username = document.getElementById('username').value;
-//     const starCountRef = ref(database, 'users/' + username);
-//     onValue(starCountRef, (snapshot) => {
-//         const data = snapshot.val(); // data = all data on firebase;
-//         document.getElementById('email').value = data.email;
-//     });
-// });
-
-// // update data
-// updateData.addEventListener('click',(e) => {
-//     const username = document.getElementById('username').value;
-//     const email = document.getElementById('email').value;
-//     update(ref(database, 'users/' + username), {
-//         email: email,
-//         username: username, 
-//     })
-//     alert('Updated');
-// });
-
-// // remove data
-// removeData.addEventListener('click',(e) => {
-//     const username = document.getElementById('username').value;
-//     remove(ref(database, 'users/' + username));
-//     alert('Removed');
-// });
