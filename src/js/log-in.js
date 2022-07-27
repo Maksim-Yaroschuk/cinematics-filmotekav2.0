@@ -30,7 +30,7 @@ function checkLogInForMyLibrary() {
         headerMyLibrary.removeAttribute('href');
         Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
     } else {
-        headerMyLibrary.setAttribute('href', '/library.html');
+        headerMyLibrary.setAttribute('href', './library.html');
     };
 };
 
