@@ -66,11 +66,10 @@ body.dark::-webkit-scrollbar-thumb {
 }
 
 #toggle-theme-btn {
-	// width: 180px;
 	height: 5px;
 	position: absolute;
-	top: 205px;
-	right: 10%;
+	top: 87px;
+	right: 6%;
 	transform: translate(50%, 0);
 	background-color:transparent;
 	border: 2px transparent solid;
@@ -78,15 +77,15 @@ body.dark::-webkit-scrollbar-thumb {
 		cursor: pointer;
 	}
 	@include mq(tablet) {
-		top: 174px;
-		right: 55%;
+		top: 44px;
+		right: 260px;
 		transform: translate(50%, 0);
 	}
 	@include mq(desktop) {
 		width: 180px;
 		height: 5px;
-		top: 110px;
-		right: 110px;
+		top: -35px;
+		right: -330px;
 	}
 }
 

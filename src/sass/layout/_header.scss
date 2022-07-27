@@ -319,7 +319,7 @@
 		display: block;
   }
   @include mq(desktop) {
-    right: 439px;
+    right: 433px;
     bottom: -50%;
   }
 }
@@ -352,12 +352,21 @@
 }
 .btnResetFilter {
   // margin-left: 40px;
+	margin-top: 5px;
+	text-align: start;
+	width: 130px;
   border: 0px;
   border-bottom: 1px solid var(--just-white);
   color: var(--just-white);
   border-radius: 0px;
   outline: none;
   background-color: inherit;
-  padding: 2px;
   cursor: pointer;
+	@include mq(tablet) {
+		width: 45px;
+		text-align: center;
+	}
+	@include mq(desktop) {
+		
+	}
 }
