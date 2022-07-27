@@ -25,11 +25,9 @@ onScroll();
 onToTopBtn();
 
 function setThemOnButtonToTop() {
-    const bodyClassThemChoosed2 = document.querySelector('body').classList.contains('dark');
-    const buttonToTop = document.querySelector('.btn-to-top');
-    if (bodyClassThemChoosed2) {
-        buttonToTop.classList.add('btn-to-top--dark');
+    if (document.querySelector('body').classList.contains('dark')) {
+        toTopBtn.classList.add('btn-to-top--dark');
     } else {
-        buttonToTop.classList.remove('btn-to-top--dark');
+        toTopBtn.classList.remove('btn-to-top--dark');
     };
 };

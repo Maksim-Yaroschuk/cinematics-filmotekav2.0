@@ -4,10 +4,13 @@ import { addListLibrary, funAddQueue, saveLs } from './storage';
 
 import { libMarkup } from './lib';
 
-
-
 import team from './team-info';
 import { trailerBtnListener } from './trailer';
+
+import { auth } from './log-in';
+import Notiflix from 'notiflix';
+import { chooseThemeForNotiflix } from './notiflix';
+
 const dataWebLocation = document.querySelector('body').getAttribute('data-weblocation');
 
 const btnLibWatch = document.querySelector('.btn--watched');
@@ -73,23 +76,34 @@ function onBntAddLibray() {
 
   // слушатели на клик
   btnAddWatched.addEventListener('click', e => {
-    // добавить в локал или убрать с локала
+    chooseThemeForNotiflix();
+    if (auth.currentUser === null) {
+      Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
+    } else {
+      // добавить в локал или убрать с локала
+      addListLibrary(idMovie, 'Watched');
+      updataLibery(e, btnAddWatched, 'Watched');
 
-    addListLibrary(idMovie, 'Watched');
-    updataLibery(e, btnAddWatched, 'Watched');
-
-    // еще раз проверить наличие в локал и изменить кнопку
-    setStileBntWatched(idMovie, btnAddWatched);
+      // еще раз проверить наличие в локал и изменить кнопку
+      setStileBntWatched(idMovie, btnAddWatched);
+      // еще раз проверить наличие в локал и изменить кнопку
+      setStileBntWatched(idMovie, btnAddWatched);
+    };
   });
 
   btnAddQueue.addEventListener('click', e => {
-    // добавить в локал или убрать с локала
-    addListLibrary(idMovie, 'Queue');
-    updataLibery(e, btnAddQueue, 'Queue');
-    // еще раз проверить наличие в локал и изменить кнопку
-    setStileBntQueue(idMovie, btnAddQueue);
+    chooseThemeForNotiflix();
+    if (auth.currentUser === null) {
+      Notiflix.Report.info('Oops', 'Please Log In first 🙈', 'Okay');
+    } else {
+      // добавить в локал или убрать с локала
+      addListLibrary(idMovie, 'Queue');
+      updataLibery(e, btnAddQueue, 'Queue');
+      // еще раз проверить наличие в локал и изменить кнопку
+      setStileBntQueue(idMovie, btnAddQueue);
+    };
   });
-}
+};
 
 function setStileBntWatched(selectedMovieId, btnAddWatched) {
   if (localStorage.getItem('Watched') === null) {
@@ -193,7 +207,11 @@ function offModal() {
   modalBackdrop.firstElementChild.dataset.id = '';
 
   movieModal.innerHTML = ''
-  toTopBtn.classList.add('btn-to-top--visible');
+  const scrolled = window.pageYOffset;
+  const coords = document.documentElement.clientHeight;
+  if (scrolled > coords) {
+    toTopBtn.classList.add('btn-to-top--visible');
+  };
 }
 
 // модалка команды
