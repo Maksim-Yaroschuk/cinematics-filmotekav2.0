@@ -49,23 +49,28 @@ body.dark::-webkit-scrollbar-thumb {
 .text_theme-btn{
 	position: absolute;
 	width: 180px;
-	top:8px;
-	right: -70px;
+	top:10px;
+	right: -130px;
 	font-size: 10px;
+	display: none;
 	color: var(--light-body-theme, #ffffff);
+	@include mq(tablet) {
+		display: block;
+	}
 	@include mq(desktop) {
 		width: 180px;
 		top: 35px;
 		right: -5px;
+		display: block;
 	}
 }
 
 #toggle-theme-btn {
-	width: 180px;
+	// width: 180px;
 	height: 5px;
 	position: absolute;
 	top: 205px;
-	right: 60%;
+	right: 10%;
 	transform: translate(50%, 0);
 	background-color:transparent;
 	border: 2px transparent solid;
@@ -73,7 +78,7 @@ body.dark::-webkit-scrollbar-thumb {
 		cursor: pointer;
 	}
 	@include mq(tablet) {
-		top: 175px;
+		top: 174px;
 		right: 55%;
 		transform: translate(50%, 0);
 	}
