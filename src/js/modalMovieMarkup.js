@@ -2,8 +2,9 @@ import { IMG_BASE_URL, IMG_W400 } from './api'
 import {loadLs} from './storage'
 
 //Функция конвертации id жанра в название жанра
-const genresList = loadLs('genresList')
+
 const genresConverting = (genresIds) => {
+  const genresList = loadLs('genresList')
   const genreArray = []
   genresIds.map(genreId => {
     genresList.map(genre => {

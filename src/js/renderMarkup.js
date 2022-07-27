@@ -8,7 +8,6 @@ async function getGenres() {
   return { genres };
 }
 
-let moviesData;
 
 export function renderMarkup(data) {
   getGenres().then(({ genres }) => {
@@ -36,7 +35,7 @@ export function renderMarkup(data) {
       list.innerHTML = markupList;
     }
   });
-  // moviesData = JSON.parse(localStorage.getItem('moviesData'));
+ 
 }
 
 export function createListMarkup(data) {
