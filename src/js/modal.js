@@ -144,7 +144,7 @@ function updataLibery(e, btn, list) {
     libMarkup(list);
     // const dataBtn = btn.dataset.liery;
     // if (dataBtn === 'true') {
-      btn.setAttribute('disabled', true);
+      // btn.setAttribute('disabled', true);
     // } else {
       // return
     // }
