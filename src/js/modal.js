@@ -1,6 +1,6 @@
 import { list, lib, modalBackdrop, btnOnModalTeam, movieModal, toTopBtn} from './refs';
 import { modalMoviemarkup, modalTeamLayout } from './modalMovieMarkup';
-import { addListLibrary, funAddQueue } from './storage';
+import { addListLibrary, funAddQueue, saveLs } from './storage';
 
 import { libMarkup } from './lib';
 
@@ -22,19 +22,20 @@ btnOnModalTeam.addEventListener('click', onModalTeam);
 
 function createModal(event) {
   const selectedMovie = event.target.closest('li');
+  const selectedMovieId = Number(selectedMovie.getAttribute('key'));
   //Проверка "если нажали на 'li' то открываем модалку и считываем 'key'"
   if (selectedMovie) {
     let moviesData = JSON.parse(localStorage.getItem('moviesData'));
+    
     if (dataWebLocation === 'library') {
       let watchedData = JSON.parse(localStorage.getItem('WatchedData'));
       let queueData = JSON.parse(localStorage.getItem('QueueData'));
       if(watchedData){moviesData.push(...watchedData)}
       if(queueData){moviesData.push(...queueData)}
-     
-      // moviesData = [...watchedData, ...queueData]
+      saveLs('moviesData', moviesData)
     }
     //Получение данных о фильме в модалку
-    const selectedMovieId = Number(selectedMovie.getAttribute('key'));
+    // const selectedMovieId = Number(selectedMovie.getAttribute('key'));
     const movieData = moviesData.find(movie => movie.id === selectedMovieId);
     renderModalContent(movieData);
     openModal();
